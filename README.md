@@ -47,7 +47,7 @@ npm run dev
 
 ## 🧠 Autor
 
-**Jose Duarte** – Desarrollador en formación con enfoque en frontend y backend, actualmente en transición hacia el mundo profesional. Formándome en tecnologías modernas como **React**, **Django**, **Vite**, **CSS Modules**, entre otras herramientas del ecosistema web.
+**Jose Duarte** – Desarrollador en formación con enfoque FullStack, actualmente en transición hacia el mundo profesional. Formándome en tecnologías modernas como **React**, **Django**, **Vite**, **CSS Modules**, entre otras herramientas del ecosistema web.
 📎[LinkedIn](https://www.linkedin.com/in/joseduarte99/)
 
 
