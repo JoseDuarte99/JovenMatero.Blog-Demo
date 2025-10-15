@@ -12,7 +12,7 @@ Blog profesional desarrollado con Django REST Framework en el backend y React + 
 - **Control de versiones**: Git + GitHub
 
 ## 📦 Estructura del Proyecto
-
+```bash
 blogproject/
 ├── backend/              ## Django REST API
 │ ├── blog/                 # App principal
@@ -24,7 +24,7 @@ blogproject/
 │ │ ├── services/           # Conexión con la API
 │ │ ├── hooks/              # Hooks personalizados
 │ │ └── styles/             # Estilos con CSS Modules
-
+```
 ## 🛠 Instalación
 
 ### Backend
