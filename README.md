@@ -45,5 +45,10 @@ npm install
 npm run dev
 ```
 
-🧠 Autor
-Jose – Frontend Developer | Participante de INFORMATORIO Chaco 2025 Especializado en diseño visual, branding técnico y layouts adaptables.
+## 🧠 Autor
+
+**Jose Duarte** – Desarrollador en formación con enfoque en frontend y backend, actualmente en transición hacia el mundo profesional. Formándome en tecnologías modernas como **React**, **Django**, **Vite**, **CSS Modules**, entre otras herramientas del ecosistema web.
+📎[LinkedIn](https://www.linkedin.com/in/joseduarte99/)
+
+
+
