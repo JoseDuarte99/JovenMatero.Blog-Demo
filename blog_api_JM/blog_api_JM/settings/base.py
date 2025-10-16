@@ -46,22 +46,25 @@ LOCAL_APPS = [
 ]
 
 THIRD_APPS = [
+    'corsheaders',
+    'rest_framework',
     'simple_history',
 ]
 
-INSTALLED_APPS = BASE_APPS + THIRD_APPS + LOCAL_APPS,
+INSTALLED_APPS = BASE_APPS + THIRD_APPS + LOCAL_APPS
 
 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'simple_history.middleware.HistoryRequestMiddleware',
+    'simple_history.middleware.HistoryRequestMiddleware'
 ]
 
 ROOT_URLCONF = 'blog_api_JM.urls'
@@ -125,4 +128,13 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# CORS Authorization
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",
+#     "https://tudominio.com",
+# ]
+
+#  (solo en desarrollo):
+CORS_ALLOW_ALL_ORIGINS = True
 
