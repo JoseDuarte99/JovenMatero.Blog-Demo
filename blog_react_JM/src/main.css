@@ -1,0 +1,50 @@
+/* Universal box model */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Remove default margins and paddings */
+html, body, h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd {
+    margin: 0;
+    padding: 0;
+}
+
+/* Full height and base typography */
+html, body {
+    height: 100%;
+    font-family: system-ui, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Responsive media elements */
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Consistent form elements */
+input, button, textarea, select {
+    font: inherit;
+}
+
+/* Remove list styles */
+ul, ol {
+    list-style: none;
+    padding: 0;
+}
+
+/* Improved focus accessibility */
+:focus {
+    outline: 1px solid #007BFF;
+    z-index: 2;
+}
+
+/* Smooth animations with accessibility fallback */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
