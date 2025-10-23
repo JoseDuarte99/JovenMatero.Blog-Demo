@@ -1,46 +1,39 @@
-// import { useMutation } from "@tanstack/react-query"
-// import { login } from "../../api/login"
-import { useMutation } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query"
+import { login } from "../../api/login"
 import style  from "./Login.module.css"
 import { useState } from "react"
-import { login } from "../../api/login";
+import { useNavigate } from "react-router"
 
-
-// type LoginPayload = {
-//     username: string;
-//     password: string;
-// };
 
 function LoginForm() {
+    
     const [username, setusername] = useState("")
     const [password, setpassword] = useState("")
-    
-    
-    
+    const navigate = useNavigate();
     
     // -----------------------------------------------------
+    
     const mutation = useMutation({
-        mutationFn: async () => {
-            const data = await login(username, password);
-                localStorage.setItem('accessToken', data.access);
-                localStorage.setItem('refreshToken', data.refresh);
-            return data;
+        mutationFn: () => login(username, password),
+        onSuccess: (data) => {
+            console.log("Login exitoso:", data);
+            setusername("");
+            setpassword("");
+            navigate("/Home");
         },
         onError: (error) => {
-            console.error('Error al iniciar sesión:', error);
-        },
-        onSuccess: (data) => {
-            console.log('Login exitoso:', data);
-            // redirigir o mostrar mensaje
+            console.error("Error:", error);
+            setpassword(""); // solo borrás la contraseña si falló
         },
     });
+    
+    
+    
+    
     // -----------------------------------------------------
-    
-    
     
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        console.log(`Enviado: ${username} y  ${password} `)
         mutation.mutate()
     }
     
@@ -64,11 +57,14 @@ function LoginForm() {
         <button type="submit" disabled={mutation.isPending}>
         {mutation.isPending ? "Cargando..." : "Ingresar"}
         </button>
-        {mutation.isError && <p>Error al iniciar sesión</p>}
-
-        </form>
-        </div>
-    )
-}
-
-export default LoginForm
+        {mutation.isError && <>
+            <p>Error al iniciar sesión</p>
+            <p>Por favor, verifique sus credenciales y vuelva a intentar.</p>
+            </>}
+            </form>
+            </div>
+        )
+    }
+    
+    export default LoginForm
+    

@@ -1,11 +1,12 @@
+import './main.css'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './main.css'
-
+import { BrowserRouter, Route, Routes } from 'react-router';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import Login from './page/Login/Login';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+import LoginForm from './page/Login/Login';
 import WithoutNavbarAndFooter from './layout/WithoutNavbarAndFooter';
+import NotFound404 from './page/Login/NotFound404/NotFound404';
 
 const queryClient = new QueryClient();
 
@@ -16,8 +17,9 @@ createRoot(document.getElementById('root')!).render(
       <BrowserRouter>
         <Routes>
           <Route element={<WithoutNavbarAndFooter/>}>
-            <Route path='/' element={<Login />}/>
+            <Route path='/' element={<LoginForm />}/>
           </Route>
+          <Route path='*' element={<NotFound404/>}/>
         </Routes>
       </BrowserRouter>
 
