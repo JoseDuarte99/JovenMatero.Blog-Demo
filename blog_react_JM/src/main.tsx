@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import LoginForm from './page/Login/Login';
 import WithoutNavbarAndFooter from './layout/WithoutNavbarAndFooter';
-import NotFound404 from './page/Login/NotFound404/NotFound404';
+import NotFound404 from './page/NotFound404/NotFound404';
 
 const queryClient = new QueryClient();
 

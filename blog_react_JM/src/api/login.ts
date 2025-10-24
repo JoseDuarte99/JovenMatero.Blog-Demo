@@ -12,19 +12,31 @@ export const login = async (username: string, password: string) => {
             },
             body: JSON.stringify({ username, password }),
         });
+        const data = await response.json();
         
         if (!response.ok) {
-            throw new Error(`Login failed - HTTP ${response.status}: ${response.statusText}`);
-            
+            const errorMessage = data?.detail || `${response.status}: ${response.statusText}`;
+            throw new Error(`Login failed: ${errorMessage}`);
         }
-
-        return await response.json(); // { access, refresh }
         
-    } catch (error) {
-        throw new Error(`Failed: ${error}`)
-    };
+        const accessToken = data.access;
+        const refreshToken = data.refresh;
+        
+        localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("refreshToken", refreshToken);
+        
+        return { accessToken, refreshToken };
+        
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            throw new Error(`Login failed: ${error.message}`);
+        } else {
+            console.error(error);
+            throw new Error('Login failed: unknown error');
+        }
+    }
+    
 };
-
 
 // GET PROFILE ------------------------------------------------------------
 export const getProfile = async (token: string) => {

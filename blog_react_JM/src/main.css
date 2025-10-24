@@ -1,3 +1,5 @@
+/* --JM---------------------- RESET VALUES --JM----------------------------- */
+
 /* Universal box model */
 *, *::before, *::after {
     box-sizing: border-box;
@@ -9,10 +11,11 @@ html, body, h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd {
     padding: 0;
 }
 
+
 /* Full height and base typography */
 html, body {
     height: 100%;
-    font-family: system-ui, sans-serif;
+    font-family: var(--JM-font-body);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
 }
@@ -47,4 +50,32 @@ ul, ol {
         animation: none !important;
         transition: none !important;
     }
+}
+
+
+
+/* -- JM GLOBAL VARIABLES----------------------------------------------------------------------------- */
+:root {
+    /* IMPORTING League Spartan, Libre Baskerville and Questrial FROM GOOGLE-FONT */
+    --JM-font-body: 'Libre Baskerville', serif;
+    --JM-font-title: 'League Spartan', sans-serif;
+    --JM-font-subtitle: 'Questrial', sans-serif;
+
+    /* Color Pallete */
+    --JM-color-strong-green: #0e3c24;
+    --JM-color-pastel-green: #3f6440;
+    --JM-color-strong-beige: #b0a183;
+    --JM-color-beige: #ccbe96;
+    --JM-color-white: #fff;
+    
+    /* Typography Sizes */
+    --JM-font-size-base: 1rem;
+    --JM-font-size-lg: 1.5rem;
+    --JM-font-size-sm: 0.875rem;
+    
+    /* Spacing */
+    --JM-spacing-xs: 4px;
+    --JM-spacing-sm: 8px;
+    --JM-spacing-md: 16px;
+    --JM-spacing-lg: 32px;
 }
