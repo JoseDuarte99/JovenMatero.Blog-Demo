@@ -2,20 +2,21 @@
     outline: none;
 }
 
-.login {
+.register {
     display: flex;
+    flex-direction: column;
+    gap: 20px;
     justify-content: space-evenly;
     align-items: center;
-    flex-wrap: wrap;
     width: 100%;
-    height: 40vh;
+    height: fit-content;
     min-height: max-content;
     padding: 15px 0;
     background:var(--JM-color-bg-grey);
     box-shadow: 0px 0px 5px #0003;
 }
 
-.formLogin {
+.formRegister {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,27 +33,15 @@
     box-shadow: 0px 0px 5px #0003;
 }
 
-.logoJovenMatero {
-    width: 30%;
-    min-width: 250px;
-    padding:20px;
-}
-
-.logoJovenMatero > h1{
-    font-family: var(--JM-font-title);
-    font-weight: bold;
-    font-size: 5em;
-    color: var(--JM-color-strong-green);
-    text-align: center;
-}
-
-.input {
+.formField {
+    display: flex;
+    flex-direction: column;
     display: flex;
     gap: 10px;
     width: 100%;
 }
 
-.input > input {
+.formField > input {
     border: none;
     border-bottom: 1px solid #0005;
     font-size: 0.7em;
@@ -60,7 +49,7 @@
     color: var(--JM-color-text-base);
 }
 
-.input > input:focus {
+.formField > input:focus {
     border-bottom: 2px solid var(--JM-color-strong-green);
 }
 
@@ -92,16 +81,4 @@
     padding: 5px 0;
     margin-top: 20px;
     font-size: 0.8em;
-}
-
-.errorMessasge {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    color: var(--JM-color-text-error);
-    font-size: 0.6em;
-}
-
-.errorMessasge > p:nth-of-type(1) {
-    font-weight: bold;
 }
