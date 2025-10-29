@@ -1,3 +1,4 @@
+import type { FormDataType } from "../page/Register/Register";
 
 // API URL ------------------------------------------------------------
 const API_URL = 'http://localhost:8000/api';
@@ -51,4 +52,35 @@ export const getProfile = async (token: string) => {
     }
     
     return await response.json(); // { id, username, email, ... }
+};
+
+// Register Function ------------------------------------------------------------
+export const register = async (formDate: FormDataType) => {
+    try {
+        const response = await fetch(`${API_URL}/auth/register/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formDate),
+        });
+        const data = await response.json();
+        
+        if (!response.ok) {
+            const errorMessage = data?.detail || `${response.status}: ${response.statusText}`;
+            throw new Error(`Register failed: ${errorMessage}`);
+        }
+        
+        
+        return "Register Success";
+        
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            throw new Error(`Register failed: ${error.message}`);
+        } else {
+            console.error(error);
+            throw new Error('Register failed: unknown error');
+        }
+    }
+    
 };

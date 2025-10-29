@@ -55,7 +55,7 @@
 .input > input {
     border: none;
     border-bottom: 1px solid #0005;
-    font-size: 0.7em;
+    font-size: 0.9em;
     width: 100%;
     color: var(--JM-color-text-base);
 }
