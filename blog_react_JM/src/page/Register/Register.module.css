@@ -40,6 +40,10 @@
     color: var(--JM-color-text-grey);
     font-size: 0.8em;
 }
+.formField > p > span {
+    padding: 0 0 0 5px;
+    color: var(--JM-color-text-error);
+}
 .formField > input {
     border: none;
     border-bottom: 1px solid #0005;
@@ -54,18 +58,36 @@
 .formFieldImg > input {
     width: fit-content;
     align-self: center;
-    color: var(--JM-color-text-error);
+    color: var(--JM-color-pastel-green);
 }
 
 .previewImg {
     color: var(--JM-color-text-base);
     font-size: 0.8em;
-    box-shadow: 0px 0px 15px #0005;
+    box-shadow: 0px 0px 5px #0005;
     margin-top: 20px;
 }
+
 .previewImg > p {
+    color: var(--JM-color-pastel-green);
     width: fit-content;
     justify-self: center;
+    margin: 10px 0;
+}
+.previewImg > button {
+    display: flex;
+    border: none;
+    background: var(--JM-color-white);
+    color: var(--JM-color-text-grey);
+    margin: 5px;
+    cursor: pointer;
+}
+.previewImg > button > svg{
+    height: 24px;
+    width: auto;
+}
+.previewImg > button > svg:hover {
+    height: 28px;
 }
 .previewImg > img {
     justify-self: center;
@@ -101,3 +123,19 @@
     font-size: 0.8em;
 }
 
+.errorMessasge {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: var(--JM-color-text-error);
+    font-size: 0.8em;
+}
+
+.errorMessasge > p:nth-of-type(1) {
+    font-weight: bold;
+}
+
+.requiredDate {
+    font-size: 0.7em;
+    color: var(--JM-color-text-error);
+}

@@ -55,14 +55,22 @@ export const getProfile = async (token: string) => {
 };
 
 // Register Function ------------------------------------------------------------
-export const register = async (formDate: FormDataType) => {
+export const register = async (formData: FormDataType) => {
     try {
+
+        const form = new FormData();
+        form.append("username", formData.username);
+        form.append("password", formData.password);
+        form.append("firstName", formData.firstName);
+        form.append("lastName", formData.lastName);
+        form.append("email", formData.email);
+        if (formData.img) {
+            form.append("img", formData.img); // nombre del campo debe coincidir con el backend
+        }
+
         const response = await fetch(`${API_URL}/auth/register/`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formDate),
+            body: form,
         });
         const data = await response.json();
         

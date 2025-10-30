@@ -3,6 +3,7 @@ import style from "./Register.module.css"
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router";
 import { register } from "../../api/login";
+import { trashIcon } from "../../svg/svg";
 
 // Types for Data Form
 export type FormDataType = {
@@ -14,19 +15,21 @@ export type FormDataType = {
     img: File | null;
 }
 
-
-function RegisterForm() {
-
-    const [errorMessasge, setErrorMessage] = useState<string | null>(null);
-    const [imagen, setImagen] = useState<string | null>(null);
-    const [formData, setFormData] = useState<FormDataType> ({
+const INITIAL_STATE = {
         username: '',
         password: '',
         firstName: '',
         lastName: '',
         email: '',
-        img: null, // porque será un File más adelante
-    });
+        img: null,
+    };
+
+
+function RegisterForm() {
+
+    const [errorMessasge, setErrorMessage] = useState<string | null>(null);
+    const [imagen, setImagen] = useState<string | null>(null);
+    const [formData, setFormData] = useState<FormDataType> (INITIAL_STATE);
     const navigate = useNavigate();
 
     
@@ -36,35 +39,17 @@ function RegisterForm() {
     const mutation = useMutation({
         mutationFn: () => register(formData),
         onSuccess: (data) => {
-            console.log("Registro Exitoso:", data);
-            setFormData(
-                        {
-                username: '',
-                password: '',
-                firstName: '',
-                lastName: '',
-                email: '',
-                img: null, // porque será un File más adelante
-            }
-            );
+            console.log("Register Success:", data);
+            setFormData(INITIAL_STATE);
             navigate("/auth/login");
         },
         onError: (error: unknown) => {
-            setFormData(
-                        {
-                username: '',
-                password: '',
-                firstName: '',
-                lastName: '',
-                email: '',
-                img: null, // porque será un File más adelante
-            }
-            );
+            setFormData(INITIAL_STATE);
             if (error instanceof Error) {
-                console.error("Login error:", error.message);
+                console.error("Register Error:", error.message);
                 setErrorMessage(error.message);
             } else {
-                console.error("Login error unknow:", error);
+                console.error("Register Error unkwon:", error);
                 setErrorMessage("Error desconocido al iniciar sesión");
             }
         },
@@ -90,9 +75,9 @@ function RegisterForm() {
     return (
         <div className={style.register}>
             <form onSubmit={handleSubmit} className={style.formRegister}>
-            
+
                 <label className={style.formField}>
-                    Nombre de Usuario
+                    <p>Nombre de Usuario <span>*</span></p>
                     <input 
                     type="text" 
                     value={formData.username}
@@ -102,7 +87,7 @@ function RegisterForm() {
                 </label>
                 
                 <label className={style.formField}>
-                    Contraseña
+                    <p>Contraseña <span>*</span></p>
                     <input 
                     type="password" 
                     value={formData.password}
@@ -112,7 +97,7 @@ function RegisterForm() {
                 </label>
                 
                 <label className={style.formField}>
-                    Nombres
+                    <p>Nombres <span>*</span></p>
                     <input 
                     type="text" 
                     value={formData.firstName}
@@ -122,7 +107,7 @@ function RegisterForm() {
                 </label>
                 
                 <label className={style.formField}>
-                    Apellido
+                    <p>Apellido <span>*</span></p>
                     <input 
                     type="text" 
                     value={formData.lastName}
@@ -132,7 +117,7 @@ function RegisterForm() {
                 </label>
                 
                 <label className={style.formField}>
-                    Email
+                    <p>Email <span>*</span></p>
                     <input 
                     type="email" 
                     value={formData.email}
@@ -150,8 +135,9 @@ function RegisterForm() {
                     />
                     {imagen && (
                         <div className={style.previewImg}>
-                            <p>Vista previa:</p>
+                            <p>Vista previa:</p> 
                             <img src={imagen} alt="Vista previa" width="200" />
+                            <button onClick={() => setImagen(null)}>{trashIcon}</button>
                         </div>
                     )}
                 </label>
@@ -171,6 +157,7 @@ function RegisterForm() {
                     {mutation.isPending ? "Cargando..." : "Ingresar"}
                     
                     </button> */}
+                <span className={style.requiredDate}>(*) Datos obligatorios.</span>
             </form>
         </div>
             
