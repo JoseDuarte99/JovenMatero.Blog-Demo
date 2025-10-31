@@ -27,7 +27,7 @@ const INITIAL_STATE = {
 
 function RegisterForm() {
 
-    const [errorMessasge, setErrorMessage] = useState<string | null>(null);
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const [imagen, setImagen] = useState<string | null>(null);
     const [formData, setFormData] = useState<FormDataType> (INITIAL_STATE);
     const navigate = useNavigate();
@@ -41,16 +41,17 @@ function RegisterForm() {
         onSuccess: (data) => {
             console.log("Register Success:", data);
             setFormData(INITIAL_STATE);
-            navigate("/auth/login");
+            navigate("/login");
         },
         onError: (error: unknown) => {
             setFormData(INITIAL_STATE);
+            setImagen(null);
             if (error instanceof Error) {
                 console.error("Register Error:", error.message);
                 setErrorMessage(error.message);
             } else {
                 console.error("Register Error unkwon:", error);
-                setErrorMessage("Error desconocido al iniciar sesión");
+                setErrorMessage("Register Error unkwon");
             }
         },
     });
@@ -142,8 +143,8 @@ function RegisterForm() {
                     )}
                 </label>
                 
-                {errorMessasge && <span className={style.errorMessasge}>
-                        <p>Error en el registro</p>
+                {errorMessage && <span className={style.errorMessage}>
+                        <p>Error en el registro: {errorMessage}</p>
                         <p>Por favor, verifique sus datos y vuelva a intentar.</p>
                     </span>
                 }

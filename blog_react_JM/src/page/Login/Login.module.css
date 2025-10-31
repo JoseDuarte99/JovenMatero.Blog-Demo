@@ -64,6 +64,18 @@
     border-bottom: 2px solid var(--JM-color-strong-green);
 }
 
+.errorMessage {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: var(--JM-color-text-error);
+    font-size: 0.6em;
+}
+
+.errorMessage > p:nth-of-type(1) {
+    font-weight: bold;
+}
+
 .enabledButton {
     background-color: var(--JM-color-pastel-green);
     color: var(--JM-color-white);
@@ -94,14 +106,19 @@
     font-size: 0.8em;
 }
 
-.errorMessasge {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    color: var(--JM-color-text-error);
-    font-size: 0.6em;
+.separador {
+    border-top: 1px solid var(--JM-color-bg-grey);
+}
+.createAccount {
+    width: fit-content;
+    align-self: center;
+    text-decoration: none;
+    color: var(--JM-color-pastel-green);
+    font-size: 0.9em;
+    transition: font-weight 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+.createAccount:hover {
+    font-weight: bold;
+    color: var(--JM-color-strong-green);
 }
 
-.errorMessasge > p:nth-of-type(1) {
-    font-weight: bold;
-}

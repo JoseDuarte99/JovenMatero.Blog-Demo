@@ -61,11 +61,11 @@ export const register = async (formData: FormDataType) => {
         const form = new FormData();
         form.append("username", formData.username);
         form.append("password", formData.password);
-        form.append("firstName", formData.firstName);
-        form.append("lastName", formData.lastName);
+        form.append("first_name", formData.firstName);
+        form.append("last_name", formData.lastName);
         form.append("email", formData.email);
         if (formData.img) {
-            form.append("img", formData.img); // nombre del campo debe coincidir con el backend
+            form.append("image", formData.img); // nombre del campo debe coincidir con el backend
         }
 
         const response = await fetch(`${API_URL}/auth/register/`, {
@@ -75,8 +75,16 @@ export const register = async (formData: FormDataType) => {
         const data = await response.json();
         
         if (!response.ok) {
-            const errorMessage = data?.detail || `${response.status}: ${response.statusText}`;
+            let errorMessage = `${response.statusText}`;
+            if (data && typeof data === 'object') {
+                const firstKey = Object.keys(data)[0];
+                const firstError = data[firstKey]?.[0];
+                if (firstError) {
+                    errorMessage = firstError;
+                }
+            // const errorMessage = data?.detail || `${response.status}: ${response.statusText}`;
             throw new Error(`Register failed: ${errorMessage}`);
+            }
         }
         
         

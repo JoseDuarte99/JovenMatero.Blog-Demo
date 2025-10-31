@@ -123,7 +123,7 @@
     font-size: 0.8em;
 }
 
-.errorMessasge {
+.errorMessage {
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -131,7 +131,7 @@
     font-size: 0.8em;
 }
 
-.errorMessasge > p:nth-of-type(1) {
+.errorMessage > p:nth-of-type(1) {
     font-weight: bold;
 }
 

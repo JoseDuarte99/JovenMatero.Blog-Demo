@@ -2,14 +2,14 @@ import { useMutation } from "@tanstack/react-query"
 import { login } from "../../api/login"
 import style  from "./Login.module.css"
 import { useState } from "react"
-import { useNavigate } from "react-router"
+import { Link, useNavigate } from "react-router"
 
 
 function LoginForm() {
     
     const [username, setusername] = useState("");
     const [password, setpassword] = useState("");
-    const [errorMessasge, setErrorMessage] = useState<string | null>(null);
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const navigate = useNavigate();
     
     // REACT-QUERY -----------------------------------------------------
@@ -29,7 +29,7 @@ function LoginForm() {
                 setErrorMessage(error.message);
             } else {
                 console.error("Login error unknow:", error);
-                setErrorMessage("Error desconocido al iniciar sesión");
+                setErrorMessage("Login error unknow");
             }
         },
     });
@@ -70,7 +70,7 @@ function LoginForm() {
                     />
                 </span>
 
-                {errorMessasge && <span className={style.errorMessasge}>
+                {errorMessage && <span className={style.errorMessage}>
                         <p>Error al iniciar sesión</p>
                         <p>Por favor, verifique sus credenciales y vuelva a intentar.</p>
                     </span>
@@ -78,8 +78,11 @@ function LoginForm() {
 
                 <button type="submit" disabled={mutation.isPending} className={mutation.isPending ? style.disabledButton : style.enabledButton}>
                 {mutation.isPending ? "Cargando..." : "Ingresar"}
-                
                 </button>
+                <span className={style.separador}></span>
+                <Link to={"/register"} className={style.createAccount} >
+                    Crear cuenta
+                </Link>
             </form>
         </div>
         )
