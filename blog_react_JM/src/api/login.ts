@@ -65,7 +65,7 @@ export const register = async (formData: FormDataType) => {
         form.append("last_name", formData.lastName);
         form.append("email", formData.email);
         if (formData.img) {
-            form.append("image", formData.img); // nombre del campo debe coincidir con el backend
+            form.append("image", formData.img);
         }
 
         const response = await fetch(`${API_URL}/auth/register/`, {
@@ -83,18 +83,18 @@ export const register = async (formData: FormDataType) => {
                     errorMessage = firstError;
                 }
             // const errorMessage = data?.detail || `${response.status}: ${response.statusText}`;
-            throw new Error(`Register failed: ${errorMessage}`);
+            throw new Error(errorMessage);
             }
         }
-        
-        
+
         return "Register Success";
         
     } catch (error: unknown) {
         if (error instanceof Error) {
-            throw new Error(`Register failed: ${error.message}`);
+            console.error(`Register failed: ${error.message}`);
+            throw new Error(error.message);
         } else {
-            console.error(error);
+            console.error(`Register failed - unknown error: ${error}`);
             throw new Error('Register failed: unknown error');
         }
     }

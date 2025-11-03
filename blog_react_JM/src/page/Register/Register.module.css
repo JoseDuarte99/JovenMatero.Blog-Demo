@@ -33,18 +33,30 @@
     box-shadow: 0px 0px 5px #0003;
 }
 
-.formField, .formFieldImg {
+.formField, .formFieldImg, .formFieldPassword {
     display: flex;
     flex-direction: column;
     gap: 5px;
     color: var(--JM-color-text-grey);
     font-size: 0.8em;
 }
-.formField > p > span {
+.formFieldPassword {
+    position: relative;
+}
+.formFieldPassword > p{
+    display: flex;
+}
+.formFieldPassword > p > svg {
+    margin: 0 0 0 10px;
+    cursor: pointer;
+}
+.formField > p > span,
+.formFieldPassword > p > span {
     padding: 0 0 0 5px;
     color: var(--JM-color-text-error);
 }
-.formField > input {
+.formField > input,
+.formFieldPassword > input {
     border: none;
     border-bottom: 1px solid #0005;
     color: var(--JM-color-text-base);
@@ -59,6 +71,19 @@
     width: fit-content;
     align-self: center;
     color: var(--JM-color-pastel-green);
+}
+
+.passwordRequirement {
+    display: none;
+    position: absolute;
+    width: 18vw;
+    z-index: 3;
+    left: 120px;
+    font-size: 0.8em;
+    background: var(--JM-color-bg-grey);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #0005;
 }
 
 .previewImg {
