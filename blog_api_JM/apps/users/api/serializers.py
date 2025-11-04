@@ -29,7 +29,6 @@ class RegisterSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Este email ya está registrado.")
         return value
     
-    
     def validate_username(self, value):
         if User.objects.filter(username=value).exists():
             raise serializers.ValidationError("El nombre de usuario ingresado no está disponible.")
@@ -40,7 +39,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         try:
             validate_password(value)
         except DjangoValidationError as e:
-            raise serializers.ValidationError(e.messages)
+            raise serializers.ValidationError("Revisá los requisitos de seguridad para la contraseña.")
         return value
 
 

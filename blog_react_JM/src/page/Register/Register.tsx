@@ -43,18 +43,21 @@ function RegisterForm() {
             setFormData(INITIAL_STATE);
             navigate("/login");
         },
-        onError: (error: unknown) => {
-            // setFormData(INITIAL_STATE);
-            setFormData(prev => ({ ...prev, password: "" }));
-            setFormData(prev => ({ ...prev, em: "" }));
-            setImagen(null);
-            if (error instanceof Error) {
-                console.error("Register Error:", error.message);
-                setErrorMessage(error.message);
-            } else {
-                console.error("Register Error unkwon:", error);
-                setErrorMessage("Register Error unkwon");
-            }
+        onError: (error) => {
+
+            console.log(error)
+
+            // // setFormData(INITIAL_STATE);
+            // setFormData(prev => ({ ...prev, password: "" }));
+            // // setFormData(prev => ({ ...prev, email: "" }));
+            // setImagen(null);
+            // if (error instanceof Error) {
+            //     console.error("Register Error:", error.message);
+            //     setErrorMessage(error.message);
+            // } else {
+            //     console.error("Register Error unkwon:", error);
+            //     setErrorMessage("Register Error unkwon");
+            // }
         },
     });
     
@@ -80,7 +83,7 @@ function RegisterForm() {
             <form onSubmit={handleSubmit} className={style.formRegister}>
 
                 <label className={style.formField}>
-                    <p>Nombre de Usuario <span>*</span></p>
+                    <p>Nombre de Usuario <span className={style.requiredInput}>*</span></p>
                     <input 
                     type="text" 
                     value={formData.username}
@@ -90,18 +93,31 @@ function RegisterForm() {
                 </label>
                 
                 <label className={style.formFieldPassword}>
-                    <p>Contraseña <span>*</span> {iconExclamation}</p>
-                    <p className={style.passwordRequirement}>Requisitos de la contraseña: Debe tener al menos 8 caracteres, incluir una letra mayúscula, una minúscula, un número y un símbolo especial. No puede ser una contraseña común ni estar compuesta solo por números.</p>
+                    <div>
+                        <p>Contraseña</p>
+                        <span className={style.requiredInput}>*</span> 
+                        <span>
+                            {iconExclamation}
+                            <p className={style.passwordRequirement}>La contraseña debe:<br />
+                            - Tener al menos 8 caracteres. <br /> 
+                            - Incluir almenos una letra mayúscula. <br />
+                            - Incluir almenos una letra minúscula. <br />
+                            - Incluir almenos un número y un símbolo especial. <br />
+                            - No puede ser una contraseña común <br />
+                            - No puede estar compuesta solo por números.
+                            </p>
+                        </span>
+                    </div>
                     <input 
-                    type="password" 
-                    value={formData.password}
-                    onChange={(e) => setFormData(prev => ({ ...prev, password: e.target.value }))}
-                    required
+                        type="password" 
+                        value={formData.password}
+                        onChange={(e) => setFormData(prev => ({ ...prev, password: e.target.value }))}
+                        required
                     />
                 </label>
                 
                 <label className={style.formField}>
-                    <p>Nombres <span>*</span></p>
+                    <p>Nombres <span className={style.requiredInput}>*</span></p>
                     <input 
                     type="text" 
                     value={formData.firstName}
@@ -111,7 +127,7 @@ function RegisterForm() {
                 </label>
                 
                 <label className={style.formField}>
-                    <p>Apellido <span>*</span></p>
+                    <p>Apellido <span className={style.requiredInput}>*</span></p>
                     <input 
                     type="text" 
                     value={formData.lastName}
@@ -121,7 +137,7 @@ function RegisterForm() {
                 </label>
                 
                 <label className={style.formField}>
-                    <p>Email <span>*</span></p>
+                    <p>Email <span className={style.requiredInput}>*</span></p>
                     <input 
                     type="email" 
                     value={formData.email}
@@ -147,7 +163,7 @@ function RegisterForm() {
                 </label>
                 
                 {errorMessage && <span className={style.errorMessage}>
-                        <p>Error en el registro: {errorMessage}</p>
+                        <p>{errorMessage}</p>
                         <p>Por favor, verifique sus datos y vuelva a intentar.</p>
                     </span>
                 }

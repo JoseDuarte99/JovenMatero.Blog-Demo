@@ -33,6 +33,7 @@
     box-shadow: 0px 0px 5px #0003;
 }
 
+/* All Fields and Inputs ----------------------------------- */
 .formField, .formFieldImg, .formFieldPassword {
     display: flex;
     flex-direction: column;
@@ -40,21 +41,7 @@
     color: var(--JM-color-text-grey);
     font-size: 0.8em;
 }
-.formFieldPassword {
-    position: relative;
-}
-.formFieldPassword > p{
-    display: flex;
-}
-.formFieldPassword > p > svg {
-    margin: 0 0 0 10px;
-    cursor: pointer;
-}
-.formField > p > span,
-.formFieldPassword > p > span {
-    padding: 0 0 0 5px;
-    color: var(--JM-color-text-error);
-}
+
 .formField > input,
 .formFieldPassword > input {
     border: none;
@@ -67,32 +54,58 @@
     border-bottom: 2px solid var(--JM-color-strong-green);
 }
 
+/* Required Fields Indicator ----------------------------------- */
+.requiredInput {
+    padding: 0 0 0 5px;
+    color: var(--JM-color-text-error);
+}
+
+/* Input Password ----------------------------------- */
+.formFieldPassword {
+    position: relative;
+}
+.formFieldPassword > div {
+    display: flex;
+}
+.formFieldPassword > div > span > svg {
+    margin: 0 0 0 10px;
+    cursor: pointer;
+    height: 100%;
+}
+.passwordRequirement {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    width: 18vw;
+    min-width: 150px;
+    z-index: 3;
+    right: 0;
+    top: 0;
+    font-size: 0.8em;
+    background: var(--JM-color-bg-grey);
+    color: var(--JM-color-text-grey);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #0005;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.formFieldPassword > div > span:nth-of-type(2):hover .passwordRequirement{
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Input Image ----------------------------------- */
 .formFieldImg > input {
     width: fit-content;
     align-self: center;
     color: var(--JM-color-pastel-green);
 }
-
-.passwordRequirement {
-    display: none;
-    position: absolute;
-    width: 18vw;
-    z-index: 3;
-    left: 120px;
-    font-size: 0.8em;
-    background: var(--JM-color-bg-grey);
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px #0005;
-}
-
 .previewImg {
     color: var(--JM-color-text-base);
     font-size: 0.8em;
     box-shadow: 0px 0px 5px #0005;
     margin-top: 20px;
 }
-
 .previewImg > p {
     color: var(--JM-color-pastel-green);
     width: fit-content;
@@ -118,6 +131,7 @@
     justify-self: center;
 }
 
+/* Buttons ----------------------------------- */
 .enabledButton {
     background-color: var(--JM-color-pastel-green);
     color: var(--JM-color-white);
@@ -148,6 +162,7 @@
     font-size: 0.8em;
 }
 
+/* Error Massage ----------------------------------- */
 .errorMessage {
     display: flex;
     flex-direction: column;
@@ -159,7 +174,11 @@
 .errorMessage > p:nth-of-type(1) {
     font-weight: bold;
 }
+.errorMessage > p:nth-of-type(2) {
+    padding: 10px 0 0 0;
+}
 
+/* Indications for Required Fields ----------------------------------- */
 .requiredDate {
     font-size: 0.7em;
     color: var(--JM-color-text-error);
