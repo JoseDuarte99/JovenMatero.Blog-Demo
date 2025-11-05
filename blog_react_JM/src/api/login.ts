@@ -56,29 +56,34 @@ export const getProfile = async (token: string) => {
 
 // Register Function ------------------------------------------------------------
 export const register = async (formData: FormDataType) => {
+    const form = new FormData();
+    form.append("username", formData.username);
+    form.append("password", formData.password);
+    form.append("first_name", formData.firstName);
+    form.append("last_name", formData.lastName);
+    form.append("email", formData.email);
+    if (formData.img) {
+        form.append("image", formData.img);
+    }
 
-        const form = new FormData();
-        form.append(`username`, formData.username);
-        form.append(`password`, formData.password);
-        form.append(`first_name`, formData.firstName);
-        form.append(`last_name`, formData.lastName);
-        form.append(`email`, formData.email);
-        if (formData.img) {
-            form.append(`image`, formData.img);
-        }
-
+    try {
         const response = await fetch(`${API_URL}/auth/register/`, {
-            method: 'POST',
+            method: "POST",
             body: form,
         });
-        const data = await response.json();
-        
-        if (!response.ok) {
-            throw (data)
-        }
-        return `Register Success`;
-};
 
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw data; 
+        }
+
+        return "Register Success";
+    } catch (error) {
+        console.error("Register Error:", error);
+        throw error;
+    }
+};
 
 
 // export const register = async (formData: FormDataType) => {

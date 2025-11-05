@@ -1,7 +1,7 @@
 import { useState } from "react";
 import style from "./Register.module.css"
 import { useMutation } from "@tanstack/react-query";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { register } from "../../api/login";
 import { trashIcon } from "../../svg/svg";
 
@@ -15,6 +15,17 @@ export type FormDataType = {
     img: File | null;
 }
 
+type DjangoErrorsType = {
+    username?: string[];
+    password?: string[];
+    email?: string[];
+    firstName?: string[];
+    lastName?: string[];
+    img?: string[];    
+};
+
+
+
 const INITIAL_STATE = {
         username: '',
         password: '',
@@ -27,7 +38,8 @@ const INITIAL_STATE = {
 
 function RegisterForm() {
 
-    const [errorMessage, setErrorMessage] = useState<string | null>(null);
+    const [errorMessage, setErrorMessage] = useState<DjangoErrorsType>({}) ;
+    const [errorState, setErrorState] = useState(false) ;
     const [imagen, setImagen] = useState<string | null>(null);
     const [formData, setFormData] = useState<FormDataType> (INITIAL_STATE);
     const navigate = useNavigate();
@@ -41,23 +53,13 @@ function RegisterForm() {
         onSuccess: (data) => {
             console.log("Register Success:", data);
             setFormData(INITIAL_STATE);
-            navigate("/login");
+            navigate("/home");
         },
-        onError: (error) => {
-
-            console.log(error)
-
-            // // setFormData(INITIAL_STATE);
-            // setFormData(prev => ({ ...prev, password: "" }));
-            // // setFormData(prev => ({ ...prev, email: "" }));
-            // setImagen(null);
-            // if (error instanceof Error) {
-            //     console.error("Register Error:", error.message);
-            //     setErrorMessage(error.message);
-            // } else {
-            //     console.error("Register Error unkwon:", error);
-            //     setErrorMessage("Register Error unkwon");
-            // }
+        onError: (error: DjangoErrorsType) => {
+            setErrorMessage(error)
+            setErrorState(true)
+            setFormData(prev => ({ ...prev, password: "" }));
+            setImagen(null);
         },
     });
     
@@ -75,6 +77,8 @@ function RegisterForm() {
     
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
+        setErrorMessage({})
+        setErrorState(false)
         mutation.mutate()
     }
     
@@ -90,6 +94,7 @@ function RegisterForm() {
                     onChange={(e) => setFormData(prev => ({ ...prev, username: e.target.value }))}
                     required
                     />
+                    {errorMessage.username && <p className={style.errorMessage}>{errorMessage.username}</p>}
                 </label>
                 
                 <label className={style.formFieldPassword}>
@@ -114,6 +119,7 @@ function RegisterForm() {
                         onChange={(e) => setFormData(prev => ({ ...prev, password: e.target.value }))}
                         required
                     />
+                    {errorMessage.password && <p className={style.errorMessage}>{errorMessage.password}</p>}
                 </label>
                 
                 <label className={style.formField}>
@@ -124,6 +130,7 @@ function RegisterForm() {
                     onChange={(e) => setFormData(prev => ({ ...prev, firstName: e.target.value }))}
                     required
                     />
+                    {errorMessage.firstName && <p className={style.errorMessage}>{errorMessage.firstName}</p>}
                 </label>
                 
                 <label className={style.formField}>
@@ -134,6 +141,7 @@ function RegisterForm() {
                     onChange={(e) => setFormData(prev => ({ ...prev, lastName: e.target.value }))}
                     required
                     />
+                    {errorMessage.lastName && <p className={style.errorMessage}>{errorMessage.lastName}</p>}
                 </label>
                 
                 <label className={style.formField}>
@@ -144,6 +152,7 @@ function RegisterForm() {
                     onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                     required
                     />
+                    {errorMessage.email && <p className={style.errorMessage}>{errorMessage.email}</p>}
                 </label>
                 
                 <label className={style.formFieldImg}>Foto de Perfil
@@ -160,17 +169,23 @@ function RegisterForm() {
                             <button onClick={() => setImagen(null)}>{trashIcon}</button>
                         </div>
                     )}
+                    {errorMessage.img && <p className={style.errorMessage}>{errorMessage.img}</p>}
                 </label>
                 
-                {errorMessage && <span className={style.errorMessage}>
-                        <p>{errorMessage}</p>
+                {errorState && <span className={style.errorMessage}>
+                        {errorMessage ? <p>Error en el registro.</p> : <></>}
                         <p>Por favor, verifique sus datos y vuelva a intentar.</p>
                     </span>
                 }
-                <button type="submit" disabled={mutation.isPending} className={mutation.isPending ? style.disabledButton : style.enabledButton}>
-                {mutation.isPending ? "Enviando..." : "Enviar"}
-                
-                </button> 
+                <section className={style.buttons}>
+                    <button type="submit" disabled={mutation.isPending} className={mutation.isPending ? style.disabledButton : style.enabledButton}>
+                    {mutation.isPending ? "Enviando..." : "Crear cuenta"}
+                    </button> 
+                    {mutation.isPending 
+                    ? <></>
+                    : <Link to={"/"} className={style.hasAccount}> Ya tengo una cuenta </Link>
+                    }
+                </section>
                 <span className={style.requiredDate}>(*) Datos obligatorios.</span>
             </form>
         </div>

@@ -1,0 +1,18 @@
+:focus {
+    outline: none;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 50vw;
+
+}
+
+.container > a {
+    background: var(--JM-color-pastel-green);
+    color: var(--JM-color-white);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
