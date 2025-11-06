@@ -39,6 +39,23 @@ export const login = async (username: string, password: string) => {
     
 };
 
+// Logout Function ------------------------------------------------------------
+
+export const logout = async () => {
+    const refresh = localStorage.getItem('refresh');
+    await fetch('/api/token/logout/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${refresh}`,
+        },
+        body: JSON.stringify({ refresh }),
+    });
+    localStorage.removeItem('access');
+    localStorage.removeItem('refresh');
+};
+
+
 // GET PROFILE ------------------------------------------------------------
 export const getProfile = async (token: string) => {
     const response = await fetch(`${API_URL}/users/me/`, {
@@ -65,19 +82,19 @@ export const register = async (formData: FormDataType) => {
     if (formData.img) {
         form.append("image", formData.img);
     }
-
+    
     try {
         const response = await fetch(`${API_URL}/auth/register/`, {
             method: "POST",
             body: form,
         });
-
+        
         const data = await response.json();
-
+        
         if (!response.ok) {
             throw data; 
         }
-
+        
         return "Register Success";
     } catch (error) {
         console.error("Register Error:", error);
@@ -104,7 +121,7 @@ export const register = async (formData: FormDataType) => {
 //             body: form,
 //         });
 //         const data = await response.json();
-        
+
 //         if (!response.ok) {
 //             let errorMessage = `${response.statusText}`;
 //             if (data.username) {
@@ -128,14 +145,14 @@ export const register = async (formData: FormDataType) => {
 //                 throw new Error (errorMessage)
 //             } 
 //         }
-        
+
 //         return `Register Success`;
 //     } catch (error: unknown) {
 //         if (error instanceof Error) {
 //             throw new Error(error.message);
 //         } else {
-//             throw new Error('Register failed: unknown error');
+    //             throw new Error('Register failed: unknown error');
 //         }
 //     }
-    
+
 // };

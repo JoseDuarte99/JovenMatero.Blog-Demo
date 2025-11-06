@@ -11,7 +11,11 @@ User = get_user_model()
 class UserViewSet (viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer 
-    permission_classes = [IsAdminUser]  # Only admins can use the full CRUD
+
+    def get_permissions(self):
+        if self.action == 'me':
+            return [IsAuthenticated()]
+        return [IsAdminUser()]
 
     @action(detail=False, methods=['get', 'patch'])
     def me(self, request):
