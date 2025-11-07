@@ -4,7 +4,7 @@ import type { FormDataType } from "../page/Register/Register";
 const API_URL = 'http://localhost:8000/api';
 
 // Login Function ------------------------------------------------------------
-export const login = async (username: string, password: string) => {
+export const loginService = async (username: string, password: string) => {
     try {
         const response = await fetch(`${API_URL}/auth/login/`, {
             method: 'POST',
@@ -41,9 +41,9 @@ export const login = async (username: string, password: string) => {
 
 // Logout Function ------------------------------------------------------------
 
-export const logout = async () => {
+export const logoutService = async () => {
     const refresh = localStorage.getItem('refresh');
-    await fetch('/api/token/logout/', {
+    await fetch(`${API_URL}/auth/logout/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ export const logout = async () => {
 
 
 // GET PROFILE ------------------------------------------------------------
-export const getProfile = async (token: string) => {
+export const getProfileService = async (token: string | null) => {
     const response = await fetch(`${API_URL}/users/me/`, {
         headers: {
             Authorization: `Bearer ${token}`,
@@ -72,7 +72,7 @@ export const getProfile = async (token: string) => {
 };
 
 // Register Function ------------------------------------------------------------
-export const register = async (formData: FormDataType) => {
+export const registerService = async (formData: FormDataType) => {
     const form = new FormData();
     form.append("username", formData.username);
     form.append("password", formData.password);
@@ -102,57 +102,3 @@ export const register = async (formData: FormDataType) => {
     }
 };
 
-
-// export const register = async (formData: FormDataType) => {
-
-//     try {
-//         const form = new FormData();
-//         form.append(`username`, formData.username);
-//         form.append(`password`, formData.password);
-//         form.append(`first_name`, formData.firstName);
-//         form.append(`last_name`, formData.lastName);
-//         form.append(`email`, formData.email);
-//         if (formData.img) {
-//             form.append(`image`, formData.img);
-//         }
-
-//         const response = await fetch(`${API_URL}/auth/register/`, {
-//             method: 'POST',
-//             body: form,
-//         });
-//         const data = await response.json();
-
-//         if (!response.ok) {
-//             let errorMessage = `${response.statusText}`;
-//             if (data.username) {
-//                 errorMessage=`Usuario no valido: ${data.username}`
-//                 throw new Error (errorMessage)
-//             } 
-//             if (data.password) {
-//                 errorMessage=`Contraseña no valida: ${data.password}`
-//                 throw new Error (errorMessage)
-//             } 
-//             if (data.email) {
-//                 errorMessage=`Email no valido: ${data.email}`
-//                 throw new Error (errorMessage)
-//             } 
-//             if (data.first_name) {
-//                 errorMessage=`Nombre no valido: ${data.first_name}`
-//                 throw new Error (errorMessage)
-//             } 
-//             if (data.last_name) {
-//                 errorMessage=`Apellido no valido: ${data.last_name}`
-//                 throw new Error (errorMessage)
-//             } 
-//         }
-
-//         return `Register Success`;
-//     } catch (error: unknown) {
-//         if (error instanceof Error) {
-//             throw new Error(error.message);
-//         } else {
-    //             throw new Error('Register failed: unknown error');
-//         }
-//     }
-
-// };

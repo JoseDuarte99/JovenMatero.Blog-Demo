@@ -1,6 +1,18 @@
+// Import Style
+
+// Import React
 import { useState, useEffect, type ReactNode } from 'react';
+import { useQuery } from '@tanstack/react-query';
+
+// Import Contexts
 import AuthContext from './AuthContext';
-import { login as loginService, logout as logoutService } from '../../src/api/login';
+
+// Import Components
+// Import Types
+
+// Import Others
+import { getProfileService, loginService, logoutService } from '../../src/api/services';
+
 
 
 interface AuthProviderType {
@@ -16,11 +28,12 @@ type UserType = {
     img?: string;   
 }
 
-export const AuthProvider = ({ children }: AuthProviderType) => {
-    const [user, setUser] = useState<UserType>({});
+const AuthProvider = ({ children }: AuthProviderType) => {
+    const [user, setUser] = useState<UserType | null>(null);
     
+    // DEBERIA PODER SIMPLIFICARSE - INVESTIGAR
     const login = async (username: string, password: string) => {
-        const { accessToken, refreshToken } = await loginService(username, password);
+        const { accessToken} = await loginService(username, password);
         const response = await fetch('/api/users/me/', {
             headers: { Authorization: `Bearer ${accessToken}` },
         });
@@ -30,26 +43,60 @@ export const AuthProvider = ({ children }: AuthProviderType) => {
     
     const logout = async () => {
         await logoutService();
-        setUser(null);
+        setUser({});
     };
     
-    const isAuthenticated = !!localStorage.getItem('accessToken');
+    const token = localStorage.getItem('accessToken') || "";
+    const isAuthenticated = !!token;
+    
+    const { isLoading, isError, data } = useQuery({
+        queryKey:["getProfileService", token],
+        queryFn: () => getProfileService(token),
+        enabled: isAuthenticated,
+        retry: false, 
+    })
     
     useEffect(() => {
-        if (isAuthenticated && !user) {
-            fetch('/api/users/me/', {
-                headers: { Authorization: `Bearer ${localStorage.getItem('accessToken')}` },
-            })
-            .then(res => res.json())
-            .then(data => setUser(data))
-            .catch(() => logout());
+        if (data) { 
+            setUser(data)
+        } else if (isError) {
+            logout()
         }
-    }, []);
-    
+    }, [data, isError]);
 
-    return (
-        <AuthContext.Provider value={{ user, login, logout, isAuthenticated }}>
-        {children}
-        </AuthContext.Provider>
-    );
-};
+    return isLoading 
+            ? <p>Verificando sesión...</p> 
+            : (
+                <AuthContext.Provider value={{ user, login, logout, isAuthenticated }}>
+                    {children}
+                </AuthContext.Provider>
+            );
+}
+
+// INVESTIGAR SI CONVIENE UTILIZAR REACT QUERY
+// useEffect(() => {
+    
+    
+    // if (isAuthenticated && user === null) {
+    //     fetch(`${API_URL}/users/me/`, {
+    //         headers: { Authorization: `Bearer ${token}` },
+    //     })
+    //     .then(res => {
+    //         if (!res.ok) throw new Error('Token inválido');
+    //         return res.json();
+    //     })
+    //     .then(data => setUser(data))
+    //     .catch(() => {
+    //         logout(); // Limpia token y usuario
+    //     })
+    //     .finally(() => setIsLoading(false));
+    // } else {
+        //     setIsLoading(false);
+    // }
+// }, [isAuthenticated, user, token]);
+
+
+
+
+
+export default AuthProvider;

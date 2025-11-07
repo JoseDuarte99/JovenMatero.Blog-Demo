@@ -1,12 +1,45 @@
+// Import Style
 import style from "./Home.module.css"
-import { Link } from "react-router"
+
+// Import React
+import { useContext } from "react"
+import { Link, useNavigate } from "react-router"
+
+// Import Contexts
+import AuthContext from "../../context/AuthContext"
+
+// Import Components
+// Import Types
+// Import Others
 
 
 function Home() {
+
+    // AUTH-CONTEXT
+    const authContext = useContext(AuthContext)
+    if (!authContext){throw new Error('Authentication Error');}
+    const {isAuthenticated, logout} = authContext;
+
+    console.log(isAuthenticated)
+
+    const navigate = useNavigate();
+
+    const logoutSesion = () => {
+        logout()
+        navigate("/login")
+    }
+
+    const accessToken = localStorage.getItem('accessToken');
+    const refreshToken = localStorage.getItem('refreshToken');
+
     return (
         <div className={style.container}>
-            <Link to={"/login"}> Iniciar Sesión </Link>
-            <Link to={"/login"}> Cerrar Sesión </Link>
+            { isAuthenticated 
+                ? <button onClick={logoutSesion}> Cerrar Sesión </button>
+                : <Link to={"/login"}> Iniciar Sesión </Link>
+            }
+            {accessToken ? <p>AccessToken Existente</p> : ""}
+            {refreshToken ? <p>RefreshToken Existente</p> : ""}
             <Link to={"/me"}> Mi Perfil </Link>
         </div>
     )

@@ -1,8 +1,19 @@
-import { useMutation } from "@tanstack/react-query"
-import { login } from "../../api/login"
+// Import Style
 import style  from "./Login.module.css"
-import { useState } from "react"
+
+// Import React
+import { useContext, useState } from "react"
+import { useMutation } from "@tanstack/react-query"
 import { Link, useNavigate } from "react-router"
+
+// Import Contexts
+import AuthContext from "../../context/AuthContext";
+import { loginService } from "../../api/services";
+
+// Import Components
+// Import Types
+// Import Others
+
 
 
 function LoginForm() {
@@ -11,11 +22,16 @@ function LoginForm() {
     const [password, setpassword] = useState("");
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const navigate = useNavigate();
+
+    // AUTH-CONTEXT
+    const authContext = useContext(AuthContext)
+    if (!authContext){throw new Error('Authentication Error');}
+    // const {login} = authContext;
     
     // REACT-QUERY -----------------------------------------------------
     
     const mutation = useMutation({
-        mutationFn: () => login(username, password),
+        mutationFn: () => loginService(username, password),
         onSuccess: (data) => {
             console.log("Success Login:", data);
             setusername("");
@@ -39,6 +55,7 @@ function LoginForm() {
     
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
+        setErrorMessage("")
         mutation.mutate()
     }
     

@@ -1,8 +1,17 @@
-// src/context/AuthContext.js
+// Import Style
+
+// Import React
 import { createContext } from 'react';
 
+// Import Contexts
+// Import Components
+// Import Types
+// Import Others
+
+
 interface AuthContextType {
-    user: null; 
+    user: object | null; 
+    login: (username: string, password: string) => Promise<void>; 
     logout: () => void; 
     isAuthenticated: boolean; 
 }

@@ -4,15 +4,31 @@
 
 .container {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    width: 50vw;
-
+    width: 70%;
+    height: 70%;
 }
 
+.container > button {
+    border: none;
+    background: var(--JM-color-pastel-green);
+    color: var(--JM-color-white);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.container > p {
+    align-self: center;
+    font-size: 1em;
+}
 .container > a {
     background: var(--JM-color-pastel-green);
     color: var(--JM-color-white);
     text-decoration: none;
     padding: 5px 10px;
     border-radius: 5px;
+    text-align: center;
 }

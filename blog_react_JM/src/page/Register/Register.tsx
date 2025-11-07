@@ -1,9 +1,19 @@
-import { useState } from "react";
+// Import Style
 import style from "./Register.module.css"
+
+// Import React
+import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { Link, useNavigate } from "react-router";
-import { register } from "../../api/login";
+
+// Import Contexts
+// Import Components
+// Import Types
+
+// Import Others
+import { registerService } from "../../api/services";
 import { trashIcon } from "../../svg/svg";
+
 
 // Types for Data Form
 export type FormDataType = {
@@ -49,7 +59,7 @@ function RegisterForm() {
     // REACT-QUERY -----------------------------------------------------
     
     const mutation = useMutation({
-        mutationFn: () => register(formData),
+        mutationFn: () => registerService(formData),
         onSuccess: (data) => {
             console.log("Register Success:", data);
             setFormData(INITIAL_STATE);
