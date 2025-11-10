@@ -1,7 +1,7 @@
 // Import Style
 
 // Import React
-import { useState, useEffect, type ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 // Import Contexts
@@ -12,7 +12,6 @@ import AuthContext from './AuthContext';
 
 // Import Others
 import { getProfileService, loginService, logoutService } from '../../src/api/services';
-
 
 
 interface AuthProviderType {
@@ -29,42 +28,48 @@ type UserType = {
 }
 
 const AuthProvider = ({ children }: AuthProviderType) => {
-    const [user, setUser] = useState<UserType | null>(null);
-    
-    // DEBERIA PODER SIMPLIFICARSE - INVESTIGAR
-    const login = async (username: string, password: string) => {
-        const { accessToken} = await loginService(username, password);
-        const response = await fetch('/api/users/me/', {
-            headers: { Authorization: `Bearer ${accessToken}` },
-        });
-        const userData = await response.json();
-        setUser(userData);
-    };
-    
-    const logout = async () => {
-        await logoutService();
-        setUser({});
-    };
-    
-    const token = localStorage.getItem('accessToken') || "";
-    const isAuthenticated = !!token;
-    
-    const { isLoading, isError, data } = useQuery({
-        queryKey:["getProfileService", token],
-        queryFn: () => getProfileService(token),
-        enabled: isAuthenticated,
-        retry: false, 
-    })
-    
-    useEffect(() => {
-        if (data) { 
-            setUser(data)
-        } else if (isError) {
-            logout()
-        }
-    }, [data, isError]);
 
-    return isLoading 
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [user, setUser] = useState<UserType | null>(null);
+
+
+
+
+    const login = async (username: string, password: string) => {
+        try {
+        await loginService(username, password);
+        // setIsAuthenticated(true);
+        } catch (error) {
+        console.error(error);
+        throw error;
+        }
+    };
+
+    const logout = () => logoutService;
+
+
+    const token = localStorage.getItem('accessToken');
+
+    // Get Profile --------------------------------------------- 
+    const getProfile= useQuery({
+        queryKey: [`useProfile`, token],
+        queryFn: () => getProfileService(token),
+        enabled: !!token,
+        retry: false,
+    });
+
+    if (getProfile.isError) logout();
+
+    useEffect(() => {
+        if (getProfile.data) {
+            console.log('Perfil cargado:', getProfile.data);
+            setUser(getProfile.data)
+        } else {
+            console.log(`Sin sesión existente`);
+        }
+    }, [getProfile.data]);
+
+    return getProfile.isLoading 
             ? <p>Verificando sesión...</p> 
             : (
                 <AuthContext.Provider value={{ user, login, logout, isAuthenticated }}>
@@ -72,31 +77,6 @@ const AuthProvider = ({ children }: AuthProviderType) => {
                 </AuthContext.Provider>
             );
 }
-
-// INVESTIGAR SI CONVIENE UTILIZAR REACT QUERY
-// useEffect(() => {
-    
-    
-    // if (isAuthenticated && user === null) {
-    //     fetch(`${API_URL}/users/me/`, {
-    //         headers: { Authorization: `Bearer ${token}` },
-    //     })
-    //     .then(res => {
-    //         if (!res.ok) throw new Error('Token inválido');
-    //         return res.json();
-    //     })
-    //     .then(data => setUser(data))
-    //     .catch(() => {
-    //         logout(); // Limpia token y usuario
-    //     })
-    //     .finally(() => setIsLoading(false));
-    // } else {
-        //     setIsLoading(false);
-    // }
-// }, [isAuthenticated, user, token]);
-
-
-
 
 
 export default AuthProvider;

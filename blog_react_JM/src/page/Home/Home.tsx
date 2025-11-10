@@ -3,10 +3,11 @@ import style from "./Home.module.css"
 
 // Import React
 import { useContext } from "react"
-import { Link, useNavigate } from "react-router"
+import { Link} from "react-router"
 
 // Import Contexts
 import AuthContext from "../../context/AuthContext"
+import { logoutService } from "../../api/services"
 
 // Import Components
 // Import Types
@@ -18,16 +19,8 @@ function Home() {
     // AUTH-CONTEXT
     const authContext = useContext(AuthContext)
     if (!authContext){throw new Error('Authentication Error');}
-    const {isAuthenticated, logout} = authContext;
+    const {isAuthenticated} = authContext;
 
-    console.log(isAuthenticated)
-
-    const navigate = useNavigate();
-
-    const logoutSesion = () => {
-        logout()
-        navigate("/login")
-    }
 
     const accessToken = localStorage.getItem('accessToken');
     const refreshToken = localStorage.getItem('refreshToken');
@@ -35,7 +28,7 @@ function Home() {
     return (
         <div className={style.container}>
             { isAuthenticated 
-                ? <button onClick={logoutSesion}> Cerrar Sesión </button>
+                ? <button onClick={() => logoutService()}> Cerrar Sesión </button>
                 : <Link to={"/login"}> Iniciar Sesión </Link>
             }
             {accessToken ? <p>AccessToken Existente</p> : ""}

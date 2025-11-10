@@ -42,22 +42,27 @@ export const loginService = async (username: string, password: string) => {
 // Logout Function ------------------------------------------------------------
 
 export const logoutService = async () => {
-    const refresh = localStorage.getItem('refresh');
-    await fetch(`${API_URL}/auth/logout/`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${refresh}`,
-        },
-        body: JSON.stringify({ refresh }),
-    });
-    localStorage.removeItem('access');
-    localStorage.removeItem('refresh');
-};
+    try {
+        const refresh = localStorage.getItem('refreshToken');
+        await fetch(`${API_URL}/auth/logout/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${refresh}`,
+            },
+            body: JSON.stringify({ refresh }),
+        })
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
+    } catch {
+        throw new Error ('Logout Error')
+    }
+}
 
 
 // GET PROFILE ------------------------------------------------------------
 export const getProfileService = async (token: string | null) => {
+    if (!token) throw (`No hay sesión existente.`)
     const response = await fetch(`${API_URL}/users/me/`, {
         headers: {
             Authorization: `Bearer ${token}`,
