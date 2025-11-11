@@ -10,10 +10,9 @@ import { createContext } from 'react';
 
 
 interface AuthContextType {
-    user: object | null; 
     login: (username: string, password: string) => Promise<void>; 
     logout: () => void; 
-    isAuthenticated: boolean; 
+    currentToken: {accessToken: string | null, refreshToken: string | null,} ;
 }
 
 const AuthContext = createContext <AuthContextType | null >(null);

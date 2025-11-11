@@ -1,5 +1,8 @@
 import type { FormDataType } from "../page/Register/Register";
 
+type currentTokenType = {accessToken: string | null; refreshToken: string | null }
+
+
 // API URL ------------------------------------------------------------
 const API_URL = 'http://localhost:8000/api';
 
@@ -60,17 +63,59 @@ export const logoutService = async () => {
 }
 
 
-// GET PROFILE ------------------------------------------------------------
-export const getProfileService = async (token: string | null) => {
-    if (!token) throw (`No hay sesión existente.`)
-    const response = await fetch(`${API_URL}/users/me/`, {
-        headers: {
-            Authorization: `Bearer ${token}`,
-        },
+// REFRESH TOKEN  ------------------------------------------------------------
+
+export const getRefreshToken = async ({refreshToken}: currentTokenType) => {
+    
+    const response = await fetch(`${API_URL}/auth/refresh/`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ refresh: refreshToken }),
     });
     
     if (!response.ok) {
-        throw new Error('Failed to fetch profile');
+        throw new Error(`Error updating token`);
+    }
+    
+    const data = await response.json();
+    localStorage.setItem("accessToken", data.access); 
+    return data.access;
+}
+
+
+
+// GET PROFILE ------------------------------------------------------------
+
+export const getProfileService = async (currentToken: currentTokenType) => {
+
+    const {accessToken, refreshToken} = currentToken;
+
+    if (!accessToken && !refreshToken) throw (`No hay sesión existente.`)
+
+    const response = await fetch(`${API_URL}/users/me/`, {
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+        },
+    });
+    
+    if (response.status === 401) {
+        const newAccessToken = await getRefreshToken(currentToken);
+        
+        // Retry obtaining profile
+        const retryResponse = await fetch(`${API_URL}/users/me/`, {
+            headers: { 
+                Authorization: `Bearer ${newAccessToken}` 
+            },
+        });
+        
+        if (!retryResponse.ok) {
+            throw new Error('Error retrieving profile after retrying');
+        }
+        return await retryResponse.json();
+    }
+    
+    if (!response.ok) {
+        throw new Error('Error retrieving profile');
     }
     
     return await response.json(); // { id, username, email, ... }

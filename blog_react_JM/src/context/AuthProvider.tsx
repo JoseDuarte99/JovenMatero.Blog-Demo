@@ -1,7 +1,7 @@
 // Import Style
 
 // Import React
-import { useEffect, useState, type ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 // Import Contexts
@@ -18,23 +18,18 @@ interface AuthProviderType {
     children: ReactNode;
 }
 
-type UserType = {
-    username?: string;
-    password?: string;
-    email?: string;
-    firstName?: string;
-    lastName?: string;
-    img?: string;   
-}
+// type UserType = {
+//     username?: string;
+//     password?: string;
+//     email?: string;
+//     firstName?: string;
+//     lastName?: string;
+//     img?: string;   
+// }
 
 const AuthProvider = ({ children }: AuthProviderType) => {
 
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [user, setUser] = useState<UserType | null>(null);
-
-
-
-
+    // const [user, setUser] = useState<UserType | null>(null)
     const login = async (username: string, password: string) => {
         try {
         await loginService(username, password);
@@ -47,32 +42,33 @@ const AuthProvider = ({ children }: AuthProviderType) => {
 
     const logout = () => logoutService;
 
+    const accessToken = localStorage.getItem('accessToken');
+    const refreshToken = localStorage.getItem('refreshToken');
+    const currentToken = {accessToken , refreshToken};
 
-    const token = localStorage.getItem('accessToken');
 
     // Get Profile --------------------------------------------- 
-    const getProfile= useQuery({
-        queryKey: [`useProfile`, token],
-        queryFn: () => getProfileService(token),
-        enabled: !!token,
+    const getProfile = useQuery({
+        queryKey: [`useProfile`, accessToken],
+        queryFn: () => getProfileService(currentToken),
+        enabled: !!accessToken || !!refreshToken,
         retry: false,
     });
 
-    if (getProfile.isError) logout();
+    if (getProfile.isError) {
+        logout();
+        console.error(`No se pudo restablecer la sesión.`);
+        console.error(getProfile.error)
+    };
 
-    useEffect(() => {
-        if (getProfile.data) {
-            console.log('Perfil cargado:', getProfile.data);
-            setUser(getProfile.data)
-        } else {
-            console.log(`Sin sesión existente`);
-        }
-    }, [getProfile.data]);
+    if (getProfile.isSuccess) {
+        console.log(getProfile.data);
+    };
 
     return getProfile.isLoading 
             ? <p>Verificando sesión...</p> 
             : (
-                <AuthContext.Provider value={{ user, login, logout, isAuthenticated }}>
+                <AuthContext.Provider value={{login, logout, currentToken }}>
                     {children}
                 </AuthContext.Provider>
             );
