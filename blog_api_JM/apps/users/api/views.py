@@ -37,3 +37,9 @@ class RegisterView(generics.CreateAPIView):
     parser_classes = [MultiPartParser, FormParser]
     serializer_class = RegisterSerializer
     permission_classes = [AllowAny]
+
+from rest_framework_simplejwt.views import TokenBlacklistView
+from rest_framework.permissions import AllowAny
+
+class LogoutView(TokenBlacklistView):
+    permission_classes = [AllowAny]  # 👈 no requiere access token válido

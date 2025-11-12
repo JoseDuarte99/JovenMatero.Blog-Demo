@@ -5,7 +5,7 @@ from rest_framework_simplejwt.views import (
     TokenBlacklistView,
 )
 from django.urls import path
-from .views import UserViewSet, RegisterView
+from .views import LogoutView, UserViewSet, RegisterView
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
@@ -21,6 +21,6 @@ router.register(r'users', UserViewSet)
 urlpatterns = router.urls + [
     path('auth/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('auth/logout/', TokenBlacklistView.as_view(), name='token_blacklist'),
+    path('auth/logout/', LogoutView.as_view(), name='token_blacklist'),
     path('auth/register/', RegisterView.as_view(), name='auth_register'),
 ]
