@@ -21,6 +21,7 @@ type UserType = {
 interface AuthContextType {
     currentToken: {accessToken: string | null, refreshToken: string | null,} ;
     currentUser: UserType;
+    setCurrentUser: (currentUser: UserType) => void;
     // login: (username: string, password: string) => Promise<void>; 
     // logout: () => void; 
 }

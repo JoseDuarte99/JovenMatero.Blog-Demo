@@ -19,16 +19,21 @@ function Home() {
     // AUTH-CONTEXT
     const authContext = useContext(AuthContext)
     if (!authContext){throw new Error('Authentication Error');}
-    const {isAuthenticated} = authContext;
+    const {currentToken} = authContext;
 
 
     const accessToken = localStorage.getItem('accessToken');
     const refreshToken = localStorage.getItem('refreshToken');
 
+    const logout = () => {
+        console.log(currentToken)
+        logoutService(currentToken)
+    }
+
     return (
         <div className={style.container}>
-            { isAuthenticated 
-                ? <button onClick={() => logoutService()}> Cerrar Sesión </button>
+            { currentToken.accessToken 
+                ? <button onClick={logout}> Cerrar Sesión </button>
                 : <Link to={"/login"}> Iniciar Sesión </Link>
             }
             {accessToken ? <p>AccessToken Existente</p> : ""}

@@ -47,19 +47,21 @@ export const loginService = async (username: string, password: string) => {
 export const logoutService = async (currentToken: currentTokenType) => {
     const { refreshToken } = currentToken;
 
+    console.log(refreshToken)
     try {;
         const response = await fetch(`${API_URL}/auth/logout/`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ "refresh": refreshToken })
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ refresh: refreshToken })
+
         })
 
-        if (response.status === 200) {
+        if (response.status === 205 || response.status === 200) {
             localStorage.removeItem('accessToken');
             localStorage.removeItem('refreshToken');
             console.log(`Cierre de sesion exitoso`)
+        } else {
+            throw new Error ('Logout Error')
         }
 
     } catch {
@@ -99,7 +101,8 @@ export const getProfileService = async (currentToken: currentTokenType) => {
 
     const response = await fetch(`${API_URL}/users/me/`, {
         headers: {
-            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json" ,
+            "Authorization": `Bearer ${accessToken}`,
         },
     });
     
@@ -118,10 +121,6 @@ export const getProfileService = async (currentToken: currentTokenType) => {
             throw new Error('Error retrieving profile after retrying');
         }
         return await retryResponse.json();
-    }
-    
-    if (!response.ok) {
-        throw new Error('Error retrieving profile');
     }
     
     return await response.json(); // { id, username, email, ... }
