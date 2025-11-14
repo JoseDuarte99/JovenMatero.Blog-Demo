@@ -7,7 +7,6 @@ import { Link} from "react-router"
 
 // Import Contexts
 import AuthContext from "../../context/AuthContext"
-import { logoutService } from "../../api/services"
 
 // Import Components
 // Import Types
@@ -19,21 +18,14 @@ function Home() {
     // AUTH-CONTEXT
     const authContext = useContext(AuthContext)
     if (!authContext){throw new Error('Authentication Error');}
-    const {currentToken} = authContext;
+    const {accessToken, refreshToken, currentUser} = authContext;
 
-
-    const accessToken = localStorage.getItem('accessToken');
-    const refreshToken = localStorage.getItem('refreshToken');
-
-    const logout = () => {
-        console.log(currentToken)
-        logoutService(currentToken)
-    }
+    console.log('Usuario Actual:', currentUser)
 
     return (
         <div className={style.container}>
-            { currentToken.accessToken 
-                ? <button onClick={logout}> Cerrar Sesión </button>
+            { currentUser 
+                ? <button> Cerrar Sesión </button>
                 : <Link to={"/login"}> Iniciar Sesión </Link>
             }
             {accessToken ? <p>AccessToken Existente</p> : ""}

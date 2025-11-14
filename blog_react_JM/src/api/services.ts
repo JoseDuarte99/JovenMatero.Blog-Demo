@@ -46,16 +46,16 @@ export const loginService = async (username: string, password: string) => {
 
 export const logoutService = async (currentToken: currentTokenType) => {
     const { refreshToken } = currentToken;
-
+    
     console.log(refreshToken)
     try {;
         const response = await fetch(`${API_URL}/auth/logout/`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ refresh: refreshToken })
-
+            
         })
-
+        
         if (response.status === 205 || response.status === 200) {
             localStorage.removeItem('accessToken');
             localStorage.removeItem('refreshToken');
@@ -63,7 +63,7 @@ export const logoutService = async (currentToken: currentTokenType) => {
         } else {
             throw new Error ('Logout Error')
         }
-
+        
     } catch {
         throw new Error ('Logout Error')
     }
@@ -72,12 +72,12 @@ export const logoutService = async (currentToken: currentTokenType) => {
 
 // REFRESH TOKEN  ------------------------------------------------------------
 
-export const getRefreshToken = async ({refreshToken}: currentTokenType) => {
+export const getRefreshToken = async (refreshToken: string | null) => {
     
     const response = await fetch(`${API_URL}/auth/refresh/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ refresh: refreshToken }),
+        body: JSON.stringify({ "refresh": refreshToken }),
     });
     
     if (!response.ok) {
@@ -86,19 +86,17 @@ export const getRefreshToken = async ({refreshToken}: currentTokenType) => {
     
     const data = await response.json();
     
-    return data.access;
+
+
+    return data;
 }
 
 
 
 // GET PROFILE ------------------------------------------------------------
 
-export const getProfileService = async (currentToken: currentTokenType) => {
-
-    const {accessToken, refreshToken} = currentToken;
-
-    if (!accessToken && !refreshToken) throw (`No hay sesión existente.`)
-
+export const getProfileService = async (accessToken: string) => {
+    
     const response = await fetch(`${API_URL}/users/me/`, {
         headers: {
             "Content-Type": "application/json" ,
@@ -106,21 +104,8 @@ export const getProfileService = async (currentToken: currentTokenType) => {
         },
     });
     
-    if (response.status === 401) {
-        const newAccessToken = await getRefreshToken(currentToken);
-        localStorage.setItem(`accessToken`, newAccessToken);
-
-        // Retry obtaining profile
-        const retryResponse = await fetch(`${API_URL}/users/me/`, {
-            headers: { 
-                Authorization: `Bearer ${newAccessToken}` 
-            },
-        });
-        
-        if (!retryResponse.ok) {
-            throw new Error('Error retrieving profile after retrying');
-        }
-        return await retryResponse.json();
+    if (!response.ok) {
+        throw { status: response.status, message: response.statusText };
     }
     
     return await response.json(); // { id, username, email, ... }

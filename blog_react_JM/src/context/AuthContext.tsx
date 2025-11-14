@@ -19,9 +19,12 @@ type UserType = {
 }
 
 interface AuthContextType {
-    currentToken: {accessToken: string | null, refreshToken: string | null,} ;
-    currentUser: UserType;
-    setCurrentUser: (currentUser: UserType) => void;
+    accessToken: string | null;    
+    setAccessToken: (accessToken: string ) => void;
+    refreshToken: string | null;
+    setRefreshToken: (refreshToken: string ) => void;
+    currentUser: UserType | null;
+    // setCurrentUser: (currentUser: UserType) => void;
     // login: (username: string, password: string) => Promise<void>; 
     // logout: () => void; 
 }

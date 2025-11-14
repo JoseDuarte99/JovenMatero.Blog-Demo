@@ -1,10 +1,12 @@
 // Import Style
 
 // Import React
-import { useState, type ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 
 // Import Contexts
 import AuthContext from './AuthContext';
+import { getProfileService, getRefreshToken } from '../api/services';
+import { useQuery } from '@tanstack/react-query';
 
 // Import Components
 // Import Types
@@ -25,22 +27,59 @@ type UserType = {
     img?: string;   
 }
 
+
 const AuthProvider = ({ children }: AuthProviderType) => {
+    
+    const [accessToken, setAccessToken] = useState<string | null>(null)
+    const [refreshToken, setRefreshToken] = useState<string | null>(null)
+    
 
-    const [ currentUser, setCurrentUser ] = useState<UserType>({})
+    useEffect(() => {
+        const storedAccess = localStorage.getItem("accessToken");
+        const storedRefresh = localStorage.getItem("refreshToken");
+        
+        if (storedAccess) setAccessToken(storedAccess);
+        if (storedRefresh) setRefreshToken(storedRefresh);
+        if (!storedAccess || !storedRefresh) {
+            setAccessToken(null); 
+            setRefreshToken(null);
+            localStorage.removeItem("accessToken");
+            localStorage.removeItem("refreshToken");
+        };
+    }, []);
+    
+    const { data, isLoading, isError, error} = useQuery<UserType,{ status: number; message: string }> ({
+        queryKey: ['getProfile', accessToken],
+        queryFn: () => getProfileService(accessToken!),
+        enabled: !!accessToken,
+        refetchOnWindowFocus: false,
+        retry: false,
+    })
+    
 
-    const accessToken = localStorage.getItem('accessToken');
-    const refreshToken = localStorage.getItem('refreshToken');
-    const currentToken = {accessToken , refreshToken};
+    useEffect(() => {
+    if (isError && error.status === 401 && refreshToken || refreshToken && !accessToken) {
+        (async () => {
+        try {
+            const newToken = await getRefreshToken(refreshToken);
+            localStorage.setItem("accessToken", newToken);
+            setAccessToken(newToken);
+        } catch {
+            setAccessToken(null);
+            setRefreshToken(null);
+            localStorage.removeItem("accessToken");
+            localStorage.removeItem("refreshToken");
+        }
+        })();
+    }
+    }, [isError, error, refreshToken, accessToken]);
 
-    // Get Profile --------------------------------------------- 
-
-    return 
-            (
-                <AuthContext.Provider value={{currentToken, currentUser, setCurrentUser }}>
-                    {children}
-                </AuthContext.Provider>
-            );
+    return isLoading ? <p>Loading Profile</p> :
+    (
+        <AuthContext.Provider value={{accessToken, refreshToken, currentUser: data ?? null, setAccessToken, setRefreshToken}}>
+        {children}
+        </AuthContext.Provider>
+    );
 }
 
 
