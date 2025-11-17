@@ -26,16 +26,17 @@ function LoginForm() {
     // AUTH-CONTEXT
     const authContext = useContext(AuthContext)
     if (!authContext){throw new Error('Authentication Error');}
-    // const {login} = authContext;
+    const {setAccessToken, setRefreshToken} = authContext;
     
-    // REACT-QUERY -----------------------------------------------------
-    
-    const mutation = useMutation({
+    // LOGIN -----------------------------------------------------
+    const mutationLogin = useMutation({
         mutationFn: () => loginService(username, password),
         onSuccess: (data) => {
             console.log("Success Login:", data);
             setusername("");
             setpassword("");
+            setAccessToken(data.accessToken);
+            setRefreshToken(data.refreshToken);
             navigate("/Home");
         },
         onError: (error: unknown) => {
@@ -50,13 +51,10 @@ function LoginForm() {
         },
     });
     
-    
-    // -----------------------------------------------------
-    
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleLogin = (e: React.FormEvent) => {
         e.preventDefault()
         setErrorMessage("")
-        mutation.mutate()
+        mutationLogin.mutate()
     }
     
     return (
@@ -65,7 +63,7 @@ function LoginForm() {
                 <h1>Joven</h1>
                 <h1>Matero</h1>
             </div>
-            <form onSubmit={handleSubmit} className={style.formLogin}>
+            <form onSubmit={handleLogin} className={style.formLogin}>
                 <span className={style.input}>
                     {usernameIcon}
                     <input
@@ -93,8 +91,8 @@ function LoginForm() {
                     </span>
                 }
 
-                <button type="submit" disabled={mutation.isPending} className={mutation.isPending ? style.disabledButton : style.enabledButton}>
-                {mutation.isPending ? "Cargando..." : "Ingresar"}
+                <button type="submit" disabled={mutationLogin.isPending} className={mutationLogin.isPending ? style.disabledButton : style.enabledButton}>
+                {mutationLogin.isPending ? "Cargando..." : "Ingresar"}
                 </button>
                 <span className={style.separador}></span>
                 <Link to={"/register"} className={style.createAccount} >

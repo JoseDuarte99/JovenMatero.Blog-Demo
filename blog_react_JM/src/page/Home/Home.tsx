@@ -3,7 +3,7 @@ import style from "./Home.module.css"
 
 // Import React
 import { useContext } from "react"
-import { Link} from "react-router"
+import { Link, useNavigate} from "react-router"
 
 // Import Contexts
 import AuthContext from "../../context/AuthContext"
@@ -18,14 +18,20 @@ function Home() {
     // AUTH-CONTEXT
     const authContext = useContext(AuthContext)
     if (!authContext){throw new Error('Authentication Error');}
-    const {accessToken, refreshToken, currentUser} = authContext;
+    const {accessToken, refreshToken, currentUser, logout} = authContext;
 
+    const navigate = useNavigate();
     console.log('Usuario Actual:', currentUser)
+
+    const logoutFn = () => {
+        logout(accessToken!,refreshToken!)
+        navigate("/home")
+    }
 
     return (
         <div className={style.container}>
             { currentUser 
-                ? <button> Cerrar Sesión </button>
+                ? <button onClick={logoutFn}> Cerrar Sesión </button>
                 : <Link to={"/login"}> Iniciar Sesión </Link>
             }
             {accessToken ? <p>AccessToken Existente</p> : ""}

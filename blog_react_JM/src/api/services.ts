@@ -1,12 +1,10 @@
 import type { FormDataType } from "../page/Register/Register";
 
-type currentTokenType = {accessToken: string | null; refreshToken: string | null }
-
 
 // API URL ------------------------------------------------------------
 const API_URL = 'http://localhost:8000/api';
 
-// Login Function ------------------------------------------------------------
+// LOGIN SERVICE ------------------------------------------------------------
 export const loginService = async (username: string, password: string) => {
     try {
         const response = await fetch(`${API_URL}/auth/login/`, {
@@ -42,35 +40,26 @@ export const loginService = async (username: string, password: string) => {
     
 };
 
-// Logout Function ------------------------------------------------------------
+// LOGOUT SERVICE ------------------------------------------------------------
 
-export const logoutService = async (currentToken: currentTokenType) => {
-    const { refreshToken } = currentToken;
-    
-    console.log(refreshToken)
-    try {;
+export const logoutService = async ( accessToken: string, refreshToken: string ): Promise<unknown> => {
+    try {
         const response = await fetch(`${API_URL}/auth/logout/`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ refresh: refreshToken })
-            
-        })
-        
-        if (response.status === 205 || response.status === 200) {
-            localStorage.removeItem('accessToken');
-            localStorage.removeItem('refreshToken');
-            console.log(`Cierre de sesion exitoso`)
-        } else {
-            throw new Error ('Logout Error')
-        }
-        
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${accessToken}`,
+            },
+            body: JSON.stringify({ refresh: refreshToken }),
+        });
+        return response.json();
     } catch {
-        throw new Error ('Logout Error')
+        throw new Error('Logout Error');
     }
-}
+};
 
 
-// REFRESH TOKEN  ------------------------------------------------------------
+// REFRESH TOKEN SERVICE ------------------------------------------------------------
 
 export const getRefreshToken = async (refreshToken: string | null) => {
     
@@ -86,14 +75,14 @@ export const getRefreshToken = async (refreshToken: string | null) => {
     
     const data = await response.json();
     
-
-
+    
+    
     return data;
 }
 
 
 
-// GET PROFILE ------------------------------------------------------------
+// GET PROFILE SERVICE ------------------------------------------------------------
 
 export const getProfileService = async (accessToken: string) => {
     
@@ -111,7 +100,7 @@ export const getProfileService = async (accessToken: string) => {
     return await response.json(); // { id, username, email, ... }
 };
 
-// Register Function ------------------------------------------------------------
+// REGISTER SERVICE ------------------------------------------------------------
 export const registerService = async (formData: FormDataType) => {
     const form = new FormData();
     form.append("username", formData.username);

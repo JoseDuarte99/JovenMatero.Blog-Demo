@@ -26,7 +26,7 @@ interface AuthContextType {
     currentUser: UserType | null;
     // setCurrentUser: (currentUser: UserType) => void;
     // login: (username: string, password: string) => Promise<void>; 
-    // logout: () => void; 
+    logout: (accessToken: string, refreshToken: string  ) => void; 
 }
 
 const AuthContext = createContext <AuthContextType | null >(null);

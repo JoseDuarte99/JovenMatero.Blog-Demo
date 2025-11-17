@@ -5,8 +5,8 @@ import { useEffect, useState, type ReactNode } from 'react';
 
 // Import Contexts
 import AuthContext from './AuthContext';
-import { getProfileService, getRefreshToken } from '../api/services';
-import { useQuery } from '@tanstack/react-query';
+import { getProfileService, getRefreshToken, logoutService } from '../api/services';
+import { useMutation, useQuery } from '@tanstack/react-query';
 
 // Import Components
 // Import Types
@@ -32,8 +32,31 @@ const AuthProvider = ({ children }: AuthProviderType) => {
     
     const [accessToken, setAccessToken] = useState<string | null>(null)
     const [refreshToken, setRefreshToken] = useState<string | null>(null)
-    
 
+// LOGOUT -------------------------------------------------------------
+    const mutationLogout = useMutation ({
+        mutationFn: () => logoutService(accessToken!, refreshToken!),
+        onSuccess: () => {
+            setAccessToken(null)
+            setRefreshToken(null)
+            localStorage.removeItem('accessToken');
+            localStorage.removeItem('refreshToken');
+            console.log('Cierre de Sesión Exitoso')
+        },
+        onError: (error) => {
+            console.log("Error en el cierre de sesion", error);
+        },
+    })
+
+    if (mutationLogout.isPending) {
+        console.log("Finalizando Sesión")
+    }
+
+    const logout = () => {
+        mutationLogout.mutate();
+    }
+
+// TOKEN VERIFICATION -------------------------------------------------------------
     useEffect(() => {
         const storedAccess = localStorage.getItem("accessToken");
         const storedRefresh = localStorage.getItem("refreshToken");
@@ -48,6 +71,7 @@ const AuthProvider = ({ children }: AuthProviderType) => {
         };
     }, []);
     
+// GET PROFILE
     const { data, isLoading, isError, error} = useQuery<UserType,{ status: number; message: string }> ({
         queryKey: ['getProfile', accessToken],
         queryFn: () => getProfileService(accessToken!),
@@ -55,7 +79,6 @@ const AuthProvider = ({ children }: AuthProviderType) => {
         refetchOnWindowFocus: false,
         retry: false,
     })
-    
 
     useEffect(() => {
     if (isError && error.status === 401 && refreshToken || refreshToken && !accessToken) {
@@ -74,9 +97,10 @@ const AuthProvider = ({ children }: AuthProviderType) => {
     }
     }, [isError, error, refreshToken, accessToken]);
 
+
     return isLoading ? <p>Loading Profile</p> :
     (
-        <AuthContext.Provider value={{accessToken, refreshToken, currentUser: data ?? null, setAccessToken, setRefreshToken}}>
+        <AuthContext.Provider value={{accessToken, refreshToken, currentUser: data ?? null, setAccessToken, setRefreshToken, logout}}>
         {children}
         </AuthContext.Provider>
     );
