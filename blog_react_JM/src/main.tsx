@@ -17,6 +17,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 // Import Components
 import LoginForm from './page/Login/Login';
 import WithoutNavbarAndFooter from './layout/WithoutNavbarAndFooter';
+import NavbarAndFooterLayout from './layout/NavbarAndFooterLayout';
 import NotFound404 from './page/NotFound404/NotFound404';
 import RegisterForm from './page/Register/Register';
 import UserProfile from './page/UserProfile/UserProfile';
@@ -33,10 +34,13 @@ createRoot(document.getElementById('root')!).render(
       <AppProviders>
         <BrowserRouter>
           <Routes>
-            <Route element={<WithoutNavbarAndFooter/>}>
-
               <Route path="/" element={<Navigate to="/home" replace />} />
+                {/* Navbar and Footer ------------- */}
+            <Route element={<NavbarAndFooterLayout />}>
               <Route path='/home' element={<Home />}/>
+            </Route>
+            
+            <Route element={<WithoutNavbarAndFooter/>}>
               <Route path='/login' element={<LoginForm />}/>
               <Route path='/register' element={<RegisterForm />}/>
               <Route path='/me' element={<UserProfile />}/>

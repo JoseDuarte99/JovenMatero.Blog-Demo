@@ -3,7 +3,7 @@ import style from "./Home.module.css"
 
 // Import React
 import { useContext } from "react"
-import { Link, useNavigate} from "react-router"
+import { Link } from "react-router"
 
 // Import Contexts
 import AuthContext from "../../context/AuthContext"
@@ -20,12 +20,12 @@ function Home() {
     if (!authContext){throw new Error('Authentication Error');}
     const {accessToken, refreshToken, currentUser, logout} = authContext;
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     console.log('Usuario Actual:', currentUser)
 
     const logoutFn = () => {
         logout(accessToken!,refreshToken!)
-        navigate("/home")
+        // navigate("/home")
     }
 
     return (

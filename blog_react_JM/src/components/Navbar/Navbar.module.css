@@ -1,0 +1,75 @@
+svg {
+    min-width: none;
+}
+
+.header {
+    position: relative;
+    background: var(--JM-color-strong-green);
+    font-family: var(--JM-font-subtitle);
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    height: 20vh;
+    max-height: 100px;
+    min-height: 87px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    box-shadow: 1px 1px 10px #000;
+}
+
+.navbar {
+    width: 95vw;
+    max-width: 1350px;
+    height: 80%;
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    align-content: center;
+    gap: 20px;
+}
+
+/* Categories and Search */
+.searchAndCategories {
+    display: flex;
+    gap: 30px;
+    font-size: 0.9em;
+}
+.searchAndCategories > span {
+    display: flex;
+    gap: 7px;
+    cursor: pointer;
+    color: var(--JM-color-white);
+    align-items: center;
+}
+.searchAndCategories > span > svg {
+    height: 60%;
+}
+
+
+/* Menu */
+.logo {
+    text-align: center;
+}
+
+/* Menu */
+.menu {
+    margin: 0;
+    padding: 0;
+    color: var(--JM-color-white);
+    gap: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    font-size: 0.8em;
+    min-width: fit-content;
+}
+
+.menu > a, .menu > li {
+    color: var(--JM-color-white);
+    text-decoration: none;
+    text-wrap: nowrap;
+    cursor: pointer;
+}
+
+.menu > a:hover {
+    border-bottom: 2px solid var(--JM-color-pastel-green);
+}

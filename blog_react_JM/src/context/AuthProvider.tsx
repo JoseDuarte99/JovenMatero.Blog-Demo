@@ -70,8 +70,9 @@ const AuthProvider = ({ children }: AuthProviderType) => {
             localStorage.removeItem("refreshToken");
         };
     }, []);
-    
-// GET PROFILE
+
+
+// GET PROFILE -------------------------------------------------------------
     const { data, isLoading, isError, error} = useQuery<UserType,{ status: number; message: string }> ({
         queryKey: ['getProfile', accessToken],
         queryFn: () => getProfileService(accessToken!),
