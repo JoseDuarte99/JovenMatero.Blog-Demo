@@ -2,7 +2,7 @@
 import style from "./Navbar.module.css"
 
 // Import React
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router";
 
 // Import Contexts
@@ -14,9 +14,13 @@ import Search from "../Search/Search"
 
 // Import Types
 // Import Others
+import { LogoSVG, LogoSmSVG } from "../SvgIcons/SvgIcons";
 
 
 function Navbar() {
+
+    // Dropdown Menu Status
+    const [menuValue] = useState(false); 
 
     // AUTH-CONTEXT
     const authContext = useContext(AuthContext)
@@ -42,21 +46,41 @@ function Navbar() {
                     </span>
                     <Search />
                 </div>
-                <div className={style.logo}>Logo</div>
-                <ul className={style.menu}>
-                    <Link to={"/home"}>Inicio</Link>
-                    <Link to={"*"}>Nosotros</Link>
-                    { currentUser 
-                        ?<>
-                            <Link to={"/me"}>Mi Perfil</Link>
-                            <li onClick={logoutFn}>Cerrar Sesion</li>
-                        </>
-                        : <>
-                            <Link to={"/register"}>Registrarme</Link>
-                            <Link to={"/login"}>Iniciar Sesion</Link>
-                        </>
-                    }
-                </ul>
+                <div className={style.logo}>
+                    <LogoSVG />
+                </div>
+                <div className={style.logoSm}>
+                    <LogoSmSVG />
+                </div>
+                <div className={style.menu}>
+                    <ul >
+                        <Link to={"/home"}>Inicio</Link>
+                        <Link to={"*"}>Nosotros</Link>
+                        { currentUser 
+                            ?<>
+                                <Link to={"/me"}>Mi Perfil</Link>
+                                <Link to={"/home"} onClick={logoutFn}>Cerrar Sesion</Link>
+                            </>
+                            : <>
+                                <Link to={"/register"}>Registrarme</Link>
+                                <Link to={"/login"} >Iniciar Sesion</Link>
+                            </>
+                        }
+                    </ul>
+
+                    <label htmlFor="menu" className={style.activeMenu}>
+                        { menuValue   
+                        ?   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M6 6l12 12M6 18L18 6" stroke="currentColor" strokeWidth="1" strokeLinecap="round"/>
+                            </svg>
+                        :   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M4 6h16v1H4zM4 11h16v1H4zM4 16h16v1H4z" />
+                            </svg>}
+                    </label>
+                    {/* <div className={style.itemsMenu}>
+                        <DropdownMenu onClickDropdownMenu={() => setMenuValue(!menuValue)}/>
+                    </div> */}
+                </div>
 
             </nav>
         </header> 
@@ -81,3 +105,4 @@ const chevronDownCircleSvg = <svg
             </g>
         </g>
             </svg>
+

@@ -9,7 +9,7 @@ svg {
     font-size: clamp(1rem, 2vw, 1.4rem);
     height: 20vh;
     max-height: 100px;
-    min-height: 87px;
+    min-height: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center; 
@@ -41,35 +41,88 @@ svg {
     align-items: center;
 }
 .searchAndCategories > span > svg {
-    height: 60%;
+    height: 40%;
+}
+
+.searchAndCategories > div {
+    height: 50%;
+    align-self: center;
 }
 
 
-/* Menu */
+/* Logo */
+.logoSm {
+    display: none;
+}
 .logo {
-    text-align: center;
+    height: 50px;
+}
+.logo > svg {
+    height: 100%;
 }
 
 /* Menu */
+.activeMenu {
+    display: none;
+}
+
 .menu {
-    margin: 0;
-    padding: 0;
-    color: var(--JM-color-white);
-    gap: 10px;
+    align-self: center;
+    justify-self: end;
+    width: 80%;
+    
+}
+
+.menu > ul {
     display: flex;
     flex-wrap: nowrap;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
     justify-content: space-evenly;
-    font-size: 0.8em;
     min-width: fit-content;
+    font-size: 0.8em;
+    align-items: center;
 }
 
-.menu > a, .menu > li {
+.menu > ul > a {
     color: var(--JM-color-white);
     text-decoration: none;
     text-wrap: nowrap;
     cursor: pointer;
 }
-
-.menu > a:hover {
-    border-bottom: 2px solid var(--JM-color-pastel-green);
+.menu > ul > a:last-of-type {
+    color: var(--JM-color-beige);
 }
+
+.menu > ul > a:hover {
+    border-bottom: 1px solid var(--JM-color-pastel-green);
+}
+
+
+/* ------------------ PHONE SCREEN VIEW -------------------------*/
+    @media (max-width: 768px) {
+        .navbar {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        /* Menu PHONE SCREEN VIEW -------------- */
+        .menu > ul {display: none;}
+        .activeMenu {
+            display: flex;
+            cursor: pointer;
+            height: 100%;
+            align-self: center;
+            justify-content: center;
+        }
+        .activeMenu > svg{
+            height: 50%;
+            align-self: center;    
+        }
+
+        
+
+        .searchAndCategories > span {
+            display: none;
+        }
+    }
