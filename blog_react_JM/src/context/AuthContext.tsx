@@ -24,8 +24,6 @@ interface AuthContextType {
     refreshToken: string | null;
     setRefreshToken: (refreshToken: string ) => void;
     currentUser: UserType | null;
-    // setCurrentUser: (currentUser: UserType) => void;
-    // login: (username: string, password: string) => Promise<void>; 
     logout: (accessToken: string, refreshToken: string  ) => void; 
 }
 

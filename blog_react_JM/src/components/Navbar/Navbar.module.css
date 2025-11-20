@@ -21,8 +21,8 @@ svg {
     width: 95vw;
     max-width: 1350px;
     height: 80%;
-    display: grid;
-    grid-template-columns: 2fr 1fr 2fr;
+    display: flex;
+    justify-content: space-between;
     align-content: center;
     gap: 20px;
 }
@@ -30,18 +30,22 @@ svg {
 /* Categories and Search */
 .searchAndCategories {
     display: flex;
-    gap: 30px;
+    justify-content: space-evenly;
     font-size: 0.9em;
+    flex: 2
 }
 .searchAndCategories > span {
     display: flex;
+    justify-self: center;
+    align-self: center;
+    height: 50%;
     gap: 7px;
     cursor: pointer;
     color: var(--JM-color-white);
     align-items: center;
 }
 .searchAndCategories > span > svg {
-    height: 40%;
+    height: 50%;
 }
 
 .searchAndCategories > div {
@@ -51,14 +55,15 @@ svg {
 
 
 /* Logo */
-.logoSm {
-    display: none;
-}
 .logo {
-    height: 50px;
+    justify-self: center;
+    align-self: center;
+    height: 100%;
+    flex: 1
 }
 .logo > svg {
     height: 100%;
+    justify-self: center;
 }
 
 /* Menu */
@@ -70,10 +75,8 @@ svg {
     align-self: center;
     justify-self: end;
     width: 80%;
-    
-}
-
-.menu > ul {
+    min-width: fit-content;
+    flex: 2;
     display: flex;
     flex-wrap: nowrap;
     gap: 10px;
@@ -85,17 +88,17 @@ svg {
     align-items: center;
 }
 
-.menu > ul > a {
+.menu > a {
     color: var(--JM-color-white);
     text-decoration: none;
     text-wrap: nowrap;
     cursor: pointer;
 }
-.menu > ul > a:last-of-type {
+.menu > a:last-of-type {
     color: var(--JM-color-beige);
 }
 
-.menu > ul > a:hover {
+.menu > a:hover {
     border-bottom: 1px solid var(--JM-color-pastel-green);
 }
 
@@ -103,26 +106,33 @@ svg {
 /* ------------------ PHONE SCREEN VIEW -------------------------*/
     @media (max-width: 768px) {
         .navbar {
-            grid-template-columns: repeat(3, 1fr);
+            width: 90%;
+            height: 80%;
+            justify-content: space-between;
         }
 
         /* Menu PHONE SCREEN VIEW -------------- */
-        .menu > ul {display: none;}
+        .menu {display: none;}
         .activeMenu {
             display: flex;
             cursor: pointer;
-            height: 100%;
+            height: 50px;
             align-self: center;
             justify-content: center;
         }
-        .activeMenu > svg{
-            height: 50%;
-            align-self: center;    
-        }
 
-        
-
-        .searchAndCategories > span {
+        /* Search PHONE SCREEN VIEW -------------- */
+        .searchAndCategories {
             display: none;
         }
+
+        .search {
+            width: 50px;
+            justify-self: center;
+            align-self: center;
+        }
+
+
+
+
     }
