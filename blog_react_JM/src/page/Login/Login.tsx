@@ -11,10 +11,10 @@ import { Link, useNavigate } from "react-router"
 import AuthContext from "../../context/AuthContext";
 import { loginService } from "../../api/services";
 
-
 // Import Components
 // Import Types
 // Import Others
+import { LogoSVG } from "../../components/SvgIcons/SvgIcons";
 
 
 
@@ -62,8 +62,7 @@ function LoginForm() {
     return (
         <div className={style.login}>
             <div className={style.logoJovenMatero}>
-                <h1>Joven</h1>
-                <h1>Matero</h1>
+                <LogoSVG fill="#0e3c24" />
             </div>
             <form onSubmit={handleLogin} className={style.formLogin}>
                 <span className={style.input}>
@@ -96,10 +95,15 @@ function LoginForm() {
                 <button type="submit" disabled={mutationLogin.isPending} className={mutationLogin.isPending ? style.disabledButton : style.enabledButton}>
                 {mutationLogin.isPending ? "Cargando..." : "Ingresar"}
                 </button>
-                <span className={style.separador}></span>
-                <Link to={"/register"} className={style.createAccount} >
-                    Crear cuenta
-                </Link>
+                {mutationLogin.isPending 
+                ?   <></>
+                :   <>
+                        <span className={style.separador}></span>
+                        <Link to={"/register"} className={style.createAccount} >
+                            Crear cuenta
+                        </Link>
+                    </>
+                }
             </form>
 
         </div>

@@ -2,7 +2,7 @@
 import style from "./Home.module.css"
 
 // Import React
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 // Import Contexts
 import AuthContext from "../../context/AuthContext"
 
@@ -19,7 +19,9 @@ function Home() {
     const {accessToken, refreshToken, currentUser} = authContext;
 
     // const navigate = useNavigate();
-    console.log('Usuario Actual:', currentUser)
+    useEffect(() => {
+        console.log('Usuario Actual:', currentUser)
+    },[currentUser])
     
 
     return (

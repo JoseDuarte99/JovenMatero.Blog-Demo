@@ -5,6 +5,7 @@ import style from "./Register.module.css"
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { Link, useNavigate } from "react-router";
+import { toast } from "sonner";
 
 // Import Contexts
 // Import Components
@@ -13,6 +14,7 @@ import { Link, useNavigate } from "react-router";
 // Import Others
 import { registerService } from "../../api/services";
 import { trashIcon } from "../../svg/svg";
+
 
 
 // Types for Data Form
@@ -62,6 +64,7 @@ function RegisterForm() {
         mutationFn: () => registerService(formData),
         onSuccess: (data) => {
             console.log("Register Success:", data);
+            toast.success("Registro Exitoso!");
             setFormData(INITIAL_STATE);
             navigate("/home");
         },

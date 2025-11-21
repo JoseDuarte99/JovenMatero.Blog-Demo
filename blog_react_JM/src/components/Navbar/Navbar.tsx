@@ -4,7 +4,6 @@ import style from "./Navbar.module.css"
 // Import React
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router";
-import { Toaster, toast } from "sonner"
 
 // Import Contexts
 import AuthContext from "../../context/AuthContext";
@@ -16,7 +15,6 @@ import Search from "../Search/Search"
 // Import Types
 // Import Others
 import { LogoSVG } from "../SvgIcons/SvgIcons";
-// import logoSm from "../../../public/LogoSm.png"
 
 function Navbar() {
 
@@ -33,7 +31,7 @@ function Navbar() {
     const logoutFn = () => {
         logout(accessToken!,refreshToken!)
         navigate("/home")
-        toast.success("Sesión finalizada con exito...");
+        
     }
 
 
@@ -53,7 +51,7 @@ function Navbar() {
                     {lupSvg}
                 </span>
                 <div className={style.logo}>
-                    <LogoSVG />
+                    <LogoSVG fill="#fff" />
                 </div>
                 <ul className={style.menu}>
                     <Link to={"/home"}>Inicio</Link>
@@ -82,7 +80,7 @@ function Navbar() {
                     {/* <div className={style.itemsMenu}>
                         <DropdownMenu onClickDropdownMenu={() => setMenuValue(!menuValue)}/>
                     </div> */}
-                <Toaster  />
+
             </nav>
         </header> 
         

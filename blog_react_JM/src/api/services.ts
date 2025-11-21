@@ -52,6 +52,10 @@ export const logoutService = async ( accessToken: string, refreshToken: string )
             },
             body: JSON.stringify({ refresh: refreshToken }),
         });
+        if (response.ok) {
+            console.warn("Refresh token has been blacklisted.")
+            console.info("Session ended")
+        }
         return response.json();
     } catch {
         throw new Error('Logout Error');
@@ -61,18 +65,20 @@ export const logoutService = async ( accessToken: string, refreshToken: string )
 
 // REFRESH TOKEN SERVICE ------------------------------------------------------------
 
-export const getRefreshToken = async (refreshToken: string | null) => {
-    
+export const getRefreshToken = async (refreshToken: string) => {
     const response = await fetch(`${API_URL}/auth/refresh/`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ "refresh": refreshToken }),
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        },
+        body: JSON.stringify({
+            refresh: refreshToken,
+        }),
     });
-    
     if (!response.ok) {
         throw new Error(`Error updating token`);
-    }
-    
+    } 
     const data = await response.json();
     
     

@@ -13,6 +13,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { Toaster } from 'sonner'
 
 // Import Components
 import LoginForm from './page/Login/Login';
@@ -51,6 +52,12 @@ createRoot(document.getElementById('root')!).render(
           
           </Routes>
         </BrowserRouter>
+        <Toaster
+          position="bottom-right"
+          richColors
+          closeButton
+          duration={3000} 
+        />
     </AppProviders>
     </QueryClientProvider>  
   </StrictMode>,

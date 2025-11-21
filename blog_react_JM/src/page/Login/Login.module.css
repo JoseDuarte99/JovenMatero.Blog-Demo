@@ -39,13 +39,8 @@
     min-width: 250px;
     padding:20px;
 }
-
-.logoJovenMatero > h1{
-    font-family: var(--JM-font-title);
-    font-weight: bold;
-    font-size: 5em;
-    color: var(--JM-color-strong-green);
-    text-align: center;
+.logoJovenMatero > svg {
+    justify-self: center;
 }
 
 /* All Fields and Inputs ----------------------------------- */
