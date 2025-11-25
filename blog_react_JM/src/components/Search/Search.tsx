@@ -8,12 +8,39 @@ import style from "./Search.module.css"
 // Import Others
 
 
-function Search() {
+
+// TIPING THE SEARCH
+export type SearchType = {
+    placeholder?: string;
+    imgSearch?: string;
+    onSearch: string;
+    setOnSearch: React.Dispatch<React.SetStateAction<string>>;
+};
+
+
+function Search(props: SearchType) {
+    const { onSearch, setOnSearch} = props
+
+    const searching = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setOnSearch(e.target.value);
+    };
+
+    console.log(onSearch)
+
+
+//  // Function for normalize string
+//     const normalizeString = (text: string): string => text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+
+
+
     return (
         <div className={style.search}>
             <input 
                 type="text"
                 placeholder="Search"
+                value={onSearch}
+                onChange={searching}
             />
             <button>
                 {lupSvg}

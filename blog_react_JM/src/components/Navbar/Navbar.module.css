@@ -7,9 +7,9 @@ svg {
     background: var(--JM-color-strong-green);
     font-family: var(--JM-font-subtitle);
     font-size: clamp(1rem, 2vw, 1.4rem);
-    height: 20vh;
+    height: 12vh;
     max-height: 100px;
-    min-height: 50px;
+    min-height: 70px;
     display: flex;
     flex-direction: column;
     justify-content: center; 
@@ -34,7 +34,9 @@ svg {
     font-size: 0.9em;
     flex: 2
 }
-.searchAndCategories > span {
+.searchAndCategories > button {
+    border: none;
+    background: none;
     display: flex;
     justify-self: center;
     align-self: center;
@@ -44,7 +46,12 @@ svg {
     color: var(--JM-color-white);
     align-items: center;
 }
-.searchAndCategories > span > svg {
+
+.searchAndCategories > button > p:hover{
+    border-bottom: 1px solid var(--JM-color-pastel-green);
+}
+
+.searchAndCategories > button > svg {
     height: 50%;
 }
 

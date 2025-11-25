@@ -1,0 +1,10 @@
+.searchResult {
+    padding: 20px;
+    position: absolute;
+    width: 100vw;
+    min-height: fit-content;
+    background: var(--JM-color-pastel-green);
+    left: 0;
+    top: 100%;
+    z-index: 3;
+}

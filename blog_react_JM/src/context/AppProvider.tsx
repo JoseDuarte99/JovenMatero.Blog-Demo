@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 
 // Import Contexts
 import AuthProvider  from "./AuthProvider";
+import SearchProvider from "./SearchProvider";
 
 // Import Components
 // Import Types
@@ -17,7 +18,9 @@ interface AppProviderProps {
 
 const AppProviders = ({ children }: AppProviderProps) => (
     <AuthProvider>
-        {children}
+        <SearchProvider>
+            {children}
+        </SearchProvider>
     </AuthProvider>
 );
 
