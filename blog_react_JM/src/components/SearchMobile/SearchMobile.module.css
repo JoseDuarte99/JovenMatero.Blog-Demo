@@ -1,0 +1,15 @@
+.searchMobile {
+    padding: 0 20px 10px 20px;
+    position: absolute;
+    width: 100vw;
+    min-height: fit-content;
+    background: var(--JM-color-strong-green);
+    left: 0;
+    top: 100%;
+    z-index: 3;
+}
+
+.searchMobile > div {
+    font-size: 1em;
+    padding: 5px 0 5px 0;
+}

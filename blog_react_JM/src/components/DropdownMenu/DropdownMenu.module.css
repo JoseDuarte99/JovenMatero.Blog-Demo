@@ -1,0 +1,78 @@
+/* Dropdown Manu --------------------------------- */
+.itemsMenu {
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        position: absolute;
+        width: 100vw;
+        left: 0;
+        top: 100%;
+        background: var(--JM-color-pastel-green);
+        box-shadow: 0px 10px 20px #0009;
+    }
+
+/* Profile --------------------------------- */
+
+.profile {
+    display: flex;
+    background: var(--JM-color-pastel-green);
+    width: 100%;
+    min-height: 125px;
+    padding: 20px;
+    gap: 20px;
+    font-family: "Proxima Nova",Arial,sans-serif,sans-serif;
+    z-index: 3;
+    color: var(--JM-color-white);
+    justify-content: space-around;
+    border-bottom: 1px solid #fff3;
+} 
+
+.profile > svg {
+    min-width: 60px;
+    max-width: 100px;
+    flex: 1;
+}
+
+.profile > div {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+.profile > div > h5 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.profile > div > p {
+    margin: 0;
+    padding: 10px 0 0 0;
+    font-size: 0.9rem;
+}
+
+/* ----------------------------------------- */
+
+.options {
+    flex: 1;
+}
+
+.options > li {
+    display: flex;
+    gap: 10px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+.options > li > a{
+    text-decoration: none;
+    color: var(--JM-color-white);
+    font-size: 1.2em;
+}
+
+
+.options > li > svg{
+    height: 15px;
+    width: 20px;
+}
+

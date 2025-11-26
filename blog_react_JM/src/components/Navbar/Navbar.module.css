@@ -60,6 +60,10 @@ svg {
     align-self: center;
 }
 
+.search {
+    display: none;
+}
+
 
 /* Logo */
 .logo {
@@ -112,6 +116,10 @@ svg {
 
 /* ------------------ PHONE SCREEN VIEW -------------------------*/
     @media (max-width: 768px) {
+        .header {
+            height: 10vh;
+        }
+
         .navbar {
             width: 90%;
             height: 80%;
@@ -123,7 +131,7 @@ svg {
         .activeMenu {
             display: flex;
             cursor: pointer;
-            height: 50px;
+            height: 30px;
             align-self: center;
             justify-content: center;
         }
@@ -134,11 +142,17 @@ svg {
         }
 
         .search {
-            width: 50px;
+            display: block;
+            width: 30px;
             justify-self: center;
             align-self: center;
         }
 
+        /* Logo PHONE SCREEN VIEW -------------- */
+            
+        .logo {
+            height: 70%;
+        }
 
 
 

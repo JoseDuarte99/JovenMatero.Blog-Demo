@@ -14,7 +14,7 @@ export type SearchType = {
     placeholder?: string;
     imgSearch?: string;
     onSearch: string;
-    setOnSearch: React.Dispatch<React.SetStateAction<string>>;
+    setOnSearch: React.Dispatch<React.SetStateAction<string>>; 
 };
 
 

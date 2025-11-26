@@ -12,21 +12,27 @@ import SearchContext from "../../context/SearchContext";
 // Import Components
 import Search from "../Search/Search"
 import CategoriesMenu from "../CategoriesMenu/CategoriesMenu";
+import DropdownMenu from "../DropdownMenu/DropdownMenu";
+import SearchResult from "../SearchResult/SearchResult";
+import SearchMobile from "../SearchMobile/SearchMobile";
 
 
 // Import Types
 // Import Others
 import { LogoSVG } from "../SvgIcons/SvgIcons";
-import SearchResult from "../SearchResult/SearchResult";
+
+
 
 
 
 function Navbar() {
 
     // Dropdown Menu Status
-    const [menuValue] = useState(false); 
+    const [menuValue, setMenuValue] = useState(false); 
     // Category Menu Status
     const [ categoryState, setCategoryState] = useState(false);
+    // Search Status
+    const [ searchState , setSearchState ] = useState(false);
 
 
     // SEARCH CONTEXT 
@@ -43,8 +49,8 @@ function Navbar() {
 
     const logoutFn = () => {
         logout(accessToken!,refreshToken!)
+        setMenuValue(false)
         navigate("/home")
-        
     }
 
 
@@ -63,9 +69,14 @@ function Navbar() {
                     { onSearch && <SearchResult/>}
                     { categoryState && <CategoriesMenu/>}
                 </div>
-                <span className={style.search}>
-                    {lupSvg}
+                <span className={style.search} onClick={() => setSearchState(!searchState)}>
+                    {searchState 
+                    ? <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24">
+                        <path d="M6 6l12 12M6 18L18 6" stroke="white" strokeWidth="1" strokeLinecap="round"/>
+                    </svg> 
+                    : lupSvg }
                 </span>
+                { searchState && <SearchMobile/>}
                 <Link to={"/home"} className={style.logo}>
                     <LogoSVG fill="#fff" />
                 </Link>
@@ -84,7 +95,7 @@ function Navbar() {
                     }
                 </ul>
 
-                <label htmlFor="menu" className={style.activeMenu}>
+                <label htmlFor="menu" className={style.activeMenu} onClick={() => setMenuValue(!menuValue)}>
                     { menuValue   
                     ?   <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24">
                             <path d="M6 6l12 12M6 18L18 6" stroke="white" strokeWidth="1" strokeLinecap="round"/>
@@ -93,9 +104,9 @@ function Navbar() {
                             <path d="M4 6h16v1H4zM4 11h16v1H4zM4 16h16v1H4z" />
                         </svg>}
                 </label>
-                    {/* <div className={style.itemsMenu}>
-                        <DropdownMenu onClickDropdownMenu={() => setMenuValue(!menuValue)}/>
-                    </div> */}
+                { menuValue &&
+                    <DropdownMenu onClickDropdownMenu={() => setMenuValue(!menuValue)} logoutFn={logoutFn} />
+                }
 
             </nav>
         </header> 
