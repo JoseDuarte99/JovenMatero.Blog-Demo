@@ -1,0 +1,47 @@
+.header {
+    position: relative;
+    background: var(--JM-color-strong-green);
+    font-family: var(--JM-font-subtitle);
+    width: 100vw;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+}
+
+.header > div {
+    width: 75%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.logo {
+    justify-content: center;
+    align-content: center;
+}
+
+.logo > svg {
+    height: 80%;
+    width: fit-content;
+}
+.about {
+    text-decoration: none;
+    color: var(--JM-color-white);
+    align-self: center;
+    font-size: 1em ;
+}
+
+.about:hover {
+    border-bottom: 1px solid var(--JM-color-pastel-green);
+}
+
+/* ------------------ PHONE SCREEN VIEW -------------------------*/
+    @media (max-width: 768px) {
+        .header > div {
+            width: 90%;
+        }
+        .about {
+            font-size: 14px;
+        }
+    }
