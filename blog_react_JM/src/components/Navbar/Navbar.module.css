@@ -113,6 +113,22 @@ svg {
     border-bottom: 1px solid var(--JM-color-pastel-green);
 }
 
+.me {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+}
+.me:hover svg {
+    padding-bottom: 2px;
+} 
+.me > svg {
+    height: 3vw;
+    min-height: 30px;
+    max-height: 40px;
+    justify-content: center;
+    align-self: center;
+}
+
 
 /* ------------------ PHONE SCREEN VIEW -------------------------*/
     @media (max-width: 768px) {
