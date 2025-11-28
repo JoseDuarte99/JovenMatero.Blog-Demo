@@ -1,0 +1,117 @@
+.footer {
+    padding: 10px 20px;
+    background: var(--JM-color-beige);
+    color: var(--JM-color-white);
+}
+/* Information ------------------------------------------ */
+.information {
+    display: flex;
+    font-family: var(--JM-font-subtitle);
+    padding: 0 0 10px 0;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.information > ul {
+    flex: 1;
+}
+
+.information > div {
+    display: flex;
+    gap: 15px;
+}
+.information > div > a > svg {
+    height: 25px;
+}
+
+.suscription {
+    flex: 1;
+    display: flex;
+    justify-content: end;
+}
+.suscription > form {
+    background: var(--JM-color-bg-grey);
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    box-shadow: 0px 0px 5px #0003;
+}
+.suscription > form > input {
+    padding-left: 10px;
+    background: none;
+    border: none;
+    border-left: 1px solid var(--JM-color-beige);
+    border-bottom: 1px solid var(--JM-color-beige);
+    flex: 1;
+}
+.suscription > form > button {
+    border: none;
+    background: var(--JM-color-beige);
+    color: var(--JM-color-white);
+    cursor: pointer;
+}
+.suscription > form > button:hover {
+    box-shadow: 0px 0px 10px #0003;
+}
+
+.suscription > form > input,
+.suscription > form > button {
+    height: 40px;
+    border-radius: 5px;
+}
+
+/* By ------------------------------------------------ */
+.by {
+    font-size: 0.7em;
+    border-top: 1px solid #0e3c2499;
+    padding: 10px 0 0 0;
+    color: var(--JM-color-black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.by > p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 0 0 5px 0;
+}
+
+.by > p > a {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: var(--JM-color-black);
+    font-weight: bolder;
+}
+.by > p > a > svg {
+    height: 20px;
+}
+
+/* ------------------ PHONE SCREEN VIEW -------------------------*/
+    @media (max-width: 768px) {
+        .suscription > form {
+            flex-direction: column;
+        }
+        .suscription > form > input,
+        .suscription > form > button {
+            height: 20px;
+        }
+
+        .information > div {
+            flex-direction: column;
+        }
+        .information > div > a > svg {
+            height: 15px;
+        }
+
+    }

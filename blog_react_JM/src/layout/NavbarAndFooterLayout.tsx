@@ -7,7 +7,8 @@ import { Outlet } from "react-router";
 // Import Contexts
 // Import Components
 import  Navbar  from "../components/Navbar/Navbar";
-// import Footer from "../components/Footer/Footer";
+import Footer from "../components/Footer/Footer";
+
 
 // Import Types
 // Import Others
@@ -19,7 +20,7 @@ const NavbarAndFooterLayout = () => (
       <main className="content">
         <Outlet />
       </main>
-    {/* <Footer /> */}
+    <Footer />
   </div>
 );
 
