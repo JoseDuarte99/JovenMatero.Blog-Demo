@@ -43,7 +43,7 @@ BASE_APPS = [
 
 LOCAL_APPS = [
     'apps.users',
-
+    'apps.subscriptions',
 ]
 
 THIRD_APPS = [

@@ -19,3 +19,11 @@ class User(AbstractUser):
         # Delete image from file system
         self.image.delete(save=False)
         super().delete(using=using, keep_parents=keep_parents)
+
+
+class Subscription(models.Model):
+    email = models.EmailField(unique=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email

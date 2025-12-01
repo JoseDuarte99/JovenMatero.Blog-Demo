@@ -23,4 +23,5 @@ urlpatterns = router.urls + [
     path('auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('auth/logout/', TokenBlacklistView.as_view(), name='token_blacklist'),
     path('auth/register/', RegisterView.as_view(), name='auth_register'),
+    
 ]

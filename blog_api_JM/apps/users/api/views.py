@@ -37,3 +37,4 @@ class RegisterView(generics.CreateAPIView):
     parser_classes = [MultiPartParser, FormParser]
     serializer_class = RegisterSerializer
     permission_classes = [AllowAny]
+

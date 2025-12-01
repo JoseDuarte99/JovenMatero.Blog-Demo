@@ -4,6 +4,8 @@ from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError as DjangoValidationError
 from django.contrib.auth import get_user_model
 
+
+
 User = get_user_model()
 
 class UserSerializer (serializers.ModelSerializer):
@@ -53,3 +55,4 @@ class RegisterSerializer(serializers.ModelSerializer):
         #     'refresh': str(refresh),
         #     'access': str(refresh.access_token),
         # }
+

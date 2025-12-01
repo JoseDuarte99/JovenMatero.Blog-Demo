@@ -17,11 +17,11 @@
     flex: 1;
 }
 
-.information > div {
+.socialNetworks{
     display: flex;
     gap: 15px;
 }
-.information > div > a > svg {
+.socialNetworks > a > svg {
     height: 25px;
 }
 
@@ -99,6 +99,9 @@
 
 /* ------------------ PHONE SCREEN VIEW -------------------------*/
     @media (max-width: 768px) {
+        .suscription {
+            flex: none;
+        }
         .suscription > form {
             flex-direction: column;
         }
@@ -107,10 +110,16 @@
             height: 20px;
         }
 
-        .information > div {
+        .socialNetworks{
             flex-direction: column;
+            gap: 5px;
         }
-        .information > div > a > svg {
+        .socialNetworks > a > svg {
+            height: 15px;
+        }
+
+        /* By ------------------------------------------------ */
+        .by > p > a > svg {
             height: 15px;
         }
 
