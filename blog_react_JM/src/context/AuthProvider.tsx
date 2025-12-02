@@ -125,7 +125,6 @@ const AuthProvider = ({ children }: AuthProviderType) => {
     }, [isError, error, refreshToken, accessToken]);
     
     
-    
     return isLoading ? <p>Loading Profile</p> :
     (
         <AuthContext.Provider value={{accessToken, refreshToken, currentUser: data ?? null, setAccessToken, setRefreshToken, logout}}>

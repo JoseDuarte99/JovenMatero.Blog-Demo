@@ -7,81 +7,79 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { useMutation } from "@tanstack/react-query";
 
+// Import Others
+import { subscriptionService } from "../../api/services";
+
 // Import Contexts
 // Import Components
 // Import Types
-// Import Others
 
 
+type DjangoErrorsType = {
+    email?: string[];
+}
 
 function Footer() {
     
+    const [ subscriptionError, setSubscriptionError] = useState<DjangoErrorsType>({});
     const [ subscribedEmail, setSubscribedEmail ] = useState("");
     
     
     const subscriptionMutate = useMutation({
         mutationKey: ["subscription"],
-        mutationFn: async (email: string) => {
-            const response = await fetch("http://localhost:8000/api/subscriptions/", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ email }),
-            });
-            
-            if (!response.ok) {
-                throw new Error("Error al suscribirse");
-            }
-            
-            return response.json();
-        },
+        mutationFn: () => subscriptionService(subscribedEmail),
         onSuccess: () => {
             toast.success("¡Suscripción exitosa!");
-        setSubscribedEmail("");
+            setSubscribedEmail("");
 
         },
-        onError: () => {
-            throw new Error ("Error")
+        onError: (error: DjangoErrorsType) => {
+            setSubscriptionError(error)
+            console.log(subscriptionError)
         }
     });
     
     
-    
     const handleSubscription = (e: React.FormEvent) => {
         e.preventDefault()
-        subscriptionMutate.mutate(subscribedEmail)
+        subscriptionMutate.mutate()
     }
     
     return (
         <footer className={style.footer}>
-        <section className={style.information}>
-        <ul>
-        <li>JOVEN MATERO</li>
-        <li>Email: joven.matero@gmail.com</li>
-        <li>Barranqueras, Chaco</li>
-        </ul>
-        <div className={style.socialNetworks}>
-        <Link to={"*"}>{InstagramSvg}</Link>
-        <Link to={"*"}>{FacebookSvg}</Link>
-        <Link to={"*"}>{WhatsappSvg}</Link>
-        </div>
-        <div className={style.suscription}>
-        <form onSubmit={handleSubscription} id="suscripcionForm">
-        <input type="email" 
-        placeholder="Correo electronico"    
-        value={subscribedEmail}
-        onChange={(e) => setSubscribedEmail(e.target.value)}
-        required
-        />
-        <button type="submit">Suscribirme</button>
-        </form>
-        </div>
-        </section>
-        <section className={style.by}>
-        <p>Desarrollado por<a href="https://github.com/JoseDuarte99" target="_blank">{GitHubSvg} Jose Duarte</a></p>
-        <span>© Todos los derechos reservados</span> 
-        </section>
+            <section className={style.information}>
+                <ul>
+                    <li>JOVEN MATERO</li>
+                    <li>Email: joven.matero@gmail.com</li>
+                    <li>Barranqueras, Chaco</li>
+                </ul>
+                <div className={style.socialNetworks}>
+                    <Link to={"*"}>{InstagramSvg}</Link>
+                    <Link to={"*"}>{FacebookSvg}</Link>
+                    <Link to={"*"}>{WhatsappSvg}</Link>
+                </div>
+                <div className={style.subscription}>
+                    <form onSubmit={handleSubscription} id="suscripcionForm">
+                        <div>
+                            <input type="email" 
+                            placeholder="Correo electronico"    
+                            value={subscribedEmail}
+                            onChange={(e) => {
+                                setSubscribedEmail(e.target.value);
+                                setSubscriptionError({});
+                            }}
+                            required
+                            />
+                            <button type="submit">Suscribirme</button>
+                        </div>
+                        {subscriptionError.email && <p>{subscriptionError.email}</p>}
+                    </form>
+                </div>
+            </section>
+            <section className={style.by}>
+                <p>Desarrollado por<a href="https://github.com/JoseDuarte99" target="_blank">{GitHubSvg} Jose Duarte</a></p>
+                <span>© Todos los derechos reservados</span> 
+            </section>
         </footer>
     )
 }

@@ -3,6 +3,7 @@
 }
 
 .login {
+    font-family: var(--JM-font-subtitle);
     margin-top: 5vw;
     display: flex;
     justify-self: center;

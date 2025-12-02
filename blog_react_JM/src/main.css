@@ -15,7 +15,7 @@ html, body, h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd {
 /* Full height and base typography */
 html, body {
     height: 100%;
-    font-family: var(--JM-font-body);
+    font-family: var(--JM-font-subtitle);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     font-size: clamp(0.8rem, 2vw, 1rem);

@@ -3,6 +3,7 @@
     background: var(--JM-color-beige);
     color: var(--JM-color-white);
 }
+
 /* Information ------------------------------------------ */
 .information {
     display: flex;
@@ -17,6 +18,8 @@
     flex: 1;
 }
 
+/* Social Networks ------------------------------------------ */
+
 .socialNetworks{
     display: flex;
     gap: 15px;
@@ -25,21 +28,28 @@
     height: 25px;
 }
 
-.suscription {
-    flex: 1;
+/* Subscription ------------------------------------------ */
+
+.subscription {
     display: flex;
     justify-content: end;
+    flex: 1;
 }
-.suscription > form {
+.subscription > form {
     background: var(--JM-color-bg-grey);
     padding: 10px;
     border-radius: 10px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    gap: 10px;
     box-shadow: 0px 0px 5px #0003;
 }
-.suscription > form > input {
+.subscription > form > div {
+    display: flex;
+    gap: 10px;
+}
+
+.subscription > form > div > input {
     padding-left: 10px;
     background: none;
     border: none;
@@ -47,20 +57,27 @@
     border-bottom: 1px solid var(--JM-color-beige);
     flex: 1;
 }
-.suscription > form > button {
+.subscription > form > div  > button {
     border: none;
     background: var(--JM-color-beige);
     color: var(--JM-color-white);
     cursor: pointer;
 }
-.suscription > form > button:hover {
+.subscription > form > div > button:hover {
     box-shadow: 0px 0px 10px #0003;
 }
 
-.suscription > form > input,
-.suscription > form > button {
+.subscription > form > div > input,
+.subscription > form > div > button {
     height: 40px;
     border-radius: 5px;
+}
+
+.subscription > form  > p {
+    padding: 5px 0 0 0;
+    font-size: 0.8em;
+    color: var(--JM-color-text-error);
+    text-align: center;
 }
 
 /* By ------------------------------------------------ */
@@ -99,15 +116,29 @@
 
 /* ------------------ PHONE SCREEN VIEW -------------------------*/
     @media (max-width: 768px) {
-        .suscription {
+        .footer {
+            padding: 5px;
+        }
+        .information > ul{
             flex: none;
         }
-        .suscription > form {
-            flex-direction: column;
+        .subscription {
+            flex: none;
         }
-        .suscription > form > input,
-        .suscription > form > button {
+        .subscription > form > div {
+            flex-direction: column;
+            gap: 2px;
+        }
+        .subscription > form > div > input{
+            padding: 5px;
+        }
+        .subscription > form > div > input,
+        .subscription > form > div > button {
             height: 20px;
+        }
+
+        .subscription > form  > p {
+            font-size: 0.9em;
         }
 
         .socialNetworks{
