@@ -9,13 +9,13 @@ import { createContext } from 'react';
 // Import Others
 
 
-type UserType = {
+export type UserType = {
     username?: string;
     password?: string;
     email?: string;
     first_name?: string;
     last_name?: string;
-    img?: string;   
+    image?: string;   
 }
 
 interface AuthContextType {

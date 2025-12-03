@@ -13,21 +13,13 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 
 // Import Components
 // Import Types
+import { type UserType } from './AuthContext';
 
 // Import Others
 
 
 interface AuthProviderType {
     children: ReactNode;
-}
-
-type UserType = {
-    username?: string;
-    password?: string;
-    email?: string;
-    firstName?: string;
-    lastName?: string;
-    img?: string;   
 }
 
 

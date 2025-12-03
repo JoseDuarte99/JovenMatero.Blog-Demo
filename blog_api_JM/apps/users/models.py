@@ -7,7 +7,7 @@ from simple_history.models import HistoricalRecords
 
 class User(AbstractUser):
     email = models.EmailField(unique=True, blank=False)
-    image = models.ImageField(null=True, blank=True, upload_to='user', default='user/user-default.jpg')
+    image = models.ImageField(null=True, blank=True, upload_to='users', default='users/user-default.jpg')
     is_staff = models.BooleanField(default=False)  # Staff status
     is_active = models.BooleanField(default=True)  # Active status
     historical = HistoricalRecords()   

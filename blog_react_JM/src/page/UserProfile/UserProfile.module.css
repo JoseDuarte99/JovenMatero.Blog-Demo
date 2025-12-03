@@ -31,12 +31,13 @@
     max-height: 120px;
 }
 
-.profile > div > svg {
+.profile > div > svg,
+.profile > div > img {
     position: absolute;
     height: 100%;
     top: 35%;
     background: #0007;
-    border-radius: 50px;
+    border-radius: 50%;
 }
 
 /* User Information */
@@ -58,19 +59,46 @@
     border: none;
     cursor: pointer;
     color: var(--JM-color-text-grey);
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 .profile > button:hover {
-    color: var(--JM-color-black);
-
+    color: var(--JM-color-strong-green);
+    transform: scale(1.05)
 }
 
 
 /* Content ------------------------------------------------ */
 .content {
-    background: yellow;
+    padding: 10px;
+    background: var(--JM-color-bg-grey);
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #0007;
     flex: 2;
+    height: fit-content;
 }
 
+.content > h3 {
+    text-align: center;
+    font-weight: 100;
+    padding: 0 0 30px 0;
+}
+
+.content > div {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.content > div > div {
+    background: #0007;
+    height: 150px;
+    width: 150px;
+    box-shadow: 0px 0px 5px #000a;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+.content > div > div:hover {
+    transform: scale(1.05)
+}
 
 
 /* ------------------ PHONE SCREEN VIEW -------------------------*/
