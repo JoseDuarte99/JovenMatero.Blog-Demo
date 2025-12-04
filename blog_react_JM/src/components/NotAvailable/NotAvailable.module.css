@@ -1,0 +1,33 @@
+.notAvailable {
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #fff;   
+    padding: 7vw;
+    border-radius: 50%;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: #202020;
+    min-width: fit-content;
+    min-height: fit-content
+}
+
+.notAvailable > span {
+    align-self: center;
+}
+
+.notAvailable > h4 {
+    align-self: center;
+    font-size: 0.8em;
+}
+
+.notAvailable > a {
+    text-decoration: none;
+    color: #404040;
+    align-self: center;
+    font-size: 0.7em;
+}
+
+.notAvailable a:hover {
+    text-decoration: underline;
+}

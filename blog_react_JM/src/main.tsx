@@ -19,7 +19,7 @@ import { Toaster } from 'sonner'
 import LoginForm from './page/Login/Login';
 import WithoutNavbarAndFooter from './layout/WithoutNavbarAndFooter';
 import NavbarAndFooterLayout from './layout/NavbarAndFooterLayout';
-import NotFound404 from './page/NotFound404/NotFound404';
+import NotFound404 from './components/NotFound404/NotFound404';
 import RegisterForm from './page/Register/Register';
 import UserProfile from './page/UserProfile/UserProfile';
 import Home from './page/Home/Home';
@@ -29,7 +29,10 @@ import AppProviders from './context/AppProvider';
 
 const queryClient = new QueryClient();
 
+
+
 createRoot(document.getElementById('root')!).render(
+  
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <AppProviders>
@@ -45,7 +48,7 @@ createRoot(document.getElementById('root')!).render(
               <Route path='/login' element={<LoginForm />}/>
               <Route path='/register' element={<RegisterForm />}/>
               <Route path='/me' element={<UserProfile />}/>
-
+              <Route path='*' element={<NotFound404/>}/>
             </Route>
 
             <Route path='*' element={<NotFound404/>}/>
