@@ -57,7 +57,7 @@ function RegisterForm() {
     const navigate = useNavigate();
 
     
-        
+
     // REACT-QUERY -----------------------------------------------------
     
     const mutation = useMutation({
@@ -93,6 +93,7 @@ function RegisterForm() {
         setErrorMessage({})
         setErrorState(false)
         mutation.mutate()
+        
     }
     
     return (

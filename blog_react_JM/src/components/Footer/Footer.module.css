@@ -117,7 +117,7 @@
 /* ------------------ PHONE SCREEN VIEW -------------------------*/
     @media (max-width: 768px) {
         .footer {
-            padding: 5px;
+            padding: 5px 10px;
         }
         .information > ul{
             flex: none;

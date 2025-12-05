@@ -31,10 +31,10 @@ function Footer() {
         onSuccess: () => {
             toast.success("¡Suscripción exitosa!");
             setSubscribedEmail("");
-
         },
         onError: (error: DjangoErrorsType) => {
             setSubscriptionError(error)
+            toast.error(error.email);
             console.log(subscriptionError)
         }
     });
