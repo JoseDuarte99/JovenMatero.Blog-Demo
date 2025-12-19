@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from .models import Category, Tag, Post, Comment
+from ..models import Category, Tag, Post, Comment
 from .serializers import CategorySerializer, TagSerializer, PostSerializer, CommentSerializer
 from .permissions import IsSuperUserOrReadOnly, IsOwnerOrSuperUserOrReadOnly
 
