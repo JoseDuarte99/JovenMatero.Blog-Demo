@@ -6,6 +6,7 @@ import type { ReactNode } from "react";
 // Import Contexts
 import AuthProvider  from "./AuthProvider";
 import SearchProvider from "./SearchProvider";
+import PostsProvider from "./PostsProvider";
 
 // Import Components
 // Import Types
@@ -17,11 +18,13 @@ interface AppProviderProps {
 }
 
 const AppProviders = ({ children }: AppProviderProps) => (
-    <AuthProvider>
-        <SearchProvider>
-            {children}
-        </SearchProvider>
-    </AuthProvider>
+    <PostsProvider>
+        <AuthProvider>
+            <SearchProvider>
+                {children}
+            </SearchProvider>
+        </AuthProvider>
+    </PostsProvider>
 );
 
 export default AppProviders

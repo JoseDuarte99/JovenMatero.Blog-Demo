@@ -7,7 +7,7 @@ import { Link } from "react-router"
 // Import Svg
 
 
-function NotFound404(){
+function NotAvailable(){
     
     
     return (
@@ -19,7 +19,7 @@ function NotFound404(){
     )
 };
 
-export default NotFound404
+export default NotAvailable
 
 
 function NotFound404Svg(){
