@@ -1,4 +1,12 @@
+// Import Style
+// Import React
 import { createContext, type Dispatch, type SetStateAction } from "react";
+
+// Import Contexts
+// Import Components
+// Import Types
+// Import Others
+
 
 interface SearchContextType {
     onSearch: string;

@@ -155,3 +155,43 @@ export const LogoSVG = ({ fill = "#fff", ...props }: LogoSVGProps) => (
   </svg>
 )
 
+
+
+export const TagSvg = (props:React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="1em"
+    height="1em"
+    viewBox="0 0 96 96"
+    {...props}
+  >
+    <defs>
+      <clipPath id="a">
+        <path d="M0 0h96v96H0z" />
+      </clipPath>
+    </defs>
+    <g clipPath="url(#a)">
+      <g
+        fill="none"
+        stroke="#333"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={4}
+        transform="translate(-1 -237)"
+      >
+        <path d="m68 260 24-24" data-name="Line 6" />
+        <circle
+          cx={6}
+          cy={6}
+          r={6}
+          data-name="Ellipse 333"
+          transform="translate(58 258)"
+        />
+        <path
+          d="m6.438 302.392 19.118 19.164a8.309 8.309 0 0 0 11.772 0l40.234-40.33a8.354 8.354 0 0 0 2.438-5.9v-18.982A8.334 8.334 0 0 0 71.676 248H52.521a8.315 8.315 0 0 0-5.875 2.433l-40.2 40.149a8.357 8.357 0 0 0-.008 11.81Z"
+          data-name="Path 181"
+        />
+      </g>
+    </g>
+  </svg>
+)

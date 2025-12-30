@@ -22,9 +22,7 @@ interface PostsProviderType {
     children: ReactNode;
 }
 
-
 function PostsProvider( {children}:PostsProviderType ) {
-
 
 
    // --------------------------------- IMPLEMENTANDO SERVICIOS CON REACT QUERY -----------------------------------
@@ -39,7 +37,6 @@ function PostsProvider( {children}:PostsProviderType ) {
 
     
     // -------------------------------------------------------------------------------------------------------------
-
     
 
     return (

@@ -1,15 +1,15 @@
+// Import Style
+// Import React
 import { createContext } from "react";
 
-export type PostType = {
-    title: string;
-    subtitle: string;
-    text: string;
-    author: string;
-    category: string;
-    tags: string[];
-    published: Date | string;
-    img: string | File | null;
-}
+// Import Contexts
+// Import Components
+// Import Types
+import type { PostType } from "../types/Types"
+
+// Import Others
+
+
 
 interface PostsContextType {
     posts: PostType[];
@@ -20,7 +20,6 @@ interface PostsContextType {
 }
 
 
+const PostContext = createContext<PostsContextType | null>(null);
 
-const SearchContext = createContext<PostsContextType | null>(null);
-
-export default SearchContext;
+export default PostContext;
