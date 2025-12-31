@@ -23,7 +23,7 @@ function PostCardSmall( props:PostType ) {
             <p>{text}</p>
             <span className={style.published}>{published.toString()}</span>
             <div>
-                {tags.map(tag => (<span className={style.tags}><TagSvg/>{tag.name}</span>))}
+                {tags.map(tag => (<span key={tag.id} className={style.tags}><TagSvg/>{tag.name}</span>))}
             </div>
         </div>
     )

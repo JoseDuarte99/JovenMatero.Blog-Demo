@@ -5,6 +5,12 @@
 // Import Types
 // Import Others
 
+
+// USEFUL TOOLS
+// Convertir SVG a Componente de React - https://react-svgr.com/playground/
+// Descargar SVG - https://www.svgrepo.com/
+
+
 // Import Style
 import './main.css'
 

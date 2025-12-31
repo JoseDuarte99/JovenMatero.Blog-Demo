@@ -21,7 +21,7 @@ function Home() {
     // AUTH-CONTEXT
     const authContext = useContext(AuthContext)
     if (!authContext){throw new Error('Authentication Error');}
-    const {accessToken, refreshToken, currentUser} = authContext;
+    const {currentUser} = authContext;
 
     // POSTS-CONTEXT
     const postContext = useContext(PostContext)
@@ -36,36 +36,28 @@ function Home() {
 
     console.log(posts)
     return (
-        <div className={style.container}>
-            {accessToken ? <p>AccessToken Existente</p> : ""}
-            {refreshToken ? <p>RefreshToken Existente</p> : ""}
-                {posts.filter((p) => p.id == 1).map(post => {
-                return (
-                    <PostCardSmall
-                        key={post.id}
-                        id={post.id}
-                        image={post.image}
-                        title={post.title}
-                        subtitle={post.subtitle}
-                        category={post.category}
-                        text={post.text}
-                        published={post.published}
-                        tags={post.tags}
-                    />)})}
-            {/* {posts.map(post => {
-                return (
-                    <PostCardSmall
-                        key={post.id}
-                        id={post.id}
-                        image={post.image}
-                        title={post.title}
-                        subtitle={post.subtitle}
-                        category={post.category}
-                        text={post.text}
-                        published={post.published}
-                        tags={post.tags}
-                    />)})} */}
-        </div>
+            
+            
+            <section className={style.allPosts}>
+                <h2>Contenido</h2>
+                <p>Mantente al dia de las ultimas novedades...</p>
+                <div>
+                    {posts.map(post => {
+                        return (
+                            <PostCardSmall
+                                key={post.id}
+                                id={post.id}
+                                image={post.image}
+                                title={post.title}
+                                subtitle={post.subtitle}
+                                category={post.category}
+                                text={post.text}
+                                published={post.published}
+                                tags={post.tags}
+                            />)})}
+                </div>
+            </section>
+
     )
 }
 

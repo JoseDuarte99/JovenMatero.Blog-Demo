@@ -2,33 +2,14 @@
     outline: none;
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-self: center;
-    margin-top: 15vh;
-    width: 70%;
+/* ALL POSTS -------------------------------- */
+.allPosts {
+    padding: 0 25px;
 }
+.allPosts > div {
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 25px; 
+    justify-content: center;
 
-.container > button {
-    border: none;
-    background: var(--JM-color-pastel-green);
-    color: var(--JM-color-white);
-    text-decoration: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.container > p {
-    align-self: center;
-    font-size: 1em;
-}
-.container > a {
-    background: var(--JM-color-pastel-green);
-    color: var(--JM-color-white);
-    text-decoration: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    text-align: center;
 }

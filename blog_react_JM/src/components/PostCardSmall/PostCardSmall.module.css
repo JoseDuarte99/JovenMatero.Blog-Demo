@@ -1,10 +1,12 @@
 .cardSmall {
-    max-width: 380px;
     height: 450px;
     min-height: 350px;
     max-height: 550px;
     display: flex;
     flex-direction: column;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #0003;  
+    padding: 10px;
 }
 
 .cardSmall > img {
@@ -16,11 +18,14 @@
 }
 
 .cardSmall > h1 {
-    font-size: 1.7em;
+    font-size: 1.5em;
 }
 
 .cardSmall > h3 {
-    font-size: 1.2em;
+    font-size: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .cardSmall > span:first-of-type {
@@ -34,12 +39,17 @@
     margin: 10px 0 0 0 ;
 }
 
+/* TEXT -------------------------------------------- */
+
 .cardSmall > p {
-    white-space: nowrap;        
-    overflow: hidden;       
-    text-overflow: ellipsis;    
-    flex: 1;
+    display: -webkit-box;        
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;       
+    line-clamp: 3;               
+    overflow: hidden;   
+    margin: 5px 0 10px 0;          
 }
+
 
 /* DATE -------------------------------------------- */
 

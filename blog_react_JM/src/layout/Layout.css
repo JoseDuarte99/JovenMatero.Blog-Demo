@@ -6,6 +6,6 @@
 
 .content {
     flex: 1;
-    padding-top: 50px;
+    padding: 50px 0 50px 0;
     background: var(--JM-color-bg-grey);
 }
