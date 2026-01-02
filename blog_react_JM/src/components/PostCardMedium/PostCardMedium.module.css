@@ -1,50 +1,43 @@
-.cardSmall {
-    height: fit-content;
-    max-height: 450px;
-    min-height: 350px;
-    max-height: 550px;
+.cardMedium {
+    display: flex;
+    height: 300px;
+    transition: transform 250ms ease-in-out;
     cursor: pointer;
-    background: #fff;
-    padding: 0 0 30px 0;
-}
-.cardSmall:hover {
-    border-bottom: solid 1px #ddd;
+    gap: 30px;
 }
 
-.cardSmall > img {
-    margin: 0 0 10px 0 ;
-    width: 100%;
-    height: 200px;      
+.cardMedium > img {
+    width: 350px;
     object-fit: cover;  
     object-position: center; 
-    box-shadow: 0 0 5px #0003;  
-    transition: transform 250ms ease;
+    box-shadow: 0 0 10px #0003;  
+    transition: transform 250ms ease-out;
 }
 
-.cardSmall:hover > img {
+.cardMedium:hover > img{
     transform: scale(1.05);
 }
 
-
-.cardSmall > div {
-    padding: 0 5px;
+.cardMedium > div {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    min-width: 300px;
 }
 
-.cardSmall > div > h1 {
-    font-size: 1.3em;
+.cardMedium > div > h1 {
+    font-size: 1.5em;
 }
 
-.cardSmall > div > h3 {
-    font-size: 0.9em;
-    white-space: nowrap;
+.cardMedium > div > h3 {
+    font-size: 1em;
+    white-space: wrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.cardSmall > div > span:first-of-type {
-    font-size: 0.6em;
+.cardMedium > div > span:first-of-type {
+    font-size: 0.7em;
     letter-spacing: 2px;
     background: var(--JM-color-pastel-green);
     color: var(--JM-color-white);
@@ -56,11 +49,11 @@
 
 /* TEXT -------------------------------------------- */
 
-.cardSmall > div > p {
+.cardMedium > div > p {
     display: -webkit-box;        
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;       
-    line-clamp: 3;               
+    -webkit-line-clamp: 5;       
+    line-clamp: 5;               
     overflow: hidden;   
     margin: 5px 0 10px 0;          
     font-size: 0.9em;
@@ -71,12 +64,12 @@
 
 .published {
     color: #555;
-    font-size: 0.6em;
+    font-size: 0.7em;
 }
 
 /* TAGS -------------------------------------------- */
 
-.cardSmall > div:last-of-type {
+.cardMedium > div:last-of-type {
     display: flex;
 }
 
@@ -85,7 +78,7 @@
 }
 
 .tags {
-    font-size: 0.6em;
+    font-size: 0.7em;
     letter-spacing: 2px;
     color: #555;
     background: #dddc;
@@ -94,4 +87,17 @@
     border-radius: 5px;
     margin: 2px 5px 2px 0;
     width: fit-content;
+}
+
+
+/* ------------------ PHONE SCREEN VIEW -------------------------*/
+    @media (max-width: 768px) {
+
+    .cardMedium {
+        flex-direction: column;
+        height: auto;
+    }
+    .cardMedium > img {
+        align-self: center;
+    }
 }

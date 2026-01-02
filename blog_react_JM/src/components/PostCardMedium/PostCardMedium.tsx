@@ -1,5 +1,5 @@
 // Import Style
-import style from "./PostCardSmall.module.css"
+import style from "./PostCardMedium.module.css"
 
 // Import React
 // Import Contexts
@@ -10,13 +10,12 @@ import type { PostType } from "../../types/Types"
 // Import Others
 import { TagSvg } from "../SvgIcons/SvgIcons"
 
-function PostCardSmall( props:PostType ) {
+function PostCardMedium( props:PostType ) {
     const {title, subtitle, text, category, image, published, tags} = props
 
 
     return (
-        <div className={style.cardSmall}>
-            <img src={image} alt={title}/>
+        <div className={style.cardMedium}>
             <div>
                 <h1>{title}</h1>
                 <h3>{subtitle}</h3>
@@ -27,8 +26,9 @@ function PostCardSmall( props:PostType ) {
                     {tags.map(tag => (<span key={tag.id} className={style.tags}><TagSvg/>{tag.name}</span>))}
                 </div>
             </div>
+            <img src={image} alt={title}/>
         </div>
     )
 }
 
-export default PostCardSmall
+export default PostCardMedium
