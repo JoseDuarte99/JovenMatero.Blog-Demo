@@ -9,7 +9,6 @@ import { Outlet } from "react-router";
 import  Navbar  from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 
-
 // Import Types
 // Import Others
 
@@ -17,9 +16,9 @@ import Footer from "../components/Footer/Footer";
 const NavbarAndFooterLayout = () => (
   <div className="layout">
     <Navbar />
-      <main className="content">
+      <div className="content">
         <Outlet />
-      </main>
+      </div>
     <Footer />
   </div>
 );

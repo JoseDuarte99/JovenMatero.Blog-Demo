@@ -2,6 +2,8 @@
 import style from "./PostCardSmall.module.css"
 
 // Import React
+import { Link } from "react-router"
+
 // Import Contexts
 // Import Components
 // Import Types
@@ -10,12 +12,13 @@ import type { PostType } from "../../types/Types"
 // Import Others
 import { TagSvg } from "../SvgIcons/SvgIcons"
 
+
 function PostCardSmall( props:PostType ) {
-    const {title, subtitle, text, category, image, published, tags} = props
+    const {title, subtitle, text, category, image, published, tags,id} = props
 
 
     return (
-        <div className={style.cardSmall}>
+        <Link to={`/posteo/${id}`} className={style.cardSmall}>
             <img src={image} alt={title}/>
             <div>
                 <h1>{title}</h1>
@@ -27,7 +30,7 @@ function PostCardSmall( props:PostType ) {
                     {tags.map(tag => (<span key={tag.id} className={style.tags}><TagSvg/>{tag.name}</span>))}
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }
 

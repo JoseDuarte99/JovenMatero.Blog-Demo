@@ -2,7 +2,7 @@
     outline: none;
 }
 
-.container {
+.mainContainer {
     display: flex;
     flex-direction: column;
     gap: 80px;
@@ -109,7 +109,7 @@
     .mostRelevant > ul {
         align-self: center;
     }
-    .container {
+    .mainContainer {
         gap: 40px
     }
 }

@@ -6,6 +6,8 @@
     cursor: pointer;
     background: #fff;
     padding: 0 0 30px 0;
+    text-decoration: none;
+    color: #000;
 }
 .cardSmall:hover {
     border-bottom: solid 1px #ddd;

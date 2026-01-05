@@ -60,7 +60,7 @@ function LoginForm() {
     }
     
     return (
-        <div className={style.login}>
+        <main className={style.login}>
             <div className={style.logoJovenMatero}>
                 <LogoSVG fill="#0e3c24" />
             </div>
@@ -106,7 +106,7 @@ function LoginForm() {
                 }
             </form>
 
-        </div>
+        </main>
         )
     }
     

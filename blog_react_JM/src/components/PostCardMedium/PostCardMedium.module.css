@@ -4,6 +4,8 @@
     transition: transform 250ms ease-in-out;
     cursor: pointer;
     gap: 30px;
+    text-decoration: none;
+    color: #000;
 }
 
 .cardMedium > img {

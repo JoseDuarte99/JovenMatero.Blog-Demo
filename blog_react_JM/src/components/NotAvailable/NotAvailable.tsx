@@ -11,11 +11,11 @@ function NotAvailable(){
     
     
     return (
-        <div className={style.notAvailable}>
-        <span> {NotFound404Svg()} </span>
-        <h4>Esta pagina no se encuentra disponible</h4>
-        <Link to="/"> Ir a la página principal</Link>
-        </div>
+        <main className={style.notAvailable}>
+            <span> {NotFound404Svg()} </span>
+            <h4>Esta pagina no se encuentra disponible</h4>
+            <Link to="/"> Ir a la página principal</Link>
+        </main>
     )
 };
 

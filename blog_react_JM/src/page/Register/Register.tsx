@@ -97,7 +97,7 @@ function RegisterForm() {
     }
     
     return (
-        <div className={style.register}>
+        <main className={style.register}>
             <form onSubmit={handleSubmit} className={style.formRegister}>
 
                 <label className={style.formField}>
@@ -202,7 +202,7 @@ function RegisterForm() {
                 </section>
                 <span className={style.requiredDate}>(*) Datos obligatorios.</span>
             </form>
-        </div>
+        </main>
             
         )
     }

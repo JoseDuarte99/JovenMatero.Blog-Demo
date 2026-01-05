@@ -20,7 +20,9 @@ import image1 from "../../../public/imagen1.jpg"
 
 
 function Home() {
-    const [ mostRelevantSelect, setMostRelevantSelect ] = useState(true);
+    const [ mostRelevantSelect, 
+        // setMostRelevantSelect 
+    ] = useState(true);
 
     // AUTH-CONTEXT
     const authContext = useContext(AuthContext)
@@ -40,7 +42,7 @@ function Home() {
 
     console.log(posts)
     return (
-        <div className={style.container}>
+        <main className={style.mainContainer}>
 
             <div className={style.carousel}>
                     <img src={image1} alt="Imagen 1"/>
@@ -54,11 +56,13 @@ function Home() {
             <section className={style.mostRelevant}>
                 <ul>
                     <li className={ mostRelevantSelect ? style.mostRelevantSelect : ""} > 
-                        <button onClick={() => setMostRelevantSelect(!mostRelevantSelect)}>Novedades</button>
+                        <button 
+                        // onClick={() => setMostRelevantSelect(!mostRelevantSelect)}
+                        >Novedades</button>
                     </li>
-                    <li className={ mostRelevantSelect ? "" : style.mostRelevantSelect } > 
+                    {/* <li className={ mostRelevantSelect ? "" : style.mostRelevantSelect } > 
                         <button onClick={() => setMostRelevantSelect(!mostRelevantSelect)}>Lo mas relevante</button>
-                    </li>
+                    </li> */}
                 </ul>
                 {posts.filter((p => p.id < 3)).map(post => {
                     return (
@@ -94,8 +98,10 @@ function Home() {
                             />)})}
                 </div>
             </section>
-        </div>
+        </main>
     )
 }
 
 export default Home
+
+

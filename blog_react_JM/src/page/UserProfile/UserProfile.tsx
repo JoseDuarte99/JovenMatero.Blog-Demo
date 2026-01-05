@@ -35,7 +35,7 @@ function UserProfile() {
 
     return (
             currentUser 
-            ? <div className={style.userProfile}>
+            ? <main className={style.userProfile}>
                 <section className={style.profile}>
                         {isDefault
                             ?<div>
@@ -77,7 +77,7 @@ function UserProfile() {
                             <div>Post</div>
                         </div>
                 </section>
-            </div>
+            </main>
             : <NotAvailable/>
                     )   
 }

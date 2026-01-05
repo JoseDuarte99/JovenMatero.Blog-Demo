@@ -2,6 +2,8 @@
 import style from "./PostCardMedium.module.css"
 
 // Import React
+import { Link } from "react-router"
+
 // Import Contexts
 // Import Components
 // Import Types
@@ -10,12 +12,13 @@ import type { PostType } from "../../types/Types"
 // Import Others
 import { TagSvg } from "../SvgIcons/SvgIcons"
 
+
 function PostCardMedium( props:PostType ) {
-    const {title, subtitle, text, category, image, published, tags} = props
+    const {title, subtitle, text, category, image, published, tags, id} = props
 
 
     return (
-        <div className={style.cardMedium}>
+        <Link to={`/posteo/${id}`} className={style.cardMedium}>
             <div>
                 <h1>{title}</h1>
                 <h3>{subtitle}</h3>
@@ -27,7 +30,7 @@ function PostCardMedium( props:PostType ) {
                 </div>
             </div>
             <img src={image} alt={title}/>
-        </div>
+        </Link>
     )
 }
 

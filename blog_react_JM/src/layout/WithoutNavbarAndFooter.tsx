@@ -15,9 +15,9 @@ import SimpleHeader from "../components/SimpleHeader/SimpleHeader";
 const WithoutNavbarAndFooter = () => (
     <div className="layout">
         <SimpleHeader />
-            <main className="content">
+            <div className="content">
                 <Outlet />
-            </main>
+            </div>
     </div>
 );
 
