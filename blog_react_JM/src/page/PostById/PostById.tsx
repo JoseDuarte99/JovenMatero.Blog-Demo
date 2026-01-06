@@ -45,7 +45,7 @@ function PostById() {
         <section>
           {postSuggestions.map(post => {
             return (
-              <Link to={`/posteo/${post.id}`} key={post.id} className={style.suggestions}>
+              <Link to={`/post/${post.id}`} key={post.id} className={style.suggestions}>
                 <img src={post.image} alt={post.title} />
                 <h5>{post.title}</h5>
               </Link>

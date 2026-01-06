@@ -1,12 +1,11 @@
 // Import Style
-import style from "./Navbar.module.css"
+import style from "./NavbarWithoutLogin.module.css"
 
 // Import React
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 
 // Import Contexts
-import AuthContext from "../../context/AuthContext";
 import SearchContext from "../../context/SearchContext";
 
 // Import Components
@@ -25,7 +24,7 @@ import { LogoSVG } from "../SvgIcons/SvgIcons";
 
 
 
-function Navbar() {
+function NavbarWithoutLogin() {
 
     // Dropdown Menu Status
     const [menuValue, setMenuValue] = useState(false); 
@@ -40,18 +39,6 @@ function Navbar() {
     if (!search){throw new Error('Search must be used within a SearchProvider')}
     const {onSearch, setOnSearch} = search;
 
-    // AUTH-CONTEXT
-    const authContext = useContext(AuthContext)
-    if (!authContext){throw new Error('Authentication Error');}
-    const {accessToken, refreshToken, currentUser, logout} = authContext;
-
-    const navigate = useNavigate();
-
-    const logoutFn = () => {
-        logout(accessToken!,refreshToken!)
-        setMenuValue(false)
-        navigate("/home")
-    }
 
 
     return (
@@ -80,24 +67,11 @@ function Navbar() {
                 <Link to={"/home"} className={style.logo}>
                     <LogoSVG fill="#fff" />
                 </Link>
+
                 <div className={style.menu}>
                     <Link to={"/home"}>Inicio</Link>
                     <Link to={"/about"}>Nosotros</Link>
-                    { currentUser 
-                        ?<>
-                            <Link to={"/me"} className={style.me}>
-                                Mi Perfil
-                            </Link>
-                            <Link to={"/home"} onClick={logoutFn}>Cerrar Sesion</Link>
-                            <img src={currentUser.image} alt="Foto de Perfil" />
-                        </>
-                        : <>
-                            <Link to={"/register"}>Registrarme</Link>
-                            <Link to={"/login"}>Iniciar Sesion</Link>
-                        </>
-                    }
                 </div>
-
                 <label htmlFor="menu" className={style.activeMenu} onClick={() => setMenuValue(!menuValue)}>
                     { menuValue   
                     ?   <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24">
@@ -108,7 +82,7 @@ function Navbar() {
                         </svg>}
                 </label>
                 { menuValue &&
-                    <DropdownMenu onClickDropdownMenu={() => setMenuValue(!menuValue)} logoutFn={logoutFn} />
+                    <DropdownMenu onClickDropdownMenu={() => setMenuValue(!menuValue)} />
                 }
 
             </nav>
@@ -119,7 +93,7 @@ function Navbar() {
 
 
 
-export default Navbar
+export default NavbarWithoutLogin
 
 
 const chevronDownCircleSvg = <svg

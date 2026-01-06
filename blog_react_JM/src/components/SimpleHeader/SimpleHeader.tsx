@@ -21,7 +21,7 @@ function SimpleHeader() {
                     className={style.logo}>
                     < LogoSVG fill="#fff"/>
                 </Link>
-                <Link to="/*"
+                <Link to="/about"
                     className={style.about} >
                     Nosotros
                 </Link>

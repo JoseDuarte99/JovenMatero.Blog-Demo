@@ -30,9 +30,11 @@ import RegisterForm from './page/Register/Register';
 import UserProfile from './page/UserProfile/UserProfile';
 import Home from './page/Home/Home';
 import PostById from './page/PostById/PostById';
+import About from './page/About/About';
 
 // Import Contexts
 import AppProviders from './context/AppProvider';
+
 
 
 const queryClient = new QueryClient();
@@ -50,13 +52,14 @@ createRoot(document.getElementById('root')!).render(
                 {/* Navbar and Footer ------------- */}
             <Route element={<NavbarAndFooterLayout />}>
               <Route path='/home' element={<Home />}/>
-              <Route path='/posteo/:id' element={<PostById/>} />
+              <Route path='/post/:id' element={<PostById/>} />
             </Route>
             
             <Route element={<WithoutNavbarAndFooter/>}>
               <Route path='/login' element={<LoginForm />}/>
               <Route path='/register' element={<RegisterForm />}/>
               <Route path='/me' element={<UserProfile />}/>
+              <Route path='/about' element={<About />}/>
               <Route path='*' element={<NotFound404/>}/>
             </Route>
 

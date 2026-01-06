@@ -2,32 +2,35 @@
 import style from "./DropdownMenu.module.css"
 
 // Import React
-import { useContext } from "react";
+// import { useContext } from "react";
 
 // Import Contexts
-import AuthContext from "../../context/AuthContext";
+// import AuthContext from "../../context/AuthContext";
 
 // Import Components
 // Import Types
 
 // Import Others
-import { HomeSvg, SummarySvg, OnSaleSvg, LoginSvg, RegisterSvg, LogoutSvg, ProfileSvg,
+import { HomeSvg, SummarySvg, OnSaleSvg,
+    //  LoginSvg, RegisterSvg, LogoutSvg, ProfileSvg,
         // FashionSvg, OfferSvg, SuperMarketSvg, PlaySvg, HistorySvg, HeadsetSvg, BestSellingSvg, OfficialStoreSvg, CategoriesSvg, DownloadSvg 
     } from "./DropdownMenuIcons"
 import { Link } from "react-router"
 
 
 type DropdownMenuType = {
-    onClickDropdownMenu: () => void;
-    logoutFn: () => void;
+    onClickDropdownMenu?: () => void;
+    logoutFn?: () => void;
 }
 
-function DropdownMenu({onClickDropdownMenu, logoutFn} :DropdownMenuType) {
+function DropdownMenu({onClickDropdownMenu,
+    //  logoutFn
+    } :DropdownMenuType) {
 
     // AUTH-CONTEXT
-    const authContext = useContext(AuthContext)
-    if (!authContext){throw new Error('Authentication Error');}
-    const {currentUser} = authContext;
+    // const authContext = useContext(AuthContext)
+    // if (!authContext){throw new Error('Authentication Error');}
+    // const {currentUser} = authContext;
 
 
     return (
@@ -40,7 +43,7 @@ function DropdownMenu({onClickDropdownMenu, logoutFn} :DropdownMenuType) {
                 </div>
             </section>
             <ul className={style.options}>
-                { currentUser 
+                {/* { currentUser 
                 ? <>
                     <li>{LogoutSvg}<Link to={"/home"} onClick={logoutFn} >Cerrar Sesión</Link></li>
                     <li>{ProfileSvg}<Link to={"/me"} onClick={onClickDropdownMenu} >Mi Perfil</Link></li>
@@ -49,7 +52,7 @@ function DropdownMenu({onClickDropdownMenu, logoutFn} :DropdownMenuType) {
                     <li>{LoginSvg}<Link to={"/login"} onClick={onClickDropdownMenu} >Iniciar Sesión</Link></li>
                     <li>{RegisterSvg}<Link to={"/register"} onClick={onClickDropdownMenu} >Registrarme</Link></li>
                 </>
-                }
+                } */}
                 <li>{HomeSvg}<Link to={"/home"} onClick={onClickDropdownMenu} >Inicio</Link></li>
                 <li>{SummarySvg}<Link to={"/*"} onClick={onClickDropdownMenu} >Ayuda</Link></li>
                 <li>{OnSaleSvg}<Link to={"/*"} onClick={onClickDropdownMenu} >Catalogo</Link></li>

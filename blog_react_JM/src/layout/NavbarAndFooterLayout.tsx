@@ -6,7 +6,7 @@ import { Outlet } from "react-router";
 
 // Import Contexts
 // Import Components
-import  Navbar  from "../components/Navbar/Navbar";
+import  NavbarWithoutLogin  from "../components/NavbarWithoutLogin/NavbarWithoutLogin";
 import Footer from "../components/Footer/Footer";
 
 // Import Types
@@ -15,7 +15,7 @@ import Footer from "../components/Footer/Footer";
 
 const NavbarAndFooterLayout = () => (
   <div className="layout">
-    <Navbar />
+    <NavbarWithoutLogin />
       <div className="content">
         <Outlet />
       </div>

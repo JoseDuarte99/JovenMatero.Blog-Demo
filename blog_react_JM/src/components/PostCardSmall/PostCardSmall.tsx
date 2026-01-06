@@ -18,14 +18,22 @@ function PostCardSmall( props:PostType ) {
 
 
     return (
-        <Link to={`/posteo/${id}`} className={style.cardSmall}>
+        <Link to={`/post/${id}`} className={style.cardSmall}>
             <img src={image} alt={title}/>
             <div>
                 <h1>{title}</h1>
                 <h3>{subtitle}</h3>
                 <span>{category.name}</span>
                 <p>{text}</p>
-                <span className={style.published}>{published.toString()}</span>
+                <span className={style.published}>
+                    {new Date(published).toLocaleString("es-AR", {
+                        day: "numeric",
+                        month: "numeric",
+                        year: "numeric",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                    })}
+                </span>
                 <div>
                     {tags.map(tag => (<span key={tag.id} className={style.tags}><TagSvg/>{tag.name}</span>))}
                 </div>
