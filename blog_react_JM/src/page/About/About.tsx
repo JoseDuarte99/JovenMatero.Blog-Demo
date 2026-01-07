@@ -2,6 +2,8 @@
 import style from "./About.module.css"
 
 // Import React
+import { Link } from "react-router"
+
 // Import Contexts
 // Import Components
 // Import Types
@@ -24,6 +26,8 @@ function About() {
 
                     <p>Cada artículo refleja nuestra pasión por esta costumbre que nos une y nuestro compromiso de ofrecer calidad, innovación y cercanía. Porque sabemos que detrás de cada mate hay una historia, y queremos ser parte de la tuya.</p>
                 </div>
+
+                <Link to="/home">Ir a la pagina principal</Link>
         </section>
     )
 }

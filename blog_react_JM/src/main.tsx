@@ -23,7 +23,7 @@ import { Toaster } from 'sonner'
 
 // Import Components
 import LoginForm from './page/Login/Login';
-import WithoutNavbarAndFooter from './layout/WithoutNavbarAndFooter';
+import WithoutNavbarAndFooter from './layout/SimpleNavbarAndFooter';
 import NavbarAndFooterLayout from './layout/NavbarAndFooterLayout';
 import NotFound404 from './components/NotFound404/NotFound404';
 import RegisterForm from './page/Register/Register';

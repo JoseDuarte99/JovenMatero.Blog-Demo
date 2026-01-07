@@ -3,10 +3,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 80vh;
-    padding: 20px 0 0 0 ;
     width: fit-content;
-    margin-top: 20px;
+    padding: 40px 0;
 }
 
 .about > div:first-of-type {
@@ -26,7 +24,7 @@
     width: fit-content;
 }
 
-.about > div:last-of-type {
+.about > div:nth-of-type(2) {
     width: 70%;
     height: 100%;
     font-size: 1.2em;
@@ -36,8 +34,57 @@
     justify-content: space-around;
     align-items: center;
 }
-.about > div:last-of-type > p {
+.about > div:nth-of-type(2) > p {
     border-bottom: solid 1px #ddd;
     padding: 0 20px 20px 20px ;
     margin: 20px 0;
 }
+
+/* SOCIAL NETWORKS ----------------------------------- */
+.about > div:last-of-type {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+.about > div:last-of-type > a {
+    text-decoration: none;
+    color: var(--JM-color-strong-green);
+}
+.about > div:last-of-type > a > svg {
+    height: 30px;
+    justify-self: center;
+}
+
+/* BUTTON ----------------------------------- */
+
+.about > a {
+    text-decoration: none;
+    background: none;
+    border: none;
+    color: #000a;
+    align-self: center;
+    margin: 20px 0 20px 0;
+    cursor: pointer;
+    transition: transform 250ms ease;
+}
+
+.about > a:hover {
+    transform: scale(1.05);
+}
+
+/* ------------------ PHONE SCREEN VIEW -------------------------*/
+    @media (max-width: 768px) {
+
+        .about {
+            padding: 20px 0;
+        }
+        
+        .about > div:first-of-type{
+            width: 100%;
+        }
+
+        .about > div:nth-of-type(2) {
+            width: 100%;
+        }
+    }

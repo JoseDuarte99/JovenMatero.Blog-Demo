@@ -54,7 +54,7 @@ function DropdownMenu({onClickDropdownMenu,
                 </>
                 } */}
                 <li>{HomeSvg}<Link to={"/home"} onClick={onClickDropdownMenu} >Inicio</Link></li>
-                <li>{SummarySvg}<Link to={"/*"} onClick={onClickDropdownMenu} >Ayuda</Link></li>
+                <li>{SummarySvg}<Link to={"/about"} onClick={onClickDropdownMenu} >Nosotros</Link></li>
                 <li>{OnSaleSvg}<Link to={"/*"} onClick={onClickDropdownMenu} >Catalogo</Link></li>
             </ul>
         </div>
