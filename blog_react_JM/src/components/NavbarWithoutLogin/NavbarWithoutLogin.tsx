@@ -70,6 +70,8 @@ function NavbarWithoutLogin() {
 
                 <div className={style.menu}>
                     <Link to={"/home"}>Inicio</Link>
+                    {/* <Link to={"/contact_us"}>Contacto</Link> */}
+                    <Link to={"/about"}>Catalogo</Link>
                     <Link to={"/about"}>Nosotros</Link>
                 </div>
                 <label htmlFor="menu" className={style.activeMenu} onClick={() => setMenuValue(!menuValue)}>

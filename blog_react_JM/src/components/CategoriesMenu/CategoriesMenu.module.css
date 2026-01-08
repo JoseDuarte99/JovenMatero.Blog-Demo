@@ -1,9 +1,9 @@
 .categoriesMenu {
-    padding: 20px;
+    padding: 10px 20px;
     position: absolute;
-    width: 100vw;
+    width: 100%;
     min-height: fit-content;
-    background: var(--JM-color-pastel-green);
+    background: var(--JM-color-strong-green);
     left: 0;
     top: 100%;
     z-index: 3;
@@ -12,4 +12,33 @@
 .categoriesMenu > ul {
     margin: 0;
     padding: 0;
+    border-top: solid 1px var(--JM-color-pastel-green);
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-evenly;
+    color: var(--JM-color-white);
+}
+
+.categoriesMenu > section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 20px;
+}
+
+.categoriesMenu > section > a {
+    text-decoration: none;
+    height: fit-content;
+    color: var(--JM-color-white);
+    font-weight: 100;
+}
+.categoriesMenu > section > a > h5{
+    text-align: center;
+}
+
+.categoriesMenu > section > a > img {
+    width: 100%;
+    height: 200px;      
+    object-fit: cover;  
+    object-position: center; 
+    justify-self: center;
 }
