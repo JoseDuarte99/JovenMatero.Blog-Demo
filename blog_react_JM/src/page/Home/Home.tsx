@@ -15,7 +15,7 @@ import PostCardMedium from "../../components/PostCardMedium/PostCardMedium";
 
 // Import Types
 // Import Others
-import image1 from "../../../public/imagen1.jpg"
+// import image1 from "../../../public/imagen1.jpg"
 // import image2 from "../../../public/imagen2.jpg"
 
 
@@ -45,7 +45,7 @@ function Home() {
         <main className={style.mainContainer}>
 
             <div className={style.carousel}>
-                    <img src={image1} alt="Imagen 1"/>
+                    {/* <img src={image1} alt="Imagen 1"/> */}
                     <div className={style.slider}>
                             <h1>El mate, tradición que nos une</h1>
                             <h3>El comienzo de cada encuentro.</h3>

@@ -2,7 +2,7 @@
 import style from "./NavbarWithoutLogin.module.css"
 
 // Import React
-import { useContext, useState } from "react";
+import { useContext, useState, type Dispatch, type SetStateAction } from "react";
 import { Link } from "react-router";
 
 // Import Contexts
@@ -22,14 +22,17 @@ import { LogoSVG } from "../SvgIcons/SvgIcons";
 
 
 
+type NavbarType = {
+    categoryState: boolean
+    // setCategoryState: (value: boolean)=> boolean;
+    setCategoryState: Dispatch<SetStateAction<boolean>>
+}
 
-
-function NavbarWithoutLogin() {
+function NavbarWithoutLogin( { categoryState, setCategoryState }: NavbarType ) {
 
     // Dropdown Menu Status
     const [menuValue, setMenuValue] = useState(false); 
-    // Category Menu Status
-    const [ categoryState, setCategoryState] = useState(false);
+
     // Search Status
     const [ searchState , setSearchState ] = useState(false);
 
@@ -54,7 +57,7 @@ function NavbarWithoutLogin() {
                     </button>
                     <Search onSearch={onSearch} setOnSearch={setOnSearch} />
                     { onSearch && <SearchResult/>}
-                    { categoryState && <CategoriesMenu/>}
+                    { categoryState && <CategoriesMenu setCategoryState={() => setCategoryState(false)} />}
                 </div>
                 <span className={style.search} onClick={() => setSearchState(!searchState)}>
                     {searchState 

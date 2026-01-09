@@ -67,7 +67,7 @@ function Navbar() {
                     </button>
                     <Search onSearch={onSearch} setOnSearch={setOnSearch} />
                     { onSearch && <SearchResult/>}
-                    { categoryState && <CategoriesMenu/>}
+                    { categoryState && <CategoriesMenu setCategoryState={() => setCategoryState(false)} />}
                 </div>
                 <span className={style.search} onClick={() => setSearchState(!searchState)}>
                     {searchState 
@@ -82,6 +82,8 @@ function Navbar() {
                 </Link>
                 <div className={style.menu}>
                     <Link to={"/home"}>Inicio</Link>
+                    {/* <Link to={"/contact_us"}>Contacto</Link> */}
+                    <Link to={"/about"}>Catalogo</Link>
                     <Link to={"/about"}>Nosotros</Link>
                     { currentUser 
                         ?<>
