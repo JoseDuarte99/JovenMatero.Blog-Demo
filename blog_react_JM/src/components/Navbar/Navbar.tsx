@@ -2,8 +2,8 @@
 import style from "./Navbar.module.css"
 
 // Import React
-import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { useContext, useState, type Dispatch, type SetStateAction } from "react";
+import { Link } from "react-router";
 
 // Import Contexts
 import AuthContext from "../../context/AuthContext";
@@ -22,15 +22,20 @@ import SearchMobile from "../SearchMobile/SearchMobile";
 import { LogoSVG } from "../SvgIcons/SvgIcons";
 
 
+type NavbarType = {
+    categoryState: boolean
+    // setCategoryState: (value: boolean)=> boolean;
+    setCategoryState: Dispatch<SetStateAction<boolean>>
+}
 
 
 
-function Navbar() {
+function Navbar( { categoryState, setCategoryState }: NavbarType ) {
 
     // Dropdown Menu Status
     const [menuValue, setMenuValue] = useState(false); 
-    // Category Menu Status
-    const [ categoryState, setCategoryState] = useState(false);
+    // // Category Menu Status
+    // const [ categoryState, setCategoryState] = useState(false);
     // Search Status
     const [ searchState , setSearchState ] = useState(false);
 
@@ -43,15 +48,15 @@ function Navbar() {
     // AUTH-CONTEXT
     const authContext = useContext(AuthContext)
     if (!authContext){throw new Error('Authentication Error');}
-    const {accessToken, refreshToken, currentUser, logout} = authContext;
+    // const {accessToken, refreshToken, currentUser, logout} = authContext;
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    const logoutFn = () => {
-        logout(accessToken!,refreshToken!)
-        setMenuValue(false)
-        navigate("/home")
-    }
+    // const logoutFn = () => {
+    //     logout(accessToken!,refreshToken!)
+    //     setMenuValue(false)
+    //     navigate("/home")
+    // }
 
 
     return (
@@ -83,9 +88,9 @@ function Navbar() {
                 <div className={style.menu}>
                     <Link to={"/home"}>Inicio</Link>
                     {/* <Link to={"/contact_us"}>Contacto</Link> */}
-                    <Link to={"/about"}>Catalogo</Link>
+                    <Link to={"/*"}>Catalogo</Link>
                     <Link to={"/about"}>Nosotros</Link>
-                    { currentUser 
+                    {/* { currentUser 
                         ?<>
                             <Link to={"/me"} className={style.me}>
                                 Mi Perfil
@@ -97,7 +102,7 @@ function Navbar() {
                             <Link to={"/register"}>Registrarme</Link>
                             <Link to={"/login"}>Iniciar Sesion</Link>
                         </>
-                    }
+                    } */}
                 </div>
 
                 <label htmlFor="menu" className={style.activeMenu} onClick={() => setMenuValue(!menuValue)}>
@@ -110,7 +115,9 @@ function Navbar() {
                         </svg>}
                 </label>
                 { menuValue &&
-                    <DropdownMenu onClickDropdownMenu={() => setMenuValue(!menuValue)} logoutFn={logoutFn} />
+                    <DropdownMenu 
+                    // onClickDropdownMenu={() => setMenuValue(!menuValue)} logoutFn={logoutFn}
+                    />
                 }
 
             </nav>

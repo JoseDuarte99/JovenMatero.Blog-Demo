@@ -27,8 +27,6 @@ function CategoriesMenu( { setCategoryState }: CategoriesMenuType) {
 
     // Categories of all posts
     const categories = posts.map(post => post.category);
-    console.log(new Set(categories))
-
 
     // Posts with the same category
     const postByCategory = posts.filter((p) => p.category.name === selectedCategory );

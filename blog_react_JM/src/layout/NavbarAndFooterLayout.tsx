@@ -5,28 +5,30 @@ import "./Layout.css"
 import { Outlet } from "react-router";
 import { useState } from "react";
 
-
 // Import Contexts
 // Import Components
-import  NavbarWithoutLogin  from "../components/NavbarWithoutLogin/NavbarWithoutLogin";
 import Footer from "../components/Footer/Footer";
+import Navbar from "../components/Navbar/Navbar";
+
 
 // Import Types
 // Import Others
 
 
-function NavbarAndFooterLayout() {
-  
+const NavbarAndFooterLayout = () => {
+
     // Category Menu Status
     const [ categoryState, setCategoryState] = useState(false);
 
-  <div className="layout">
-    <NavbarWithoutLogin categoryState={categoryState} setCategoryState={setCategoryState} />
-      <div className="content">
-        <Outlet />
-      </div>
-    <Footer />
-  </div>
+  return (
+    <div className="layout">
+      <Navbar  categoryState={categoryState} setCategoryState={setCategoryState} />
+        <div className="content" onClick={() => setCategoryState(false)}>
+          <Outlet />
+        </div>
+      <Footer />
+    </div>
+  )
 };
 
 export default NavbarAndFooterLayout;
