@@ -14,7 +14,12 @@ import SearchResult from "../SearchResult/SearchResult";
 // Import Types
 // Import Others
 
-function CategoriesMenu() {
+
+type SearchMobileType = {
+    setSearchState: (value: boolean) => void
+}
+
+function SearchMobile( { setSearchState }: SearchMobileType) {
 
     // SEARCH CONTEXT 
     const search = useContext(SearchContext);
@@ -25,9 +30,9 @@ function CategoriesMenu() {
     return (
         <div className={style.searchMobile}>
             <Search onSearch={onSearch} setOnSearch={setOnSearch} />
-            { onSearch && <SearchResult/>}
+            { onSearch && <SearchResult setSearchState={setSearchState}/>}
         </div>
     )
 }
 
-export default CategoriesMenu
+export default SearchMobile

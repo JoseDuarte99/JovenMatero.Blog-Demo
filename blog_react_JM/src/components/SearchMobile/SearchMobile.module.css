@@ -7,9 +7,18 @@
     left: 0;
     top: 100%;
     z-index: 3;
+    display: none;
 }
 
-.searchMobile > div {
+.searchMobile > div:first-of-type {
     font-size: 1em;
     padding: 5px 0 5px 0;
 }
+
+
+/* ------------------ PHONE SCREEN VIEW -------------------------*/
+    @media (max-width: 768px) { 
+        .searchMobile {
+            display: block;
+        }
+    }

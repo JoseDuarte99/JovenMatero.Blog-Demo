@@ -25,8 +25,6 @@ function Search(props: SearchType) {
         setOnSearch(e.target.value);
     };
 
-    console.log(onSearch)
-
 
 //  // Function for normalize string
 //     const normalizeString = (text: string): string => text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();

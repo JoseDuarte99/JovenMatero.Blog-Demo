@@ -34,8 +34,7 @@ function Navbar( { categoryState, setCategoryState }: NavbarType ) {
 
     // Dropdown Menu Status
     const [menuValue, setMenuValue] = useState(false); 
-    // // Category Menu Status
-    // const [ categoryState, setCategoryState] = useState(false);
+
     // Search Status
     const [ searchState , setSearchState ] = useState(false);
 
@@ -71,7 +70,7 @@ function Navbar( { categoryState, setCategoryState }: NavbarType ) {
                         : chevronDownCircleSvg}
                     </button>
                     <Search onSearch={onSearch} setOnSearch={setOnSearch} />
-                    { onSearch && <SearchResult/>}
+                    { onSearch && <SearchResult setSearchState={setSearchState}/>}
                     { categoryState && <CategoriesMenu setCategoryState={() => setCategoryState(false)} />}
                 </div>
                 <span className={style.search} onClick={() => setSearchState(!searchState)}>
@@ -81,7 +80,7 @@ function Navbar( { categoryState, setCategoryState }: NavbarType ) {
                     </svg> 
                     : lupSvg }
                 </span>
-                { searchState && <SearchMobile/>}
+                { searchState && <SearchMobile setSearchState={setSearchState}/>}
                 <Link to={"/home"} className={style.logo}>
                     <LogoSVG fill="#fff" />
                 </Link>
@@ -116,7 +115,8 @@ function Navbar( { categoryState, setCategoryState }: NavbarType ) {
                 </label>
                 { menuValue &&
                     <DropdownMenu 
-                    // onClickDropdownMenu={() => setMenuValue(!menuValue)} logoutFn={logoutFn}
+                    // onClickDropdownMenu={() => setMenuValue(!menuValue)} 
+                    // logoutFn={logoutFn}
                     />
                 }
 

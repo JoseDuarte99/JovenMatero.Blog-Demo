@@ -15,8 +15,11 @@ import PostContext from "../../context/PostsContext";
 // Import Types
 // Import Others
 
+type SearchResultType = {
+    setSearchState: (value: boolean) => void
+}
 
-function SearchResult() {
+function SearchResult({ setSearchState }: SearchResultType) {
 
     // POSTS-CONTEXT
     const postContext = useContext(PostContext)
@@ -36,15 +39,18 @@ function SearchResult() {
         <div className={style.searchResult}>
 
             { searchedPost.length != 0
-            ? <div className={style.searchedPost}>
-                {searchedPost.map(post => {
-                    return (
-                    <Link to={`/post/${post.id}`} key={post.id} className={style.suggestions} onClick={() => setOnSearch("")}>
-                        <img src={post.image} alt={post.title} />
-                        <span>{post.title}</span>
-                    </Link>
-                )})}
+            ? <>
+                <p>Resultado con: {onSearch}</p>
+                <div className={style.searchedPost}>
+                    {searchedPost.map(post => {
+                        return (
+                        <Link to={`/post/${post.id}`} key={post.id} className={style.suggestions}  onClick={() => { setOnSearch(""); setSearchState(false) }}>
+                            <img src={post.image} alt={post.title} />
+                            <span>{post.title}</span>
+                        </Link>
+                    )})}
                 </div>
+            </>
             : <p>Sin Resultados</p>
             }
 
