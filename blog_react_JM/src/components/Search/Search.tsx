@@ -15,11 +15,12 @@ export type SearchType = {
     imgSearch?: string;
     onSearch: string;
     setOnSearch: React.Dispatch<React.SetStateAction<string>>; 
+    setCategoryState: (value:boolean) => void;
 };
 
 
 function Search(props: SearchType) {
-    const { onSearch, setOnSearch} = props
+    const { onSearch, setOnSearch, setCategoryState } = props
 
     const searching = (e: React.ChangeEvent<HTMLInputElement>) => {
         setOnSearch(e.target.value);
@@ -30,8 +31,6 @@ function Search(props: SearchType) {
 //     const normalizeString = (text: string): string => text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
 
-
-
     return (
         <div className={style.search}>
             <input 
@@ -39,6 +38,7 @@ function Search(props: SearchType) {
                 placeholder="Search"
                 value={onSearch}
                 onChange={searching}
+                onClick={() => setCategoryState(false)}
             />
             <button>
                 {lupSvg}

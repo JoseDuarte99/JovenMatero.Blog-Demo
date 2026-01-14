@@ -18,7 +18,7 @@ function PostCardMedium( props:PostType ) {
 
 
     return (
-        <Link to={`/post/${id}`} className={style.cardMedium}>
+        <Link to={`/post/${id}`} className={style.cardMedium} onClick={() => window.scrollTo({ top: 0, behavior: "smooth"})}>
             <div>
                 <h1>{title}</h1>
                 <h3>{subtitle}</h3>

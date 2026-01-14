@@ -63,13 +63,13 @@ function Navbar( { categoryState, setCategoryState }: NavbarType ) {
             <nav className={style.navbar}>
 
                 <div className={style.searchAndCategories}>
-                    <button onClick={() => setCategoryState(!categoryState)}>
+                    <button onClick={() => {setCategoryState(!categoryState); setOnSearch("")}}>
                         <p>Categorías</p>
                         {categoryState
                         ? chevronDownCircleTopSvg                 
                         : chevronDownCircleSvg}
                     </button>
-                    <Search onSearch={onSearch} setOnSearch={setOnSearch} />
+                    <Search onSearch={onSearch} setOnSearch={setOnSearch} setCategoryState={setCategoryState}/>
                     { onSearch && <SearchResult setSearchState={setSearchState}/>}
                     { categoryState && <CategoriesMenu setCategoryState={() => setCategoryState(false)} />}
                 </div>
@@ -81,13 +81,13 @@ function Navbar( { categoryState, setCategoryState }: NavbarType ) {
                     : lupSvg }
                 </span>
                 { searchState && <SearchMobile setSearchState={setSearchState}/>}
-                <Link to={"/home"} className={style.logo}>
+                <Link to={"/home"} className={style.logo} onClick={() => window.scrollTo({ top: 0, behavior: "smooth"})}>
                     <LogoSVG fill="#fff" />
                 </Link>
                 <div className={style.menu}>
                     <Link to={"/home"}>Inicio</Link>
                     {/* <Link to={"/contact_us"}>Contacto</Link> */}
-                    <Link to={"/*"}>Catalogo</Link>
+                    <Link to={"/catalog"}>Catalogo</Link>
                     <Link to={"/about"}>Nosotros</Link>
                     {/* { currentUser 
                         ?<>

@@ -20,14 +20,14 @@ function About() {
                     <SvgAbout />
                 </div>
                 <div>
-                    <p>En nuestro emprendimiento creemos que el mate es mucho más que una bebida: es un símbolo de encuentro, tradición y momentos compartidos. Por eso nos dedicamos a ofrecer productos que acompañen cada cebada, desde mates de distintos estilos hasta vasos térmicos, botellas y accesorios que hacen más práctica y placentera la experiencia.</p>
+                    <p>En nuestro Joven Matero, creemos que el mate es mucho más que una bebida: es un símbolo de encuentro, tradición y momentos compartidos. Por eso nos dedicamos a ofrecer productos que acompañen cada cebada, desde mates de distintos estilos hasta vasos térmicos, botellas y accesorios que hacen más práctica y placentera la experiencia.</p>
 
                     <p>Nuestro blog nace con la idea de estar cerca de vos, brindándote novedades, consejos, información útil y promociones exclusivas. Queremos que encuentres aquí un espacio donde aprender más sobre el mundo matero, descubrir tips para cuidar tus productos y estar al tanto de todo lo que tenemos para vos.</p>
 
                     <p>Cada artículo refleja nuestra pasión por esta costumbre que nos une y nuestro compromiso de ofrecer calidad, innovación y cercanía. Porque sabemos que detrás de cada mate hay una historia, y queremos ser parte de la tuya.</p>
                 </div>
 
-                <Link to="/home">Ir a la pagina principal</Link>
+                <Link to="/home" onClick={() => window.scrollTo({ top: 0, behavior: "smooth"})}>Ir a la pagina principal</Link>
         </section>
     )
 }

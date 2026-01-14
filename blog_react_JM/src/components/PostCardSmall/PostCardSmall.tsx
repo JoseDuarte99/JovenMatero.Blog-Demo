@@ -18,7 +18,7 @@ function PostCardSmall( props:PostType ) {
 
 
     return (
-        <Link to={`/post/${id}`} className={style.cardSmall}>
+        <Link to={`/post/${id}`} className={style.cardSmall} onClick={() => window.scrollTo({ top: 0, behavior: "smooth"})}>
             <img src={image} alt={title}/>
             <div>
                 <h1>{title}</h1>
