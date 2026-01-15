@@ -7,6 +7,7 @@ import { Link } from "react-router";
 
 // Import Contexts
 import PostContext from "../../context/PostsContext";
+import { normalizeString } from "../../features/Features";
 
 // Import Components
 // Import Types
@@ -47,7 +48,7 @@ function CategoriesMenu( { setCategoryState }: CategoriesMenuType) {
             <div className={style.filteredPosts}>
             {filterPosts.map(post => {
                 return (
-                <Link to={`/post/${post.id}`} key={post.id} className={style.suggestions} onClick={() => setCategoryState()}>
+                <Link to={`/post/${normalizeString(post.title)}`} key={post.id} className={style.suggestions} onClick={() => setCategoryState()}>
                     <img src={post.image} alt={post.title} />
                     <span>{post.title}</span>
                 </Link>

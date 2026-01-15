@@ -44,6 +44,7 @@ class PostSerializer(serializers.ModelSerializer):
         ]
 
 
+
 # Comment Serializer --------------------------------------
 
 class CommentSerializer(serializers.ModelSerializer):

@@ -18,9 +18,9 @@ function SimpleFooter() {
         <footer className={style.simpleFooter}>
             <div>
                 <section className={style.socialNetworks}>
-                        <a href=""><SvgInstagramIcon height="100" fill="#000a"/></a>
-                        <a href=""><SvgFacebookIcon height="100" fill="#000a"/></a>
-                        <a href=""> <SvgWhatsappIcon height="100" fill="#000a"/></a>
+                        <a href="https://www.instagram.com/jovenmatero/#"><SvgInstagramIcon height="100" fill="#000a"/></a>
+                        <a href="https://www.facebook.com.ar/share/1A2YbPoZK7/"><SvgFacebookIcon height="100" fill="#000a"/></a>
+                        <a href="https://wa.me/c/5493624082562/"> <SvgWhatsappIcon height="100" fill="#000a"/></a>
                         {/* <a href=""><SvgInstagramIcon height="100" fill="#000a"/> joven_matero</a>
                         <a href=""><SvgFacebookIcon height="100" fill="#000a"/> Joven Matero</a>
                         <a href=""> <SvgWhatsappIcon height="100" fill="#000a"/> 3624xxxxxx</a> */}

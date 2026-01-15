@@ -15,7 +15,7 @@
 .catalogHeader {
     display: flex;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin-bottom: 20px;
 }
@@ -59,7 +59,6 @@
 .catalogBody > img {
     min-width: 300px;
     max-width: 550px;
-    
     width: 50vw;
 }
 .catalogBody > p {

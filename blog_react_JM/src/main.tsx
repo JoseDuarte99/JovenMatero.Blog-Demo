@@ -56,7 +56,7 @@ createRoot(document.getElementById('root')!).render(
                 {/* Navbar and Footer ------------- */}
             <Route element={<NavbarAndFooterLayout />}>
               <Route path='/home' element={<Home />}/>
-              <Route path='/post/:id' element={<PostById/>} />
+              <Route path='/post/:title' element={<PostById/>} />
             </Route>
             
             <Route element={<WithoutNavbarAndFooter/>}>

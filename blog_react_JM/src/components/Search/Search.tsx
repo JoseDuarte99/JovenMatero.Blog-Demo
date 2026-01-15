@@ -27,10 +27,6 @@ function Search(props: SearchType) {
     };
 
 
-//  // Function for normalize string
-//     const normalizeString = (text: string): string => text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-
-
     return (
         <div className={style.search}>
             <input 

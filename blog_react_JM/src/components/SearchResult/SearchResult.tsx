@@ -14,6 +14,8 @@ import PostContext from "../../context/PostsContext";
 // Import Components
 // Import Types
 // Import Others
+import { normalizeString } from "../../features/Features";
+
 
 type SearchResultType = {
     setSearchState: (value: boolean) => void
@@ -44,7 +46,7 @@ function SearchResult({ setSearchState }: SearchResultType) {
                 <div className={style.searchedPost}>
                     {searchedPost.map(post => {
                         return (
-                        <Link to={`/post/${post.id}`} key={post.id} className={style.suggestions}  onClick={() => { setOnSearch(""); setSearchState(false) }}>
+                        <Link to={`/post/${normalizeString(post.title)}`} key={post.id} className={style.suggestions}  onClick={() => { setOnSearch(""); setSearchState(false) }}>
                             <img src={post.image} alt={post.title} />
                             <span>{post.title}</span>
                         </Link>

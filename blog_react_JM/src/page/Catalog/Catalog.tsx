@@ -25,7 +25,7 @@ function Catalog() {
                 </div>
                 <div className={style.catalogBody}>
                     <img src={ soonCatalog } alt="A la espera del catalogo, con unos buenos mates." />
-                    <p>Pronto podras navegar a traves de todos nuestros productos disponibles.</p>
+                    <p>Pronto podras conocer de todos nuestros productos disponibles.</p>
                 </div>
 
                 <Link to="/home" onClick={() => window.scrollTo({ top: 0, behavior: "smooth"})}>Ir a la pagina principal</Link>

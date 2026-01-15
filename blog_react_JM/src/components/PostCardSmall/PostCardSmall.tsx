@@ -11,14 +11,16 @@ import type { PostType } from "../../types/Types"
 
 // Import Others
 import { TagSvg } from "../SvgIcons/SvgIcons"
+import { normalizeString } from "../../features/Features";
+
+
 
 
 function PostCardSmall( props:PostType ) {
-    const {title, subtitle, text, category, image, published, tags,id} = props
-
+    const {title, subtitle, text, category, image, published, tags} = props
 
     return (
-        <Link to={`/post/${id}`} className={style.cardSmall} onClick={() => window.scrollTo({ top: 0, behavior: "smooth"})}>
+        <Link to={`/post/${normalizeString(title)}`} className={style.cardSmall} onClick={() => window.scrollTo({ top: 0, behavior: "smooth"})}>
             <img src={image} alt={title}/>
             <div>
                 <h1>{title}</h1>

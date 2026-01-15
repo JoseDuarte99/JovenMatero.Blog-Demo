@@ -14,6 +14,9 @@ import PostCardLarge from "../../components/PostCardLarge/PostCardLarge"
 
 // Import Types
 // Import Others
+import { normalizeString } from "../../features/Features";
+
+
 
 function PostById() {
 
@@ -22,8 +25,8 @@ function PostById() {
   if (!postContext){throw new Error('Authentication Error');}
   const { posts } = postContext;
 
-  const { id } = useParams<{ id: string }>();
-  const postById = posts.find((p) => p.id === Number(id));
+  const { title } = useParams<{ id: string; title: string }>();
+  const postById = posts.find((p) => normalizeString(p.title) === title);
 
   // Posts with the same category
   const postByCategory = posts.filter(
@@ -38,6 +41,7 @@ function PostById() {
   // Suggestions: prefer same category, fallback to latest
   const postSuggestions = postByCategory.length > 0 ? postByCategory : otherPosts;
 
+
   return (
     <div className={style.postById}>
       <aside className={style.asideContainer}>
@@ -45,7 +49,7 @@ function PostById() {
         <section>
           {postSuggestions.map(post => {
             return (
-              <Link to={`/post/${post.id}`} key={post.id} className={style.suggestions} onClick={() => window.scrollTo({ top: 0, behavior: "smooth"})}>
+              <Link to={`/post/${normalizeString(post.title)}`} key={post.id} className={style.suggestions} onClick={() => window.scrollTo({ top: 0, behavior: "smooth"})}>
                 <img src={post.image} alt={post.title} />
                 <h5>{post.title}</h5>
               </Link>

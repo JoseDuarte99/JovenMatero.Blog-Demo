@@ -54,9 +54,9 @@ function Footer() {
                     <li>Barranqueras, Chaco</li>
                 </ul>
                 <div className={style.socialNetworks}>
-                    <Link to={"*"}>{InstagramSvg}</Link>
-                    <Link to={"*"}>{FacebookSvg}</Link>
-                    <Link to={"*"}>{WhatsappSvg}</Link>
+                    <Link to={"https://www.instagram.com/jovenmatero/#"}>{InstagramSvg}</Link>
+                    <Link to={"https://www.facebook.com.ar/share/1A2YbPoZK7/"}>{FacebookSvg}</Link>
+                    <Link to={"https://wa.me/c/5493624082562/"}>{WhatsappSvg}</Link>
                 </div>
                 <div className={style.subscription}>
                     <form onSubmit={handleSubscription} id="suscripcionForm">
