@@ -43,6 +43,10 @@ class PostSerializer(serializers.ModelSerializer):
             'comments'
         ]
 
+    def validate_title(self, value):
+        if Post.objects.filter(title=value).exists():
+            raise serializers.ValidationError("Ya existe un post con este título.")
+        return value
 
 
 # Comment Serializer --------------------------------------

@@ -29,7 +29,7 @@ function SearchMobile( { setSearchState }: SearchMobileType) {
 
     return (
         <div className={style.searchMobile}>
-            <Search onSearch={onSearch} setOnSearch={setOnSearch} />
+            <Search onSearch={onSearch} setOnSearch={setOnSearch} setCategoryState={()=>{}}/>
             { onSearch && <SearchResult setSearchState={setSearchState}/>}
         </div>
     )

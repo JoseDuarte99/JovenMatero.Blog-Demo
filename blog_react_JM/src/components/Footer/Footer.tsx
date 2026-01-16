@@ -9,6 +9,7 @@ import { useMutation } from "@tanstack/react-query";
 
 // Import Others
 import { subscriptionService } from "../../api/services";
+import TermoMate from "../../../public/TermoMate.png"
 
 // Import Contexts
 // Import Components
@@ -48,11 +49,10 @@ function Footer() {
     return (
         <footer className={style.footer}>
             <section className={style.information}>
-                <ul>
-                    <li>JOVEN MATERO</li>
-                    <li>Email: joven.matero@gmail.com</li>
-                    <li>Barranqueras, Chaco</li>
-                </ul>
+                <div>
+                    <img src={TermoMate} alt="Un Termo, junto a un Mate" onClick={() => window.scrollTo({ top: 0, behavior: "smooth"})}/>
+                    <span>Chaco, Argentina</span>
+                </div>
                 <div className={style.socialNetworks}>
                     <Link to={"https://www.instagram.com/jovenmatero/#"}>{InstagramSvg}</Link>
                     <Link to={"https://www.facebook.com.ar/share/1A2YbPoZK7/"}>{FacebookSvg}</Link>

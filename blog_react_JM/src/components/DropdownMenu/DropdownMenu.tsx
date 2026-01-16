@@ -38,7 +38,7 @@ function DropdownMenu({onClickDropdownMenu,
             <section className={style.profile}>
                 {profileNone}
                 <div>
-                    <h5>Bienvenido</h5>
+                    <h5>Bienvenido <span className={style.soon}>Muy pronto!</span> </h5>
                     <p> Pronto podras formar parte de nuestra comunidad...</p>
                 </div>
             </section>
@@ -55,7 +55,7 @@ function DropdownMenu({onClickDropdownMenu,
                 } */}
                 <li>{HomeSvg}<Link to={"/home"} onClick={onClickDropdownMenu} >Inicio</Link></li>
                 <li>{SummarySvg}<Link to={"/about"} onClick={onClickDropdownMenu} >Nosotros</Link></li>
-                <li>{OnSaleSvg}<Link to={"/*"} onClick={onClickDropdownMenu} >Catalogo</Link></li>
+                <li>{OnSaleSvg}<Link to={"/catalog"} onClick={onClickDropdownMenu} >Catalogo</Link></li>
             </ul>
         </div>
     )

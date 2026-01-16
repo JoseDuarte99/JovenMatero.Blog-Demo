@@ -27,7 +27,7 @@ class Tag(models.Model):
 # Post ------------------------------------------------------------------------------------
 
 class Post(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=50, unique=True)
     subtitle = models.CharField(max_length=100, blank=True)
     date = models.DateTimeField(auto_now_add=True)
     text = models.TextField()
