@@ -5,6 +5,7 @@ import style from "./PostCardLarge.module.css"
 // Import Contexts
 // Import Components
 import Comments from "../Comments/Comments"
+import ImageCarousel from "../ImageCarousel/ImageCarousel"
 
 // Import Types
 import type { PostType } from "../../types/Types"
@@ -13,9 +14,13 @@ import type { PostType } from "../../types/Types"
 import { TagSvg } from "../SvgIcons/SvgIcons"
 
 
-function PostCardLarge ( props:PostType ) {
-    const {title, subtitle, text, category, image, published, tags} = props
 
+
+
+function PostCardLarge ( props:PostType ) {
+    const {title, subtitle, text, category, image, published, tags, images} = props
+
+    console.log()
 
     return (
         <div className={style.cardLarge}>
@@ -30,7 +35,13 @@ function PostCardLarge ( props:PostType ) {
                 </span>
                 <h1>{title}</h1>
                 <span>{category.name}</span>
-                <img src={image} alt={title}/>
+                { images?.length === 0
+                ? <img src={image} alt={title}/>
+                :<ImageCarousel 
+                    mainImage={image} 
+                    images={images} 
+                    alt={title} 
+                /> }
                 <h3>{subtitle}</h3>
                 <p>{text}</p>
                 <div>

@@ -4,7 +4,9 @@ export type PostType = {
     subtitle: string;
     text: string;
     author?: string;
-    category: { id: number; name: string }; tags: { id: number; name: string }[];
+    category: { id: number; name: string }; 
+    tags: { id: number; name: string }[];
     published: Date | string;
     image: string;
+    images?: { id: number; image: string }[];
 }

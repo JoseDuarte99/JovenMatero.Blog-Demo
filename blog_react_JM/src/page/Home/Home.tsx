@@ -11,11 +11,12 @@ import PostContext from "../../context/PostsContext";
 // Import Components
 import PostCardSmall from "../../components/PostCardSmall/PostCardSmall";
 import PostCardMedium from "../../components/PostCardMedium/PostCardMedium";
-
+import CookieBanner from "../../components/CookiesBanner/CookiesBanner";
 
 // Import Types
 // Import Others
 import image1 from "../../../public/imagen1.jpg"
+
 // import image2 from "../../../public/imagen2.jpg"
 
 
@@ -41,7 +42,8 @@ function Home() {
     
 
     console.log(posts)
-    return (
+
+    return (<>
         <main className={style.mainContainer}>
 
             <div className={style.carousel}>
@@ -99,6 +101,10 @@ function Home() {
                 </div>
             </section>
         </main>
+        <CookieBanner privacyUrl="/politica-privacidad" onAccept={() => console.log("Cookies aceptadas")}
+        onDecline={() => console.log("Cookies rechazadas")}
+      />
+      </>
     )
 }
 

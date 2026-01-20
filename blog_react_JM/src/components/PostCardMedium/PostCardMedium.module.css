@@ -10,6 +10,7 @@
 
 .cardMedium > img {
     width: 350px;
+    min-width: 350px;
     object-fit: cover;  
     object-position: center; 
     box-shadow: 0 0 10px #0003;  

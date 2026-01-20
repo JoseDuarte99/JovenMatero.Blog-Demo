@@ -68,6 +68,7 @@ function PostById() {
             text={postById.text}
             published={postById.published}
             tags={postById.tags}
+            images={postById.images}
         />
         : <p>No existe el posteo</p> }
       </main>

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from ..models import Category, Tag, Post, Comment
+from ..models import Category, Tag, Post, Comment, PostImage
 
 
 # Category Serializer --------------------------------------
@@ -18,9 +18,18 @@ class TagSerializer(serializers.ModelSerializer):
         fields = ['id', 'name']
 
 
+# PostImages Serializer  --------------------------------------
+
+class PostImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PostImage
+        fields = ['id', 'image']
+
+
 # Post Serializer  --------------------------------------
 
 class PostSerializer(serializers.ModelSerializer):
+    images = PostImageSerializer(many=True, read_only=True)  # related_name='images'
     category = CategorySerializer(read_only=True)
     category_id = serializers.PrimaryKeyRelatedField(
         queryset=Category.objects.all(), source='category', write_only=True
@@ -38,10 +47,13 @@ class PostSerializer(serializers.ModelSerializer):
             'id', 'title', 'subtitle', 'date', 'text', 'active',
             'category', 'category_id',
             'author',
-            'image', 'published',
+            'image', 'images', 
+            'published',
             'tags', 'tag_ids',
-            'comments'
+            'comments',
+            
         ]
+
 
     def validate_title(self, value):
         if Post.objects.filter(title=value).exists():

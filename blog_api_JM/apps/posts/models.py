@@ -34,9 +34,9 @@ class Post(models.Model):
     active = models.BooleanField(default=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='posts', default='posts/post_default.png', blank=True, null=True)
     published = models.DateTimeField(default=timezone.now)
     tags = models.ManyToManyField(Tag, related_name='posts')
+    image = models.ImageField(upload_to='posts', default='posts/post_default.png', blank=True, null=True)
 
     class Meta:
         ordering = ('-published',)
@@ -53,6 +53,18 @@ class Post(models.Model):
                 img.thumbnail(output_size)
                 img.save(self.image.path, quality=90)
 
+class PostImage(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to='posts')
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if self.image:
+            img = Image.open(self.image.path)
+            if img.height > 520 or img.width > 450:
+                output_size = (520, 450)
+                img.thumbnail(output_size)
+                img.save(self.image.path, quality=90)
 
 
 # Comments ------------------------------------------------------------------------------------
