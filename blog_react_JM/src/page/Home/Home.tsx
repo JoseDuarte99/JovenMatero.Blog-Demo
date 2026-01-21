@@ -11,7 +11,7 @@ import PostContext from "../../context/PostsContext";
 // Import Components
 import PostCardSmall from "../../components/PostCardSmall/PostCardSmall";
 import PostCardMedium from "../../components/PostCardMedium/PostCardMedium";
-import CookieBanner from "../../components/CookiesBanner/CookiesBanner";
+import InfoBanner from "../../components/InfoBanner/InfoBanner";
 
 // Import Types
 // Import Others
@@ -101,10 +101,8 @@ function Home() {
                 </div>
             </section>
         </main>
-        <CookieBanner privacyUrl="/politica-privacidad" onAccept={() => console.log("Cookies aceptadas")}
-        onDecline={() => console.log("Cookies rechazadas")}
-      />
-      </>
+        <InfoBanner/>
+    </>
     )
 }
 

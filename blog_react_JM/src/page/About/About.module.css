@@ -40,21 +40,6 @@
     margin: 20px 0;
 }
 
-/* SOCIAL NETWORKS ----------------------------------- */
-.about > div:last-of-type {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 20px;
-}
-.about > div:last-of-type > a {
-    text-decoration: none;
-    color: var(--JM-color-strong-green);
-}
-.about > div:last-of-type > a > svg {
-    height: 30px;
-    justify-self: center;
-}
 
 /* BUTTON ----------------------------------- */
 

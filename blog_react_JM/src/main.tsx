@@ -29,6 +29,7 @@ import Home from './page/Home/Home';
 import PostById from './page/PostById/PostById';
 import About from './page/About/About';
 import Catalog from './page/Catalog/Catalog';
+import TermsAndConditions from './page/TermsAndConditions/TermsAndConditions';
 
 // import LoginForm from './page/Login/Login';
 // import RegisterForm from './page/Register/Register';
@@ -65,6 +66,7 @@ createRoot(document.getElementById('root')!).render(
               {/* <Route path='/me' element={<UserProfile />}/> */}
               <Route path='/about' element={<About />}/>
               <Route path='/catalog' element={<Catalog />}/>
+              <Route path='/terms_and_conditions' element={<TermsAndConditions />}/>
               <Route path='*' element={<NotFound404/>}/>
             </Route>
 

@@ -28,6 +28,9 @@ function About() {
                 </div>
 
                 <Link to="/home" onClick={() => window.scrollTo({ top: 0, behavior: "smooth"})}>Ir a la pagina principal</Link>
+
+                <Link to="/terms_and_conditions">Terminos y Condiciones</Link>
+                <Link to="/privacy_policy">Política de privacidad</Link>
         </section>
     )
 }
