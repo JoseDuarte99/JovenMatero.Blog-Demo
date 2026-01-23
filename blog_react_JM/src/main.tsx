@@ -23,7 +23,7 @@ import { Toaster } from 'sonner'
 
 // Import Components
 import NavbarAndFooterLayout from './layout/NavbarAndFooterLayout';
-import WithoutNavbarAndFooter from './layout/SimpleNavbarAndFooter';
+import SimpleNavbarAndFooter from './layout/SimpleNavbarAndFooter';
 import NotFound404 from './components/NotFound404/NotFound404';
 import Home from './page/Home/Home';
 import PostById from './page/PostById/PostById';
@@ -42,6 +42,7 @@ import AppProviders from './context/AppProvider';
 
 
 
+
 const queryClient = new QueryClient();
 
 
@@ -52,6 +53,7 @@ createRoot(document.getElementById('root')!).render(
     <QueryClientProvider client={queryClient}>
       <AppProviders>
         <BrowserRouter>
+
           <Routes>
               <Route path="/" element={<Navigate to="/home" replace />} />
                 {/* Navbar and Footer ------------- */}
@@ -60,7 +62,7 @@ createRoot(document.getElementById('root')!).render(
               <Route path='/post/:title' element={<PostById/>} />
             </Route>
             
-            <Route element={<WithoutNavbarAndFooter/>}>
+            <Route element={<SimpleNavbarAndFooter/>}>
               {/* <Route path='/login' element={<LoginForm />}/>
               <Route path='/register' element={<RegisterForm />}/> */}
               {/* <Route path='/me' element={<UserProfile />}/> */}

@@ -3,7 +3,7 @@ import style from "./Footer.module.css"
 
 // Import React
 import { Link } from "react-router"
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { toast } from "sonner";
 import { useMutation } from "@tanstack/react-query";
 
@@ -12,6 +12,8 @@ import { subscriptionService } from "../../api/services";
 import TermoMate from "../../../public/TermoMate.png"
 
 // Import Contexts
+import TermsOrPrivacyContext from "../../context/TermsOrPrivacyContext";
+
 // Import Components
 // Import Types
 
@@ -26,6 +28,12 @@ function Footer() {
     const [ subscribedEmail, setSubscribedEmail ] = useState("");
     
     
+    // TERMS-OR-PRIVACY-CONTEXT
+    const termsOrPrivacyContext = useContext(TermsOrPrivacyContext)
+    if (!termsOrPrivacyContext){throw new Error('TermsAndPrivacy Error');}
+    const { setTermsOrPrivacy } = termsOrPrivacyContext;
+
+
     const subscriptionMutate = useMutation({
         mutationKey: ["subscription"],
         mutationFn: () => subscriptionService(subscribedEmail),
@@ -52,6 +60,8 @@ function Footer() {
                 <div>
                     <img src={TermoMate} alt="Un Termo, junto a un Mate" onClick={() => window.scrollTo({ top: 0, behavior: "smooth"})}/>
                     <span>Chaco, Argentina</span>
+                    <Link to="/terms_and_privacy" onClick={ () => {setTermsOrPrivacy(true); window.scrollTo({ top: 0, behavior: "smooth"})} }>Terminos y Condiciones</Link>
+                    <Link to="/terms_and_privacy" onClick={ () => {setTermsOrPrivacy(false); window.scrollTo({ top: 0, behavior: "smooth"})} }>Política de privacidad</Link>
                 </div>
                 <div className={style.socialNetworks}>
                     <Link to={"https://www.instagram.com/jovenmatero/#"}>{InstagramSvg}</Link>

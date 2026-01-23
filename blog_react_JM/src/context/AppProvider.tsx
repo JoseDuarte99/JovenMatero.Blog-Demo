@@ -7,6 +7,7 @@ import type { ReactNode } from "react";
 import AuthProvider  from "./AuthProvider";
 import SearchProvider from "./SearchProvider";
 import PostsProvider from "./PostsProvider";
+import TermsOrPrivacyProvider from "./TermsOrPrivacyProvider";
 
 // Import Components
 // Import Types
@@ -21,7 +22,9 @@ const AppProviders = ({ children }: AppProviderProps) => (
     <PostsProvider>
         <AuthProvider>
             <SearchProvider>
-                {children}
+                <TermsOrPrivacyProvider>
+                    {children}
+                </TermsOrPrivacyProvider>
             </SearchProvider>
         </AuthProvider>
     </PostsProvider>

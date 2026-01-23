@@ -1,12 +1,24 @@
-import { useState, useEffect } from "react";
+// Import Style
 import styles from "./InfoBanner.module.css";
+
+// Import React
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router";
+
+// Import Contexts
+import TermsOrPrivacyContext from "../../context/TermsOrPrivacyContext";
+
+// Import Components
+// Import Types
+// Import Others
 
 function InfoBanner() {
     const [visible, setVisible] = useState(true);
-    const termsUrl = "";
-    const privacyUrl = "";
 
+    // TERMS-OR-PRIVACY-CONTEXT
+    const termsOrPrivacyContext = useContext(TermsOrPrivacyContext)
+    if (!termsOrPrivacyContext){throw new Error('TermsAndPrivacy Error');}
+    const { setTermsOrPrivacy } = termsOrPrivacyContext;
 
     useEffect(() => {
         const closed = sessionStorage.getItem("bannerClosed");
@@ -23,10 +35,11 @@ function InfoBanner() {
     return (
         <div className={styles.infoBanner}>
                 <span className={styles.infoText}>
-                    📄 Si quieres conocer nuestros{" "}
-                    <a href={termsUrl} className={styles.infoLink}>Términos y Condiciones</a> o{" "}
-                    <a href={privacyUrl} className={styles.infoLink}>Política de Privacidad</a>, visitá los siguientes enlaces.
-                    <Link to="/terms_and_privacy">Términos y Condiciones</Link>
+                    Puedes conocer sobre nuestras 
+                    <Link to="/terms_and_privacy" onClick={ () => {setTermsOrPrivacy(true); window.scrollTo({ top: 0, behavior: "smooth"})} }>Terminos y Condiciones</Link>
+                    o
+                    <Link to="/terms_and_privacy" onClick={ () => {setTermsOrPrivacy(false); window.scrollTo({ top: 0, behavior: "smooth"})} }>Política de privacidad</Link>
+                    aquí.
                 </span>
             <button onClick={closeBanner} className={styles.closeButton}>Cerrar</button>
         </div>

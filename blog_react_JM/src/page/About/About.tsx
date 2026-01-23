@@ -3,16 +3,23 @@ import style from "./About.module.css"
 
 // Import React
 import { Link } from "react-router"
+import { useContext } from "react";
 
 // Import Contexts
+import TermsOrPrivacyContext from "../../context/TermsOrPrivacyContext";
+
 // Import Components
 // Import Types
 // Import Others
 
 
-
-
 function About() {
+
+    // TERMS-OR-PRIVACY-CONTEXT
+    const termsOrPrivacyContext = useContext(TermsOrPrivacyContext)
+    if (!termsOrPrivacyContext){throw new Error('TermsAndPrivacy Error');}
+    const { setTermsOrPrivacy } = termsOrPrivacyContext;
+
     return (
         <section className={style.about}>
                 <div>
@@ -29,8 +36,8 @@ function About() {
 
                 <Link to="/home" onClick={() => window.scrollTo({ top: 0, behavior: "smooth"})}>Ir a la pagina principal</Link>
 
-                <Link to="/terms_and_conditions">Terminos y Condiciones</Link>
-                <Link to="/privacy_policy">Política de privacidad</Link>
+                <Link to="/terms_and_privacy" onClick={ () => {setTermsOrPrivacy(true); window.scrollTo({ top: 0, behavior: "smooth"})} }>Terminos y Condiciones</Link>
+                <Link to="/terms_and_privacy" onClick={ () => {setTermsOrPrivacy(false); window.scrollTo({ top: 0, behavior: "smooth"})} }>Política de privacidad</Link>
         </section>
     )
 }

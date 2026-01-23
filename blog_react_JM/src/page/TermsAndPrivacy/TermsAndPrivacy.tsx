@@ -3,42 +3,46 @@ import style from "./TermsAndPrivacy.module.css"
 
 // Import React
 import { Link } from "react-router"
-import { useState } from "react";
+import { useContext } from "react";
+
+// Import Contexts
+import TermsOrPrivacyContext from "../../context/TermsOrPrivacyContext";
+
+// Import Components
 import Terms from "../../components/Terms/Terms";
 import PrivacyPolicy from "../../components/PrivacyPolicy/PrivacyPolicy";
 
-// Import Contexts
-// Import Components
 // Import Types
 // Import Others
 
 
 
+function TermsAndPrivacy( ) {
 
-function TermsAndPrivacy() {
-
-    const [ termsOrPrivacy, setTermsOrPrivacy ] = useState(true);
+    // TERMS-OR-PRIVACY-CONTEXT
+    const termsOrPrivacyContext = useContext(TermsOrPrivacyContext)
+    if (!termsOrPrivacyContext){throw new Error('TermsAndPrivacy Error');}
+    const { termsOrPrivacy, setTermsOrPrivacy } = termsOrPrivacyContext;
 
 
     return (
+
         <section className={style.termsAndPrivacy}>
-            <div>
+            <div className={style.infoTitle}>
                 <div>
-                    {/* { termsOrPrivacy
-                        ?<h3>TÉRMINOS Y CONDICIONES</h3>
-                        :<h3>POLÍTICA DE PRIVACIDAD</h3>
-                    }
-                    <span>Última actualización: Enero 2026</span>  */}
-
-                    <div className={style.containerTitle}>
-                        <h3 className={termsOrPrivacy ? "" : style.notActive} onClick={() => setTermsOrPrivacy(!termsOrPrivacy)} >TÉRMINOS Y CONDICIONES</h3>
-                        <h3 className={termsOrPrivacy ? style.notActive : ""} onClick={() => setTermsOrPrivacy(!termsOrPrivacy)}>POLÍTICA DE PRIVACIDAD</h3>
-                        <SvgPointer onClick={() => setTermsOrPrivacy(!termsOrPrivacy)}/>
-                    </div>
-                    <span>Última actualización: Enero 2026</span>  
-
+                    <h3 className={termsOrPrivacy ? style.active : style.notActive} onClick={() => setTermsOrPrivacy(!termsOrPrivacy)}> 
+                        <SvgPointer direction={termsOrPrivacy ?"rotate(0)" :"rotate(-90)"} color={termsOrPrivacy ?"#000d" :"#dfdfdf"} />
+                        TÉRMINOS Y CONDICIONES
+                    </h3>
+                    <h3 className={termsOrPrivacy ? style.notActive : style.active} onClick={() => setTermsOrPrivacy(!termsOrPrivacy)}> 
+                        <SvgPointer direction={termsOrPrivacy ?"rotate(-90)" :"rotate(0)"} color={termsOrPrivacy ?"#dfdfdf" :"#000d"} />
+                        POLÍTICA DE PRIVACIDAD
+                    </h3>
                 </div>
-                { termsOrPrivacy ?<SvgTerms />: <SvgPrivacy /> }
+                <div>
+                    { termsOrPrivacy ?<SvgTerms />: <SvgPrivacy /> }
+                    <span>Última actualización: Enero 2026</span>  
+                </div>
             </div>
 
             { termsOrPrivacy ?<Terms/> :<PrivacyPolicy/> }
@@ -85,34 +89,24 @@ const SvgPrivacy = () => (
 )
 
 
-type PointerType = { onClick: () => void; }
+type PointerType = { color: string; direction: string }
 
-const SvgPointer = ({onClick}: PointerType) => (
+const SvgPointer = ({ color, direction }: PointerType ) => (
+
     <svg
         xmlns="http://www.w3.org/2000/svg"
-        fill="#dfdfdf"
-        stroke="#dfdfdf"
-        transform="rotate(45)"
-        viewBox="0 0 32 32"
-        onClick={onClick}
-    >
-        <defs>
-        <clipPath id="a">
-            <path d="M0 0h32v32H0z" />
-        </clipPath>
-        </defs>
-        <g clipPath="url(#a)" data-name="Group 2341">
-        <g data-name="Group 2340">
-            <g data-name="Group 2339">
-            <path
-                d="M26.485 19.1a2.963 2.963 0 0 0-.4-3.687 2.917 2.917 0 0 0-1.334-.755 3.238 3.238 0 0 0-.733-3.431 3.1 3.1 0 0 0-1.288-.754l4.6-4.6a3.44 3.44 0 1 0-4.865-4.864l-8.978 8.978a5.419 5.419 0 0 0-3.292.09 11.01 11.01 0 0 0-5.9 6.239 12.163 12.163 0 0 0 .758 9.429 10.684 10.684 0 0 0 6.544 5.92 8.835 8.835 0 0 0 7.174-1.076 52.474 52.474 0 0 0 8.1-6.979 2.957 2.957 0 0 0 0-4.185 3 3 0 0 0-.386-.325Zm-.931 3.233a51.5 51.5 0 0 1-7.777 6.712 7.007 7.007 0 0 1-5.683.854 8.648 8.648 0 0 1-5.389-4.952 10.341 10.341 0 0 1-.683-8.007 9.158 9.158 0 0 1 4.895-5.173 2.549 2.549 0 0 1 .945-.155l-2.445 2.445a.92.92 0 0 0 1.3 1.3l3.688-3.689 9.355-9.354a1.603 1.603 0 0 1 2.267 2.267l-7.98 7.98a.92.92 0 0 0 1.3 1.3l1.216-1.215a.87.87 0 0 0 .172-.114 1.435 1.435 0 0 1 1.982 0 1.415 1.415 0 0 1-.028 2.015l-.878.962a.918.918 0 1 0 1.357 1.237l.02-.021.01-.007a1.123 1.123 0 0 1 1.665 1.5l-.812.436a2.95 2.95 0 0 0-1.364.778.919.919 0 0 0 1.085 1.458l.9-.483a1.124 1.124 0 0 1 1.232 1.117 1.134 1.134 0 0 1-.35.808Z"
-                data-name="Path 3839"
-            />
-            </g>
-        </g>
-        </g>
+        fill={color}
+        viewBox="0 0 24 24"
+        transform={direction} >
+
+        <path fill="#fff" d="M0 0h24v24H0z" />
+        <path
+        fill={color}
+        
+        fillRule="evenodd"
+        d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4a1 1 0 1 0-2 0v5.586l-1.293-1.293a1 1 0 0 0-1.414 1.414l2.913 2.913.046.044a.998.998 0 0 0 1.496 0l.046-.044 2.913-2.913a1 1 0 0 0-1.414-1.414L13 13.586V8Z"
+        clipRule="evenodd"
+        />
     </svg>
-
-
 )
 
