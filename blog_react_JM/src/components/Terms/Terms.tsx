@@ -11,15 +11,19 @@ import style from "./Terms.module.css"
 
 function Terms() {
     
+    const email = "jovenmatero@gmail.com"
+    // const cuit = ""
+
+
     return (
                 <div>
                     <section className={style.infoSection}>
-                        <h2>1. Información de la Empresa</h2>
+                        <h2>1. Información</h2>
                         <p><strong>Denominación:</strong> Joven Matero</p>
                         <p><strong>Domicilio:</strong> Provincia del Chaco, Argentina</p>
                         <p><strong>Sitio web:</strong> jovenmatero.com</p>
-                        <p><strong>Email:</strong> jovenmatero@gmail.com</p>
-                        <p><strong>CUIT:</strong> [agregar número de CUIT si corresponde]</p>
+                        <p><strong>Email:</strong> {email}</p>
+                        {/* <p><strong>CUIT:</strong> {cuit}</p> */}
                     </section>
 
                     <section className={style.infoSection}>
@@ -103,7 +107,7 @@ function Terms() {
 
                     <section className={style.infoSection}>
                         <h2>10. Reclamos y Consultas</h2>
-                        <p>Email: contacto@jovenmatero.com</p>
+                        <p>Email: {email}</p>
                         <p>Tiempo de respuesta: 10 días hábiles</p>
                         <p>Autoridad de aplicación: Dirección Nacional de Defensa del Consumidor</p>
                     </section>
@@ -136,10 +140,10 @@ function Terms() {
 
                     <section className={style.infoSection}>
                         <h2>14. Contacto</h2>
-                        <p>Email: contacto@jovenmatero.com</p>
+                        <p>Email: {email}</p>
                         <p>Sitio web: jovenmatero.com</p>
                         <p>Domicilio: Provincia del Chaco, Argentina</p>
-                        <p>CUIT: [agregar número de CUIT si corresponde]</p>
+                        {/* <p>CUIT: {cuit}</p> */}
                     </section>
                 </div>
     )

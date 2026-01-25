@@ -27,8 +27,10 @@ function CategoriesMenu( { setCategoryState }: CategoriesMenuType) {
     const { posts } = postContext;
 
     // Categories of all posts
-    const categories = posts.map(post => post.category);
+    const categories = [...new Set(posts.map(post => post.category.name))];
 
+    console.log(categories)
+    
     // Posts with the same category
     const postByCategory = posts.filter((p) => p.category.name === selectedCategory );
 
@@ -37,10 +39,10 @@ function CategoriesMenu( { setCategoryState }: CategoriesMenuType) {
     return (
         <div className={style.categoriesMenu}>
             <ul className={style.categoriesList}>
-                { categories.map(category => {
+                { categories.map((category, index) => {
                     return (
-                        <li key={category.id} onClick={() => setSelectedCategory(category.name)} className={selectedCategory == category.name ? style.selectedCategory : ""}>
-                            {category.name} {selectedCategory == category.name && chevronRightCircleSvg }
+                        <li key={index} onClick={() => setSelectedCategory(category)} className={selectedCategory == category ? style.selectedCategory : ""}>
+                            {category} {selectedCategory == category && chevronRightCircleSvg }
                         </li>
                     )
                 })}

@@ -136,8 +136,15 @@
         .information > ul{
             flex: none;
         }
+        .information > div:first-of-type {
+            flex: 1;
+        }
+        
+        .information > div:first-of-type > img {
+            height: 50px;
+        }
         .subscription {
-            flex: none;
+            flex: 1;
         }
         .subscription > form > div {
             flex-direction: column;

@@ -11,6 +11,11 @@ import style from "./PrivacyPolicy.module.css"
 
 function PrivacyPolicy() {
     
+    const email = "jovenmatero@gmail.com"
+    const url = "jovenmatero.com"
+
+    // const cuit = ""
+
     return (
 
             <div>
@@ -19,7 +24,7 @@ function PrivacyPolicy() {
                 <p>
                     Joven Matero (en adelante "nosotros", "nuestro sitio" o "la empresa"), 
                     con domicilio en Provincia del Chaco, Argentina, y sitio web 
-                    <strong> jovenmatero.com</strong>, se compromete a proteger la privacidad 
+                    <strong> {url}</strong>, se compromete a proteger la privacidad 
                     de nuestros usuarios conforme a la Ley N° 25.326 de Protección de Datos 
                     Personales y su decreto reglamentario N° 1558/01.
                 </p>
@@ -52,12 +57,18 @@ function PrivacyPolicy() {
 
                 <section className={style.infoSection}>
                 <h2>4. Cookies</h2>
+                <p>Utilizamos cookies técnicas esenciales para:</p>
+                <ul>
+                    <li>Funcionamiento básico del sitio web</li>
+                    <li>Recordar preferencias del usuario</li>
+                </ul>
+                {/* <h2>4. Cookies</h2>
                 <p>Utilizamos cookies técnicas esenciales y de terceros (Google Analytics) para:</p>
                 <ul>
                     <li>Funcionamiento básico del sitio web</li>
                     <li>Recordar preferencias del usuario</li>
                     <li>Analizar el tráfico web</li>
-                </ul>
+                </ul> */}
                 <p><em>Nota:</em> No utilizamos cookies de publicidad ni remarketing en este momento.</p>
                 </section>
 
@@ -75,7 +86,7 @@ function PrivacyPolicy() {
                 <ul>
                     <li>Cuando sea requerido por ley</li>
                     <li>Para el funcionamiento técnico del sitio (ej. proveedores de hosting)</li>
-                    <li>Herramientas de análisis web (Google Analytics, en forma anonimizada)</li>
+                    {/* <li>Herramientas de análisis web (Google Analytics, en forma anonimizada)</li> */}
                 </ul>
                 </section>
 
@@ -118,10 +129,10 @@ function PrivacyPolicy() {
 
                 <section className={style.infoSection}>
                 <h2>11. Contacto</h2>
-                <p>Email: contacto@jovenmatero.com</p>
-                <p>Sitio web: jovenmatero.com</p>
+                <p>Email: {email}</p>
+                <p>Sitio web: {url}</p>
                 <p>Domicilio: Provincia del Chaco, Argentina</p>
-                <p>CUIT: [agregar número de CUIT si corresponde]</p>
+                {/* <p>CUIT: {cuit}</p> */}
                 </section>
             </div>
     )
