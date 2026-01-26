@@ -23,7 +23,7 @@
 .asideContainer > h4 {
     font-size: 1em;
     margin: 0 0 20px 0;
-    padding: 0 0 20px 0;
+    padding: 0 0 10px 0;
     text-align: center;
     font-weight: lighter;
     border-bottom: solid 1px #ddd;
@@ -53,6 +53,7 @@
     height: 200px;      
     object-fit: cover;  
     object-position: center; 
+
 }
 
 .suggestions > h5 {

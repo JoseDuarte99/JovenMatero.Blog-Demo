@@ -34,7 +34,7 @@ function PostCardLarge ( props:PostType ) {
                     })}
                 </span>
                 <h1>{title}</h1>
-                <span>{category.name}</span>
+                <span className={style.category}>{category.name}</span>
                 { images?.length === 0
                 ? <img src={image} alt={title}/>
                 :<ImageCarousel 

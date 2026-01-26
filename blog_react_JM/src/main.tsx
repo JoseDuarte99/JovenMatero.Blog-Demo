@@ -24,7 +24,7 @@ import { Toaster } from 'sonner'
 // Import Components
 import NavbarAndFooterLayout from './layout/NavbarAndFooterLayout';
 import SimpleNavbarAndFooter from './layout/SimpleNavbarAndFooter';
-import NotFound404 from './components/NotFound404/NotFound404';
+import NotFound404 from './page/NotFound404/NotFound404';
 import Home from './page/Home/Home';
 import PostById from './page/PostById/PostById';
 import About from './page/About/About';
@@ -71,8 +71,6 @@ createRoot(document.getElementById('root')!).render(
               <Route path='/terms_and_privacy' element={<TermsAndPrivacy />}/>
               <Route path='*' element={<NotFound404/>}/>
             </Route>
-
-            <Route path='*' element={<NotFound404/>}/>
           
           </Routes>
         </BrowserRouter>

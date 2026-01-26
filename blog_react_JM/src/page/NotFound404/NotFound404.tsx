@@ -1,20 +1,47 @@
 // Import Style
+import { useContext } from "react";
 import style from "./NotFound404.module.css"
 
 // Import React
 import { Link } from "react-router"
 
+// Import Contexts
+import PostContext from "../../context/PostsContext";
+
+// Import Others
+import { normalizeString } from "../../features/Features";
+
 // Import Svg
+
 
 
 function NotFound404(){
     
-    
+        // POSTS-CONTEXT
+    const postContext = useContext(PostContext)
+    if (!postContext){throw new Error('Authentication Error');}
+    const { posts } = postContext;
+
+    const randomPosts = posts .sort(() => Math.random() - 0.5) .slice(0, 4);
+
     return (
+        
         <div className={style.notFound404}>
-        <span> {NotFound404Svg()} </span>
-        <h4>Parece que esta página no existe</h4>
-        <Link to="/"> Ir a la página principal</Link>
+            <span> {NotFound404Svg()} </span>
+            <h4>Parece que esta página no existe</h4>
+            <Link to="/"> Ir a la página principal</Link>
+            <section className={style.randomSection}>
+                <h4>Tal vez podrian interesarte</h4>
+                <div>
+                    {randomPosts.map(post => {
+                        return (
+                        <Link to={`/post/${normalizeString(post.title)}`} key={post.id} className={style.randomPost} onClick={() => window.scrollTo({ top: 0, behavior: "smooth"})}>
+                            <img src={post.image} alt={post.title} />
+                            <h5>{post.title}</h5>
+                        </Link>
+                    )})}
+                </div>
+            </section>
         </div>
     )
 };
