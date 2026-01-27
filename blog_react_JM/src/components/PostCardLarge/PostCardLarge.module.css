@@ -28,8 +28,8 @@
 .cardLarge > img {
     margin: 5px 0 20px 0 ;
     width: 100%;
-    max-width: 600px;
-    aspect-ratio: 1 / 1;
+    height: auto;
+    max-height: 400px;
     object-fit: cover;  
     object-position: center; 
     box-shadow: 0 0 10px #0005;  

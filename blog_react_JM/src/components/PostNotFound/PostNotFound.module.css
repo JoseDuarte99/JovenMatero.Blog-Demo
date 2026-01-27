@@ -1,0 +1,30 @@
+.postNoFound {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 70%;
+    gap: 20px;
+}
+
+.postNoFound > p {
+    border-bottom: solid 1px #ddd;
+}
+
+.postNoFound > img {
+    min-width: 300px;
+    max-width: 550px;
+    width: 40vw;
+}
+
+
+.goHome {
+    text-decoration: none;
+    color: #404040;
+    font-size: 0.9em;
+}
+
+.goHome:hover {
+    text-decoration: underline;
+}

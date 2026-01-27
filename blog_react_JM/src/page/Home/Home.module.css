@@ -10,6 +10,29 @@
 }
 
 
+/* POSTS LOADING -------------------------------- */
+.postLoading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 100px;
+    gap: 10px;
+}
+
+.postLoading > p {
+    color: var(--JM-color-strong-green);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.postLoading > img {
+    min-width: 200px;
+    max-width: 400px;
+}
+
+
 /* MOST RECENT POSTS-------------------------------- */
 .mostRelevant {
     height: fit-content;
