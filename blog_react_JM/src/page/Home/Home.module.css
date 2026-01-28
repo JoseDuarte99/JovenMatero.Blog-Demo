@@ -71,7 +71,8 @@
 
 /* ALL POSTS -------------------------------- */
 .allPosts {
-    padding: 0 20px;
+    padding:  0 20px;
+
 }
 .allPosts > h2 {
     font-size: 2em;
@@ -83,8 +84,16 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
     gap: 25px; 
     justify-content: center;
-    
+    max-height: 1000px;
+    overflow-y: auto; 
+    overflow-x: hidden
 }
+
+.allPosts > div::-webkit-scrollbar { 
+    width: 8px; 
+}
+
+
 
 
 .carousel {
@@ -128,11 +137,18 @@
 @media (max-width: 768px) {
     .mostRelevant {
         margin: 0 25px;
+        padding: 0 0 35px 0;
+
     }
     .mostRelevant > ul {
         align-self: center;
     }
     .mainContainer {
         gap: 40px
+    }
+
+    .allPosts {
+        padding:  0 10px;
+
     }
 }

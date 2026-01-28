@@ -15,6 +15,7 @@
     object-position: center; 
     box-shadow: 0 0 10px #0003;  
     transition: transform 250ms ease-out;
+    border-radius: 5px;
 }
 
 .cardMedium:hover > img{
@@ -99,8 +100,10 @@
     .cardMedium {
         flex-direction: column;
         height: auto;
+        gap: 15px;
     }
     .cardMedium > img {
         align-self: center;
+        min-width: 300px;
     }
 }

@@ -21,6 +21,7 @@
     object-position: center; 
     box-shadow: 0 0 5px #0003;  
     transition: transform 250ms ease;
+    border-radius: 5px;
 }
 
 .cardSmall:hover > img {

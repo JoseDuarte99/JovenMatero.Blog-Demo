@@ -8,29 +8,40 @@
 .information {
     display: flex;
     font-family: var(--JM-font-subtitle);
-    padding: 0 0 10px 0;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
+    padding: 0 0 10px 0;
 }
 
 .information > div:first-of-type {
+    display: flex;
     flex: 1;
-    display: flex ;
-    flex-direction: column;
-    align-items: start;
-}
-
-.information > div:first-of-type > a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 0.8em;
+    gap: 10px;
 }
 
 .information > div:first-of-type > img {
     height: 70px;
+    width: fit-content;
     cursor: pointer;
 }
+
+
+/* Terms And Privacy ------------------------------------------------ */
+
+.termsAndCPrivacy {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.termsAndCPrivacy > a {
+    text-decoration: none;
+    font-size: 0.7em;
+    color: #fff;
+}
+
 
 /* Social Networks ------------------------------------------ */
 
@@ -94,6 +105,8 @@
     text-align: center;
 }
 
+
+
 /* By ------------------------------------------------ */
 .by {
     font-size: 0.7em;
@@ -110,7 +123,6 @@
     justify-content: center;
     align-items: center;
     gap: 5px;
-    padding: 0 0 5px 0;
 }
 
 .by > p > a {
@@ -133,15 +145,11 @@
         .footer {
             padding: 5px 10px;
         }
-        .information > ul{
-            flex: none;
-        }
-        .information > div:first-of-type {
-            flex: 1;
-        }
-        
         .information > div:first-of-type > img {
             height: 50px;
+        }
+        .information > div:first-of-type {
+            gap: 2px 
         }
         .subscription {
             flex: 1;

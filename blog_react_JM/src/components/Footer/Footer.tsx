@@ -59,9 +59,12 @@ function Footer() {
             <section className={style.information}>
                 <div>
                     <img src={TermoMate} alt="Un Termo, junto a un Mate" onClick={() => window.scrollTo({ top: 0, behavior: "smooth"})}/>
-                    <span>Chaco, Argentina</span>
-                    <Link to="/terms_and_privacy" onClick={ () => {setTermsOrPrivacy(true); window.scrollTo({ top: 0, behavior: "smooth"})} }>Terminos y Condiciones</Link>
-                    <Link to="/terms_and_privacy" onClick={ () => {setTermsOrPrivacy(false); window.scrollTo({ top: 0, behavior: "smooth"})} }>Política de privacidad</Link>
+                    <div className={style.termsAndCPrivacy}>
+                        <Link to="/catalog" onClick={ () => {setTermsOrPrivacy(false); window.scrollTo({ top: 0, behavior: "smooth"})} } >Catalogo</Link>
+                        <Link to="/about" onClick={ () => {setTermsOrPrivacy(false); window.scrollTo({ top: 0, behavior: "smooth"})} } >Acerca de nosotoros</Link>
+                        <Link to="/terms_and_privacy" onClick={ () => {setTermsOrPrivacy(false); window.scrollTo({ top: 0, behavior: "smooth"})} } >Política de privacidad</Link>
+                        <Link to="/terms_and_privacy" onClick={ () => {setTermsOrPrivacy(true); window.scrollTo({ top: 0, behavior: "smooth"})} } >Terminos y Condiciones</Link>                    
+                    </div>
                 </div>
                 <div className={style.socialNetworks}>
                     <Link to={"https://www.instagram.com/jovenmatero/#"}>{InstagramSvg}</Link>

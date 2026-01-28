@@ -31,7 +31,7 @@ function Search(props: SearchType) {
         <div className={style.search}>
             <input 
                 type="text"
-                placeholder="Search"
+                placeholder="Buscar . . ."
                 value={onSearch}
                 onChange={searching}
                 onClick={() => setCategoryState(false)}

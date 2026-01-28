@@ -27,7 +27,7 @@ function About() {
                     <SvgAbout />
                 </div>
                 <div>
-                    <p>En nuestro Joven Matero, creemos que el mate es mucho más que una bebida: es un símbolo de encuentro, tradición y momentos compartidos. Por eso nos dedicamos a ofrecer productos que acompañen cada cebada, desde mates de distintos estilos hasta vasos térmicos, botellas y accesorios que hacen más práctica y placentera la experiencia.</p>
+                    <p>En Joven Matero, creemos que el mate es mucho más que una bebida: es un símbolo de encuentro, tradición y momentos compartidos. Por eso nos dedicamos a ofrecer productos que acompañen cada cebada, desde mates de distintos estilos hasta vasos térmicos, botellas y accesorios que hacen más práctica y placentera la experiencia.</p>
 
                     <p>Nuestro blog nace con la idea de estar cerca de vos, brindándote novedades, consejos, información útil y promociones exclusivas. Queremos que encuentres aquí un espacio donde aprender más sobre el mundo matero, descubrir tips para cuidar tus productos y estar al tanto de todo lo que tenemos para vos.</p>
 
