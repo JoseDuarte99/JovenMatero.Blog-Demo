@@ -31,7 +31,7 @@
 .suggestions {
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: center;
     height: fit-content;
     padding-bottom: 10px;
     box-shadow: 4px 4px 5px #0003;
@@ -56,7 +56,7 @@
 
 .suggestions > h5 {
     padding: 10px 0 0 20px;
-    font-size: 0.9em;
+    font-size: 1em;
     white-space: wrap;
 }
 
@@ -79,7 +79,7 @@
     .asideContainer > section {
         display: grid; 
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-        gap: 10px;
+        gap: 20px;
     }
     .suggestions {
         margin: 0;

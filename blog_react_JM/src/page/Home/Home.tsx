@@ -2,10 +2,10 @@
 import style from "./Home.module.css"
 
 // Import React
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 
 // Import Contexts
-import AuthContext from "../../context/AuthContext"
+// import AuthContext from "../../context/AuthContext"
 import PostContext from "../../context/PostsContext";
 
 // Import Components
@@ -28,9 +28,9 @@ function Home() {
     ] = useState(true);
 
     // AUTH-CONTEXT
-    const authContext = useContext(AuthContext)
-    if (!authContext){throw new Error('Authentication Error');}
-    const {currentUser} = authContext;
+    // const authContext = useContext(AuthContext)
+    // if (!authContext){throw new Error('Authentication Error');}
+    // const {currentUser} = authContext;
 
     // POSTS-CONTEXT
     const postContext = useContext(PostContext)
@@ -38,12 +38,10 @@ function Home() {
     const { posts, isPending } = postContext;
 
     // const navigate = useNavigate();
-    useEffect(() => {
-        console.log('Usuario Actual:', currentUser)
-    },[currentUser])
+    // useEffect(() => {
+    //     console.log('Usuario Actual:', currentUser)
+    // },[currentUser])
     
-
-    console.log(posts)
 
     return ( 
     isPending 
