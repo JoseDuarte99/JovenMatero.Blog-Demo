@@ -1,29 +1,37 @@
 # BlogProject
 
-Blog profesional desarrollado con Django REST Framework en el backend y React + TypeScript en el frontend. Este repositorio contiene la versión pública del proyecto, sin información sensible, ideal para mostrar estructura, diseño y buenas prácticas.
+Blog desarrollado con Django REST Framework en el backend y React + TypeScript en el frontend. Este repositorio contiene la versión pública del proyecto, sin información sensible, ideal para mostrar estructura, diseño y buenas prácticas.
 
 ## 🚀 Stack Tecnológico
 
 - **Backend**: Django + Django REST Framework
 - **Frontend**: React + TypeScript + Vite
 - **Routing**: React Router
-- **Consumo de API**: React Query / Axios
+- **Consumo de API**: React Query
 - **Estilos**: CSS Modules
 - **Control de versiones**: Git + GitHub
 
 ## 📦 Estructura del Proyecto
 ```bash
-blogproject/
-├── backend/              ## Django REST API
-│ ├── blog/                 # App principal
-│ └── users/                # Autenticación y perfiles
-├── frontend/             ## React + Vite
+JovenMatero.Blog/
+├── Backend/              ## Django REST API
+│ ├── apps/    
+│ │ ├── posts/   
+│ │ ├── subscriptions/          
+│ ├── backend_JM/      
+│ │ ├── media/  
+│ │ ├── settings/
+│ │ ├── static/            
+├── Frontend/             ## React + Vite
+│ ├── public/
 │ ├── src/
-│ │ ├── components/         # Componentes reutilizables
-│ │ ├── pages/              # Vistas y rutas
-│ │ ├── services/           # Conexión con la API
-│ │ ├── hooks/              # Hooks personalizados
-│ │ └── styles/             # Estilos con CSS Modules
+│ │ ├── api/                
+│ │ ├── components/        
+│ │ ├── context/              
+│ │ ├── features/           
+│ │ ├── layout/    
+│ │ ├── page/           
+│ │ └── types/             
 ```
 ## 🛠 Instalación
 
