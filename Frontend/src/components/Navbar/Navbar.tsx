@@ -6,7 +6,6 @@ import { useContext, useState, type Dispatch, type SetStateAction } from "react"
 import { Link } from "react-router";
 
 // Import Contexts
-import AuthContext from "../../context/AuthContext";
 import SearchContext from "../../context/SearchContext";
 
 // Import Components
@@ -16,7 +15,6 @@ import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import SearchResult from "../SearchResult/SearchResult";
 import SearchMobile from "../SearchMobile/SearchMobile";
 
-
 // Import Types
 // Import Others
 import { LogoSVG } from "../SvgIcons/SvgIcons";
@@ -24,10 +22,8 @@ import { LogoSVG } from "../SvgIcons/SvgIcons";
 
 type NavbarType = {
     categoryState: boolean
-    // setCategoryState: (value: boolean)=> boolean;
     setCategoryState: Dispatch<SetStateAction<boolean>>
 }
-
 
 
 function Navbar( { categoryState, setCategoryState }: NavbarType ) {
@@ -38,24 +34,11 @@ function Navbar( { categoryState, setCategoryState }: NavbarType ) {
     // Search Status
     const [ searchState , setSearchState ] = useState(false);
 
-
     // SEARCH CONTEXT 
     const search = useContext(SearchContext);
     if (!search){throw new Error('Search must be used within a SearchProvider')}
     const {onSearch, setOnSearch} = search;
 
-    // AUTH-CONTEXT
-    const authContext = useContext(AuthContext)
-    if (!authContext){throw new Error('Authentication Error');}
-    // const {accessToken, refreshToken, currentUser, logout} = authContext;
-
-    // const navigate = useNavigate();
-
-    // const logoutFn = () => {
-    //     logout(accessToken!,refreshToken!)
-    //     setMenuValue(false)
-    //     navigate("/home")
-    // }
 
 
     return (
@@ -86,22 +69,9 @@ function Navbar( { categoryState, setCategoryState }: NavbarType ) {
                 </Link>
                 <div className={style.menu}>
                     <Link to={"/home"}>Inicio</Link>
-                    {/* <Link to={"/contact_us"}>Contacto</Link> */}
                     <Link to={"/catalog"}>Catalogo</Link>
                     <Link to={"/about"}>Nosotros</Link>
-                    {/* { currentUser 
-                        ?<>
-                            <Link to={"/me"} className={style.me}>
-                                Mi Perfil
-                            </Link>
-                            <Link to={"/home"} onClick={logoutFn}>Cerrar Sesion</Link>
-                            <img src={currentUser.image} alt="Foto de Perfil" />
-                        </>
-                        : <>
-                            <Link to={"/register"}>Registrarme</Link>
-                            <Link to={"/login"}>Iniciar Sesion</Link>
-                        </>
-                    } */}
+
                 </div>
 
                 <label htmlFor="menu" className={style.activeMenu} onClick={() => setMenuValue(!menuValue)}>
@@ -114,10 +84,7 @@ function Navbar( { categoryState, setCategoryState }: NavbarType ) {
                         </svg>}
                 </label>
                 { menuValue &&
-                    <DropdownMenu 
-                    // onClickDropdownMenu={() => setMenuValue(!menuValue)} 
-                    // logoutFn={logoutFn}
-                    />
+                    <DropdownMenu />
                 }
 
             </nav>

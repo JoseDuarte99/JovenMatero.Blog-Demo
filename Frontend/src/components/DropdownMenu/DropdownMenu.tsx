@@ -2,19 +2,14 @@
 import style from "./DropdownMenu.module.css"
 
 // Import React
-// import { useContext } from "react";
 
 // Import Contexts
-// import AuthContext from "../../context/AuthContext";
 
 // Import Components
 // Import Types
 
 // Import Others
-import { HomeSvg, SummarySvg, OnSaleSvg,
-    //  LoginSvg, RegisterSvg, LogoutSvg, ProfileSvg,
-        // FashionSvg, OfferSvg, SuperMarketSvg, PlaySvg, HistorySvg, HeadsetSvg, BestSellingSvg, OfficialStoreSvg, CategoriesSvg, DownloadSvg 
-    } from "./DropdownMenuIcons"
+import { HomeSvg, SummarySvg, OnSaleSvg} from "./DropdownMenuIcons"
 import { Link } from "react-router"
 
 
@@ -23,14 +18,7 @@ type DropdownMenuType = {
     logoutFn?: () => void;
 }
 
-function DropdownMenu({onClickDropdownMenu,
-    //  logoutFn
-    } :DropdownMenuType) {
-
-    // AUTH-CONTEXT
-    // const authContext = useContext(AuthContext)
-    // if (!authContext){throw new Error('Authentication Error');}
-    // const {currentUser} = authContext;
+function DropdownMenu({onClickDropdownMenu} :DropdownMenuType) {
 
 
     return (
@@ -43,16 +31,6 @@ function DropdownMenu({onClickDropdownMenu,
                 </div>
             </section>
             <ul className={style.options}>
-                {/* { currentUser 
-                ? <>
-                    <li>{LogoutSvg}<Link to={"/home"} onClick={logoutFn} >Cerrar Sesión</Link></li>
-                    <li>{ProfileSvg}<Link to={"/me"} onClick={onClickDropdownMenu} >Mi Perfil</Link></li>
-                </>
-                : <>
-                    <li>{LoginSvg}<Link to={"/login"} onClick={onClickDropdownMenu} >Iniciar Sesión</Link></li>
-                    <li>{RegisterSvg}<Link to={"/register"} onClick={onClickDropdownMenu} >Registrarme</Link></li>
-                </>
-                } */}
                 <li>{HomeSvg}<Link to={"/home"} onClick={onClickDropdownMenu} >Inicio</Link></li>
                 <li>{SummarySvg}<Link to={"/about"} onClick={onClickDropdownMenu} >Nosotros</Link></li>
                 <li>{OnSaleSvg}<Link to={"/catalog"} onClick={onClickDropdownMenu} >Catalogo</Link></li>

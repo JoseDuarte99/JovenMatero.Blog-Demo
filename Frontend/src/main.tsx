@@ -31,9 +31,6 @@ import About from './page/About/About';
 import Catalog from './page/Catalog/Catalog';
 import TermsAndPrivacy from './page/TermsAndPrivacy/TermsAndPrivacy';
 
-// import LoginForm from './page/Login/Login';
-// import RegisterForm from './page/Register/Register';
-// import UserProfile from './page/UserProfile/UserProfile';
 
 
 // Import Contexts
@@ -56,21 +53,19 @@ createRoot(document.getElementById('root')!).render(
 
           <Routes>
               <Route path="/" element={<Navigate to="/home" replace />} />
-                {/* Navbar and Footer ------------- */}
-            <Route element={<NavbarAndFooterLayout />}>
-              <Route path='/home' element={<Home />}/>
-              <Route path='/post/:title' element={<PostById/>} />
-            </Route>
-            
-            <Route element={<SimpleNavbarAndFooter/>}>
-              {/* <Route path='/login' element={<LoginForm />}/>
-              <Route path='/register' element={<RegisterForm />}/> */}
-              {/* <Route path='/me' element={<UserProfile />}/> */}
-              <Route path='/about' element={<About />}/>
-              <Route path='/catalog' element={<Catalog />}/>
-              <Route path='/terms_and_privacy' element={<TermsAndPrivacy />}/>
-              <Route path='*' element={<NotFound404/>}/>
-            </Route>
+              {/* Navbar and Footer ------------- */}
+              <Route element={<NavbarAndFooterLayout />}>
+                <Route path='/home' element={<Home />}/>
+                <Route path='/post/:title' element={<PostById/>} />
+              </Route>
+              
+              {/* Simple Navbar and SimpleFooter ------------- */}
+              <Route element={<SimpleNavbarAndFooter/>}>
+                <Route path='/about' element={<About />}/>
+                <Route path='/catalog' element={<Catalog />}/>
+                <Route path='/terms_and_privacy' element={<TermsAndPrivacy />}/>
+                <Route path='*' element={<NotFound404/>}/>
+              </Route>
           
           </Routes>
         </BrowserRouter>

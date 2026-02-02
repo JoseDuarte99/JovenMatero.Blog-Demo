@@ -20,29 +20,28 @@ import postsLoadingImg from "../../../public/PostsLoading.png"
 import errorFirstLoad from "../../../public/ErrorFirstLoad.png"
 
 
-// import image2 from "../../../public/imagen2.jpg"
 
 
 function Home() {
+    
     const [ mostRelevantSelect, 
         // setMostRelevantSelect 
     ] = useState(true);
-
-    // AUTH-CONTEXT
-    // const authContext = useContext(AuthContext)
-    // if (!authContext){throw new Error('Authentication Error');}
-    // const {currentUser} = authContext;
 
     // POSTS-CONTEXT
     const postContext = useContext(PostContext)
     if (!postContext){throw new Error('Authentication Error');}
     const { posts, isPending, isError } = postContext;
 
-    // const navigate = useNavigate();
-    // useEffect(() => {
-    //     console.log('Usuario Actual:', currentUser)
-    // },[currentUser])
-    
+    if ( posts.length === 0 ) {
+        
+        return (
+            <div className={style.postLoading} >
+                <p>Parece que ocurrio un error . . .</p>
+                <img src={errorFirstLoad} alt="Gaucho tomando mates, tranquilo esperando que suceda algo." />
+                <p>Por favor, intente recargar la pagina.</p>
+            </div> 
+        )}
 
     return ( 
     isPending || isError

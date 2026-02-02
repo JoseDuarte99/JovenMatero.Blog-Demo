@@ -14,7 +14,7 @@ import PostsContext from "./PostsContext";
 // Import Types
 import type { ReactNode } from "react";
 
-import { getAllPostsService } from "../api/postService";
+import { getAllPostsService } from "../api/services";
 
 
 
@@ -35,7 +35,6 @@ function PostsProvider( {children}:PostsProviderType ) {
         })
 
 
-    
     // -------------------------------------------------------------------------------------------------------------
     
 
