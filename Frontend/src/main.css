@@ -1,0 +1,92 @@
+/* --JM---------------------- RESET VALUES --JM----------------------------- */
+
+/* Universal box model */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Remove default margins and paddings */
+html, body, h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Full height and base typography */
+html, body {
+    height: 100%;
+    font-family: var(--JM-font-subtitle);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    font-size: clamp(0.8rem, 2vw, 1rem);
+}
+
+/* Responsive media elements */
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Consistent form elements */
+input, button, textarea, select {
+    font: inherit;
+}
+
+/* Remove list styles */
+ul, ol {
+    list-style: none;
+    padding: 0;
+}
+
+/* Improved focus accessibility */
+:focus {
+    outline: 1px solid #007BFF;
+    z-index: 2;
+}
+
+/* Smooth animations with accessibility fallback */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+
+
+/* -- JM GLOBAL VARIABLES----------------------------------------------------------------------------- */
+:root {
+    /* IMPORTING League Spartan, Libre Baskerville and Questrial FROM GOOGLE-FONT */
+    --JM-font-body: 'Libre Baskerville', serif;
+    --JM-font-title: 'League Spartan', sans-serif;
+    --JM-font-subtitle: 'Questrial', sans-serif;
+
+    /* Color Pallete */
+    --JM-color-strong-green: #0e3c24;
+    --JM-color-pastel-green: #3f6440;
+    --JM-color-strong-beige: #b0a183;
+    --JM-color-beige: #ccbe96;
+    --JM-color-white: #fff;
+    --JM-color-black: #000;
+
+    /* Another Color */
+    --JM-color-button-submit: #3b82f6;
+    --JM-color-button-submit-hover: #1d4ed8;
+    --JM-color-bg-grey: #fefefe;
+    --JM-color-text-grey: #444444;
+    --JM-color-text-base: #111111;
+    --JM-color-text-error: #ff0000;
+    
+    
+    /* Typography Sizes */
+    /* --JM-font-size-base: 1em;
+    --JM-font-size-lg: 1.5em;
+    --JM-font-size-sm: 0.875em; */
+    
+    /* Spacing */
+    --JM-spacing-xs: 4px;
+    --JM-spacing-sm: 8px;
+    --JM-spacing-md: 16px;
+    --JM-spacing-lg: 32px;
+}

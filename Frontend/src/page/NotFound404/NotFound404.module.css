@@ -1,0 +1,89 @@
+.notFound404 {
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    padding: 5vw;
+    background: #fff;   
+    border-radius: 50%;
+    color: #202020;
+    width: 100%;
+}
+
+
+.notFound404 >  h4 {
+    align-self: center;
+    font-size: 1.2em;
+    color: var(--JM-color-strong-green);
+}
+
+
+.notFound404 > img {
+    min-width: 300px;
+    max-width: 550px;
+    width: 50vw;
+    align-self: center;
+}
+
+.goHome {
+    text-decoration: none;
+    color: #404040;
+    align-self: center;
+    font-size: 1em;
+}
+
+.goHome:hover {
+    text-decoration: underline;
+}
+
+
+
+
+/* RANDOM POST ---------------------- */
+.randomSection {
+    margin: 50px 0 20px 0;
+}
+
+.randomSection > h4 {
+    padding: 0 0 5px 20px;
+    border-bottom: 1px solid #dfdfdf;
+    font-weight: lighter;
+}
+
+.randomSection > div {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.randomPost {
+    flex: 1;
+    min-width: 100px;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 2px 2px 5px #0003;
+    border-radius: 5px;
+    transition: transform 250ms ease;
+    text-decoration: none;
+}
+
+.randomPost:hover {
+    transform: scale(1.04);
+}
+
+.randomPost > img {
+    width: 100%;
+    height: 85%;
+    max-height: 200px;
+    min-height: 100px;
+    object-fit: cover;  
+    object-position: center; 
+}
+
+.randomPost > h5 {
+    padding: 5px;
+    color: #000;
+    text-decoration: none;
+}

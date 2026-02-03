@@ -1,0 +1,39 @@
+.postNoFound {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    height: 70%;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+.postNoFound > p {
+    border-bottom: solid 1px #ddd;
+}
+
+.postNoFound > img {
+    min-width: 300px;
+    max-width: 550px;
+    width: 50vw;
+}
+
+
+.goHome {
+    text-decoration: none;
+    color: #404040;
+    font-size: 0.9em;
+}
+
+.goHome:hover {
+    text-decoration: underline;
+}
+
+
+/* ------------------ PHONE SCREEN VIEW -------------------------*/
+@media (max-width: 768px) {
+    .postNoFound {
+        margin-top: 0;
+    }
+}

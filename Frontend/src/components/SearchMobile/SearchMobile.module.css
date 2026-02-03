@@ -1,0 +1,24 @@
+.searchMobile {
+    padding: 0 20px 10px 20px;
+    position: absolute;
+    width: 100vw;
+    min-height: fit-content;
+    background: var(--JM-color-strong-green);
+    left: 0;
+    top: 100%;
+    z-index: 3;
+    display: none;
+}
+
+.searchMobile > div:first-of-type {
+    font-size: 1em;
+    padding: 5px 0 5px 0;
+}
+
+
+/* ------------------ PHONE SCREEN VIEW -------------------------*/
+    @media (max-width: 768px) { 
+        .searchMobile {
+            display: block;
+        }
+    }

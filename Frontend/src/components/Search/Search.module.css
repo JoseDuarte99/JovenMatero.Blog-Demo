@@ -1,0 +1,29 @@
+svg {
+    min-width: none;
+}
+
+.search {
+    display: flex;
+    font-size: 0.8em;
+    border-left: 2px solid #fff4;
+    border-bottom: 2px solid #fff4;
+}
+
+.search > input {
+    background: #0000;
+    border: none;
+    color: var(--JM-color-white);
+    border-radius: 2px;
+    height: 100%;
+    margin: 0 0 0 5px;
+}
+.search > button {
+    padding: 0;
+    margin: 0;
+    background: var(--JM-color-strong-green);
+    border: none;
+}
+.search > button > svg {
+    height: 100%;
+    cursor: pointer;
+}

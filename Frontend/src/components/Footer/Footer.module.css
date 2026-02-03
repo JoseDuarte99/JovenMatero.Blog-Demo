@@ -1,0 +1,186 @@
+.footer {
+    padding: 10px 20px;
+    background: var(--JM-color-beige);
+    color: var(--JM-color-white);
+}
+
+/* Information ------------------------------------------ */
+.information {
+    display: flex;
+    font-family: var(--JM-font-subtitle);
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 0 0 10px 0;
+}
+
+.information > div:first-of-type {
+    display: flex;
+    flex: 1;
+    gap: 10px;
+}
+
+.information > div:first-of-type > img {
+    height: 70px;
+    width: fit-content;
+    cursor: pointer;
+}
+
+
+/* Terms And Privacy ------------------------------------------------ */
+
+.termsAndCPrivacy {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.termsAndCPrivacy > a {
+    text-decoration: none;
+    font-size: 0.7em;
+    color: #fff;
+}
+
+
+/* Social Networks ------------------------------------------ */
+
+.socialNetworks{
+    display: flex;
+    gap: 15px;
+}
+.socialNetworks > a > svg {
+    height: 25px;
+}
+
+/* Subscription ------------------------------------------ */
+
+.subscription {
+    display: flex;
+    justify-content: end;
+    flex: 1;
+}
+.subscription > form {
+    background: var(--JM-color-bg-grey);
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0px 0px 5px #0003;
+}
+.subscription > form > div {
+    display: flex;
+    gap: 10px;
+}
+
+.subscription > form > div > input {
+    padding-left: 10px;
+    background: none;
+    border: none;
+    border-left: 1px solid var(--JM-color-beige);
+    border-bottom: 1px solid var(--JM-color-beige);
+    flex: 1;
+}
+.subscription > form > div  > button {
+    border: none;
+    background: var(--JM-color-beige);
+    color: var(--JM-color-white);
+    cursor: pointer;
+}
+.subscription > form > div > button:hover {
+    box-shadow: 0px 0px 10px #0003;
+}
+
+.subscription > form > div > input,
+.subscription > form > div > button {
+    height: 40px;
+    border-radius: 5px;
+}
+
+.subscription > form  > p {
+    padding: 5px 0 0 0;
+    font-size: 0.8em;
+    color: var(--JM-color-text-error);
+    text-align: center;
+}
+
+
+
+/* By ------------------------------------------------ */
+.by {
+    font-size: 0.7em;
+    border-top: 1px solid #0e3c2499;
+    padding: 10px 0 0 0;
+    color: var(--JM-color-black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.by > p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.by > p > a {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: var(--JM-color-black);
+    font-weight: bolder;
+}
+.by > p > a > svg {
+    height: 20px;
+}
+
+/* ------------------ PHONE SCREEN VIEW -------------------------*/
+    @media (max-width: 768px) {
+        .footer {
+            padding: 5px 10px;
+        }
+        .information > div:first-of-type > img {
+            height: 50px;
+        }
+        .information > div:first-of-type {
+            gap: 2px 
+        }
+        .subscription {
+            flex: 1;
+        }
+        .subscription > form > div {
+            flex-direction: column;
+            gap: 2px;
+        }
+        .subscription > form > div > input{
+            padding: 5px;
+        }
+        .subscription > form > div > input,
+        .subscription > form > div > button {
+            height: 20px;
+        }
+
+        .subscription > form  > p {
+            font-size: 0.9em;
+        }
+
+        .socialNetworks{
+            flex-direction: column;
+            gap: 5px;
+        }
+        .socialNetworks > a > svg {
+            height: 15px;
+        }
+
+        /* By ------------------------------------------------ */
+        .by > p > a > svg {
+            height: 15px;
+        }
+
+    }

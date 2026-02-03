@@ -1,0 +1,100 @@
+.cardSmall {
+    height: fit-content;
+    max-height: 450px;
+    min-height: 350px;
+    max-height: 550px;
+    cursor: pointer;
+    background: #fff;
+    padding: 0 0 30px 0;
+    text-decoration: none;
+    color: #000;
+}
+.cardSmall:hover {
+    border-bottom: solid 1px #ddd;
+}
+
+.cardSmall > img {
+    margin: 0 0 10px 0 ;
+    width: 100%;
+    height: 200px;      
+    object-fit: cover;  
+    object-position: center; 
+    box-shadow: 0 0 5px #0003;  
+    transition: transform 250ms ease;
+    border-radius: 5px;
+}
+
+.cardSmall:hover > img {
+    transform: scale(1.05);
+}
+
+
+.cardSmall > div {
+    padding: 0 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cardSmall > div > h1 {
+    font-size: 1.3em;
+}
+
+.cardSmall > div > h3 {
+    font-size: 0.9em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cardSmall > div > span:first-of-type {
+    font-size: 0.6em;
+    letter-spacing: 2px;
+    background: var(--JM-color-pastel-green);
+    color: var(--JM-color-white);
+    padding: 2px 6px 0 6px;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 10px 0 0 0 ;
+}
+
+/* TEXT -------------------------------------------- */
+
+.cardSmall > div > p {
+    display: -webkit-box;        
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;       
+    line-clamp: 3;               
+    overflow: hidden;   
+    margin: 5px 0 10px 0;          
+    font-size: 0.9em;
+}
+
+
+/* DATE -------------------------------------------- */
+
+.published {
+    color: #555;
+    font-size: 0.6em;
+}
+
+/* TAGS -------------------------------------------- */
+
+.cardSmall > div:last-of-type {
+    display: flex;
+}
+
+.tags > svg {
+    margin: 0 3px 0 0;
+}
+
+.tags {
+    font-size: 0.6em;
+    letter-spacing: 2px;
+    color: #555;
+    background: #dddc;
+    display: flex;
+    padding: 1px 5px;
+    border-radius: 5px;
+    margin: 2px 5px 2px 0;
+    width: fit-content;
+}

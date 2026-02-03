@@ -1,0 +1,88 @@
+.postById {
+    display: flex;
+    padding: 50px 0 100px 0;
+    justify-content: space-around;
+}
+
+
+/* MAIN ---------------------- */
+.mainContainer {
+    width: 60%;
+}
+
+/* ASIDE ---------------------- */
+.asideContainer {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    margin: 65px 0 0 0;
+}
+
+.asideContainer > h4 {
+    font-size: 1em;
+    margin: 0 0 20px 0;
+    padding: 0 0 10px 0;
+    text-align: center;
+    font-weight: lighter;
+    border-bottom: solid 1px #ddd;
+}
+
+/* SEGGESTIONS ---------------------- */
+.suggestions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: fit-content;
+    padding-bottom: 10px;
+    box-shadow: 4px 4px 5px #0003;
+    cursor: pointer;
+    transition: transform 250ms ease;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: #000;
+}
+
+.suggestions:hover {
+    transform: scale(1.03);
+}
+
+.suggestions > img {
+    width: 100%;
+    height: 200px;      
+    object-fit: cover;  
+    object-position: center; 
+
+}
+
+.suggestions > h5 {
+    padding: 10px 0 0 20px;
+    font-size: 1em;
+    white-space: wrap;
+}
+
+
+/* ------------------ PHONE SCREEN VIEW -------------------------*/
+@media (max-width: 768px) {
+
+    .postById {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .mainContainer {
+        width: 90%;
+    }
+    .asideContainer{
+        margin: 50px 0 0 0;
+        width: 90%;
+    }
+    .asideContainer > section {
+        display: grid; 
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+        gap: 20px;
+    }
+    .suggestions {
+        margin: 0;
+    }
+
+}

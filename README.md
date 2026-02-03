@@ -1,30 +1,69 @@
-# BlogProject
+# 🧉 Joven Matero — Demo Público (Frontend + Backend)
 
-Blog profesional desarrollado con Django REST Framework en el backend y React + TypeScript en el frontend. Este repositorio contiene la versión pública del proyecto, sin información sensible, ideal para mostrar estructura, diseño y buenas prácticas.
+Este repositorio contiene una **versión demo y pública** del proyecto **Joven Matero**, compuesto por un **Frontend en React + TypeScript + Vite** y un **Backend en Django REST Framework**.  
+El objetivo es mostrar la arquitectura, organización y calidad del código utilizado en el proyecto real, **sin exponer información sensible ni configuraciones de producción**.
 
+---
+
+## 📦 Contenido del repositorio
+
+- **Backend/** → API REST construida con Django + DRF  
+- **Frontend/** → Aplicación web construida con React + TypeScript + Vite  
+
+---
 ## 🚀 Stack Tecnológico
 
 - **Backend**: Django + Django REST Framework
 - **Frontend**: React + TypeScript + Vite
 - **Routing**: React Router
-- **Consumo de API**: React Query / Axios
+- **Consumo de API**: React Query
 - **Estilos**: CSS Modules
 - **Control de versiones**: Git + GitHub
+- **Otros**: Python-decouple, etc...
 
+---
+## 🔐 Seguridad y privacidad
+
+Este repositorio **no incluye**:
+
+- Archivos `.env` reales  
+- Claves, tokens o credenciales  
+- Configuraciones de producción  
+- Datos reales de usuarios  
+- Archivos de build (`dist/`, `__pycache__/`, etc.)
+
+Solo se incluyen archivos `.env.example` con valores ficticios para facilitar la ejecución local.
+
+---
+## 📃 Licencia
+Este proyecto se distribuye bajo la licencia MIT.
+Ver archivo LICENSE para más información.
+
+---
 ## 📦 Estructura del Proyecto
 ```bash
-blogproject/
-├── backend/              ## Django REST API
-│ ├── blog/                 # App principal
-│ └── users/                # Autenticación y perfiles
-├── frontend/             ## React + Vite
+JovenMatero.Blog/
+├── Backend/              ## Django REST API
+│ ├── apps/    
+│ │ ├── posts/   
+│ │ ├── subscriptions/          
+│ ├── backend/      
+│ │ ├── media/  
+│ │ ├── settings/
+│ │ ├── static/            
+├── Frontend/             ## React + Vite
+│ ├── public/
 │ ├── src/
-│ │ ├── components/         # Componentes reutilizables
-│ │ ├── pages/              # Vistas y rutas
-│ │ ├── services/           # Conexión con la API
-│ │ ├── hooks/              # Hooks personalizados
-│ │ └── styles/             # Estilos con CSS Modules
+│ │ ├── api/                
+│ │ ├── components/        
+│ │ ├── context/              
+│ │ ├── features/           
+│ │ ├── layout/    
+│ │ ├── page/           
+│ │ └── types/             
 ```
+
+---
 ## 🛠 Instalación
 
 ### Backend

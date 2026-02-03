@@ -1,0 +1,109 @@
+.cardMedium {
+    display: flex;
+    height: 300px;
+    transition: transform 250ms ease-in-out;
+    cursor: pointer;
+    gap: 30px;
+    text-decoration: none;
+    color: #000;
+}
+
+.cardMedium > img {
+    width: 350px;
+    min-width: 350px;
+    object-fit: cover;  
+    object-position: center; 
+    box-shadow: 0 0 10px #0003;  
+    transition: transform 250ms ease-out;
+    border-radius: 5px;
+}
+
+.cardMedium:hover > img{
+    transform: scale(1.05);
+}
+
+.cardMedium > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-width: 300px;
+}
+
+.cardMedium > div > h1 {
+    font-size: 1.5em;
+}
+
+.cardMedium > div > h3 {
+    font-size: 1em;
+    white-space: wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cardMedium > div > span:first-of-type {
+    font-size: 0.7em;
+    letter-spacing: 2px;
+    background: var(--JM-color-pastel-green);
+    color: var(--JM-color-white);
+    padding: 2px 6px 0 6px;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 10px 0 0 0 ;
+}
+
+/* TEXT -------------------------------------------- */
+
+.cardMedium > div > p {
+    display: -webkit-box;        
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;       
+    line-clamp: 5;               
+    overflow: hidden;   
+    margin: 5px 0 10px 0;          
+    font-size: 0.9em;
+}
+
+
+/* DATE -------------------------------------------- */
+
+.published {
+    color: #555;
+    font-size: 0.7em;
+}
+
+/* TAGS -------------------------------------------- */
+
+.cardMedium > div:last-of-type {
+    display: flex;
+}
+
+.tags > svg {
+    margin: 0 3px 0 0;
+}
+
+.tags {
+    font-size: 0.7em;
+    letter-spacing: 2px;
+    color: #555;
+    background: #dddc;
+    display: flex;
+    padding: 1px 5px;
+    border-radius: 5px;
+    margin: 2px 5px 2px 0;
+    width: fit-content;
+}
+
+
+/* ------------------ PHONE SCREEN VIEW -------------------------*/
+    @media (max-width: 768px) {
+
+    .cardMedium {
+        flex-direction: column;
+        height: auto;
+        gap: 15px;
+    }
+    .cardMedium > img {
+        align-self: center;
+        min-width: 300px;
+    }
+}
