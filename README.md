@@ -19,6 +19,7 @@ El objetivo es mostrar la arquitectura, organización y calidad del código util
 - **Consumo de API**: React Query
 - **Estilos**: CSS Modules
 - **Control de versiones**: Git + GitHub
+- **Otros**: Python-decouple, etc...
 
 ---
 ## 🔐 Seguridad y privacidad
