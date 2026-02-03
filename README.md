@@ -18,7 +18,7 @@ JovenMatero.Blog/
 │ ├── apps/    
 │ │ ├── posts/   
 │ │ ├── subscriptions/          
-│ ├── backend_JM/      
+│ ├── backend/      
 │ │ ├── media/  
 │ │ ├── settings/
 │ │ ├── static/            
