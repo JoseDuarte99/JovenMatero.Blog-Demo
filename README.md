@@ -34,6 +34,10 @@ Este repositorio **no incluye**:
 
 Solo se incluyen archivos `.env.example` con valores ficticios para facilitar la ejecución local.
 
+---
+## 📃 Licencia
+Este proyecto se distribuye bajo la licencia MIT.
+Ver archivo LICENSE para más información.
 
 ---
 ## 📦 Estructura del Proyecto
